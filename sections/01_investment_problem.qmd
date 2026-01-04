@@ -1,0 +1,90 @@
+# The Investment Problem {#sec-investment-problem}
+
+## The End of "Plain" Solar
+
+The historical investment model for utility-scale solar PV in the Australian National Electricity Market is broken. For years, renewable energy developers relied on long-term fixed-price Power Purchase Agreements (PPAs) spanning 7-15 years to secure project finance. These contracts provided the revenue certainty needed to support high-leverage debt structures typical of infrastructure investments.
+
+That model has collapsed.
+
+## The Collapse of the Unfirmed PPA
+
+With the end of the Large-scale Renewable Energy Target (LRET) and rapidly increasing solar penetration, the economics of daytime generation have fundamentally changed. The problem is straightforward: when everyone generates at the same time, prices collapse.
+
+### Solar Anti-Correlation
+
+The wholesale electricity price during solar hours (10:00-16:00) in NSW tells the story clearly:
+
+```{python}
+#| echo: false
+#| warning: false
+
+import sys
+from pathlib import Path
+sys.path.append(str(Path.cwd() / "scripts" / "section1"))
+
+# Load and display the chart
+from IPython.display import IFrame
+chart_path = Path.cwd() / "data" / "outputs" / "section1" / "solar_price_curtailment.html"
+IFrame(str(chart_path), width=800, height=500)
+```
+
+The data reveals two devastating trends for solar investors:
+
+1. **Price Cannibalization**: Solar hour wholesale prices have declined by over 50% from 2018 to 2025, from approximately $80-90/MWh to less than $40/MWh
+
+2. **Physical Curtailment**: Solar generators are not just facing low prices—they're being physically curtailed due to grid congestion during solar peaks. Curtailment has increased from less than 1% in 2018 to over 5% by 2025.
+
+### The PPA Problem
+
+Infrastructure investors don't just want high prices—they need **contracted** revenue. The challenge is that corporate offtakers increasingly refuse to sign long-term PPAs for plain solar at any price. Why would a commercial buyer lock in a fixed rate for power that's only generated when grid prices are lowest?
+
+The traditional financing waterfall is broken:
+- **Can't contract** → Can't size debt
+- **Can't size debt** → Can't hit return hurdles
+- **Can't hit returns** → Can't deploy capital
+
+## The Certificate Cliff
+
+The revenue problem extends beyond wholesale electricity. Large-scale Generation Certificates (LGCs), which historically provided 30-40% of solar project revenue, have collapsed as the LRET obligation has been fulfilled.
+
+**LGC pricing trajectory:**
+- January 2024: ~$50/certificate
+- January 2026: ~$6.50/certificate
+
+The market transitions to a voluntary scheme post-2030 through Guarantees of Origin (GOs). However, GOs include a **time-stamp element**—certificates are matched to the exact hour of consumption. Just as physical solar-hour power is oversupplied, solar-hour GOs will likely trade at a significant discount to off-peak certificates, further depressing returns.
+
+## The Curtailment Risk
+
+Investors are not just facing revenue risk from low prices. They face **volume risk** from physical curtailment:
+
+- **Grid congestion**: Solar farms in regional NSW are often at the end of transmission lines with limited export capacity
+- **AEMO intervention**: Semi-scheduled generators can be directed to reduce output when local network constraints bind
+- **Wasted generation**: Curtailed energy represents sunk capital with zero return
+
+For existing solar assets approaching PPA expiry, the prospect of uncontracted merchant exposure to these conditions represents a material valuation risk. A solar farm that can't reliably sell its output is an infrastructure asset with a fundamental flaw.
+
+## The Investment Imperative
+
+The conclusion for infrastructure capital is clear: **pure solar is no longer financeable** at acceptable risk-adjusted returns in competitive regions of the NEM.
+
+Battery energy storage systems (BESS) offer the obvious technical solution—shift generation from oversupplied daylight hours to valuable evening peaks. But this raises the critical question that motivates this entire analysis:
+
+**Should batteries be co-located with solar, or deployed as standalone assets?**
+
+The answer determines:
+- Capital deployment sizing (small vs. large projects)
+- Revenue structure (contracted vs. merchant)
+- Location optimization (solar sites vs. grid access points)
+- Return profiles (infrastructure vs. opportunistic)
+
+The following sections provide a framework for making this decision systematically.
+
+---
+
+**Key Takeaways:**
+
+- Solar hour wholesale prices in NSW have declined >50% from 2018-2025
+- Curtailment has increased >5x over the same period
+- LGC revenues have collapsed from $50 to $6.50/certificate
+- Pure solar PPA contracting has become increasingly difficult
+- Infrastructure investors face a binary choice: add BESS or accept merchant risk
