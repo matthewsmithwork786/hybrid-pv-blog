@@ -211,12 +211,75 @@ This "preserve the PV asset" logic is driving significant co-location activity i
 
 ---
 
+## Revenue Structure: Where Batteries Make Money
+
+Understanding **how** batteries generate revenue is critical to evaluating the co-location decision. Battery returns are highly concentrated in specific price events, not uniformly distributed across hours.
+
+### Revenue Concentration by Price Bucket
+
+The following analysis examines NSW batteries operational throughout 2025, calculating net revenue (discharge revenue minus charging cost) across different wholesale price ranges:
+
+```{python}
+#| echo: false
+#| warning: false
+
+from IPython.display import IFrame
+chart_path = Path.cwd() / "data" / "outputs" / "section3" / "battery_revenue_buckets.html"
+IFrame(str(chart_path), width=800, height=500)
+```
+
+**Critical observations:**
+
+1. **Negative pricing revenue**: Batteries earn significant revenue by charging during negative price periods (getting **paid** to charge), then discharging hours later at positive prices. This "double-dip" revenue stream is only available to standalone batteries with grid import capability.
+
+2. **High-price event concentration**: A substantial portion of revenue comes from extreme price events (>$1000/MWh), which occur during tight supply-demand conditions (typically evening peaks, network constraints, or generator outages).
+
+3. **Base revenue is minimal**: The $0-300/MWh bucket (representing "normal" market conditions) contributes relatively little to total returns. Battery economics depend on price volatility, not average prices.
+
+**Implications for co-location:**
+
+- **DC-coupled batteries** cannot charge from the grid during negative prices (behind-the-meter constraint). They forfeit this revenue stream entirely.
+- **AC-coupled batteries** can charge from grid but only by curtailing solar (wasting zero-marginal-cost generation). Rarely economically optimal.
+- **Standalone batteries** capture full arbitrage value, optimizing charge/discharge independently of solar output.
+
+### Co-location Configuration Options
+
+Co-location exists on a spectrum from loose integration to full behind-the-meter coupling. Each configuration represents different trade-offs:
+
+```{python}
+#| echo: false
+#| warning: false
+
+from IPython.display import SVG
+diagram_path = Path.cwd() / "data" / "outputs" / "section3" / "colocation_diagram.svg"
+SVG(filename=str(diagram_path))
+```
+
+**Configuration comparison:**
+
+| Configuration | Connection | DUIDs | Grid Charging | Capex Savings | Dispatch Flexibility |
+|---------------|------------|-------|---------------|---------------|---------------------|
+| **Non-hybrid** | Separate | Dual | Yes (battery) | None | Maximum |
+| **AC-coupled** | Shared | Dual | Yes (battery) | $50-100/kW | High |
+| **DC-coupled** | Shared | Single | Limited | $70-120/kW | Constrained |
+
+**Decision framework:**
+
+- **Non-hybrid**: Choose when MLF differential is significant, or when battery targets different revenue streams (FCAS, different price zone)
+- **AC-coupled**: Choose when capex savings are material but independent dispatch is valuable (common retrofit scenario)
+- **DC-coupled**: Choose when creating "guaranteed green" product (corporate PPA requirement) or when grid charging is explicitly unwanted
+
+The configuration choice is **not** purely technical—it's driven by commercial objectives (PPA structure, green premium, financing requirements).
+
+---
+
 **Key Takeaways:**
 
 - BESS deployment has grown rapidly: 500 MWh (2019) → 10,000+ MWh (2026-2027 projected)
 - Majority of current batteries are standalone, optimizing for location and flexibility
 - Standalone advantages: siting freedom, speed, lifecycle independence, negative pricing revenue
 - Co-located advantages: capex synergies, capital deployment scale, green premium, retrofit logic
+- Battery revenue is highly concentrated in negative pricing and extreme high-price events
+- DC-coupled configurations forfeit grid charging revenue (significant opportunity cost)
+- Configuration choice (non-hybrid vs AC vs DC-coupled) is driven by commercial objectives, not purely technical factors
 - Decision is **context-dependent**: new build vs. retrofit, return targets, contracting options
-
-[Section continues with revenue analysis and co-location diagrams in Sub-Plan 5...]
