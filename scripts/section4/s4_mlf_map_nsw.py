@@ -12,9 +12,9 @@ from folium import plugins
 import json
 
 # Add parent directory to path to import utils
-sys.path.append(str(Path.cwd().parent.parent / "scripts"))
+sys.path.append(str(Path(__file__).parent.parent))
 from utils.style_config import COLORS
-from utils.data_paths import OUTPUTS_PATH
+from utils.data_paths import OUTPUTS_DIR, ensure_output_dirs
 
 def get_nsw_generator_mlf_data():
     """
@@ -365,7 +365,7 @@ def print_mlf_statistics(generators):
         # Count by MLF category
         high_mlf = len(batteries[batteries["mlf"] >= 0.95])
         low_mlf = len(batteries[batteries["mlf"] < 0.90])
-        print(f"  High MLF (≥0.95): {high_mlf} ({high_mlf/len(batteries)*100:.0f}%)")
+        print(f"  High MLF (>=0.95): {high_mlf} ({high_mlf/len(batteries)*100:.0f}%)")
         print(f"  Low MLF (<0.90): {low_mlf} ({low_mlf/len(batteries)*100:.0f}%)")
     
     # Solar-specific analysis (for co-location context)
@@ -394,8 +394,8 @@ def main():
     mlf_map = create_mlf_map(generators)
     
     # Save output
-    output_dir = OUTPUTS_PATH / "section4"
-    output_dir.mkdir(parents=True, exist_ok=True)
+    ensure_output_dirs()
+    output_dir = OUTPUTS_DIR / "section4"
     
     output_path = output_dir / "mlf_map_nsw.html"
     mlf_map.save(str(output_path))

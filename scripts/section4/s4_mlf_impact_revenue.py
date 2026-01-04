@@ -8,14 +8,11 @@ from pathlib import Path
 import pandas as pd
 import numpy as np
 import plotly.graph_objects as go
-import plotly.express as px
-from scipy import stats
 
 # Add parent directory to path to import utils
-sys.path.append(str(Path.cwd().parent.parent / "scripts"))
-from utils.style_config import get_battery_template, COLORS
-from utils.data_paths import NEMOSIS_DATA_PATH, OUTPUTS_PATH
-from utils.nemosis_helpers import load_cached_data
+sys.path.append(str(Path(__file__).parent.parent))
+from utils.style_config import TEMPLATE, COLORS
+from utils.data_paths import OUTPUTS_DIR, ensure_output_dirs
 
 def get_battery_mlf_data():
     """
@@ -24,50 +21,39 @@ def get_battery_mlf_data():
     Returns:
     - DataFrame with battery metrics (MLF, revenue, capacity, etc.)
     """
-    # In production, this would:
-    # 1. Query generator metadata for battery details
-    # 2. Download MLF tables from AEMO
-    # 3. Calculate annual revenue from SCADA + price data
-    
-    # For demonstration, create realistic example data
+    # Create simplified example data
     np.random.seed(42)
-    n_batteries = 25
+    n_batteries = 20
     
-    # Generate MLF values (realistic range for NSW batteries)
-    # Co-located batteries: lower MLF (0.82-0.92)
+    # Generate MLF values
+    # Co-located batteries: lower MLF (0.82-0.94)
     # Standalone batteries: higher MLF (0.90-1.02)
     
-    # Create battery types
     battery_types = np.random.choice(
         ["Co-located", "Standalone"],
         size=n_batteries,
-        p=[0.4, 0.6]  # 40% co-located, 60% standalone
+        p=[0.4, 0.6]
     )
     
     # Generate MLF values based on type
     mlf_values = []
     for btype in battery_types:
         if btype == "Co-located":
-            # Solar farm locations: poorer MLF
             mlf = np.random.uniform(0.82, 0.94)
         else:
-            # Standalone: can choose better locations
             mlf = np.random.uniform(0.90, 1.02)
         mlf_values.append(mlf)
     
-    # Generate capacity (MW)
+    # Generate capacity
     capacity = np.random.uniform(50, 300, n_batteries)
     
-    # Generate annual revenue based on MLF + capacity + random factors
-    # Revenue increases with MLF and capacity
-    # But with significant variation due to: strategy, duration, market conditions
-    
+    # Generate annual revenue based on MLF + capacity
     base_revenue_per_mw = 80000  # $80k/MW baseline
     
     # MLF impact: each 0.01 increase in MLF adds ~$1k/MW
     mlf_impact = (np.array(mlf_values) - 0.90) * 100000
     
-    # Random variation (strategy, duration, contracting)
+    # Random variation
     random_variation = np.random.normal(0, 15000, n_batteries)
     
     # Calculate revenue per MW
@@ -87,7 +73,7 @@ def get_battery_mlf_data():
         "revenue_per_mw": revenue_per_mw,
         "battery_type": battery_types,
         "revenue_quartile": revenue_quartile,
-        "duration_hr": np.random.choice([2, 4], n_batteries, p=[0.7, 0.3])  # 70% are 2hr systems
+        "duration_hr": np.random.choice([2, 4], n_batteries, p=[0.7, 0.3])
     })
     
     return data
@@ -98,26 +84,32 @@ def calculate_correlation(data):
     """
     correlation = data["mlf"].corr(data["revenue_per_mw"])
     
-    # Linear regression
-    slope, intercept, r_value, p_value, std_err = stats.linregress(
-        data["mlf"],
-        data["revenue_per_mw"]
-    )
+    # Simple linear regression (without scipy)
+    x = data["mlf"].values
+    y = data["revenue_per_mw"].values
+    
+    # Calculate slope and intercept
+    n = len(x)
+    slope = (n * np.sum(x * y) - np.sum(x) * np.sum(y)) / (n * np.sum(x**2) - (np.sum(x))**2)
+    intercept = (np.sum(y) - slope * np.sum(x)) / n
+    
+    # Calculate R-squared
+    y_pred = slope * x + intercept
+    ss_res = np.sum((y - y_pred) ** 2)
+    ss_tot = np.sum((y - np.mean(y)) ** 2)
+    r_squared = 1 - (ss_res / ss_tot)
     
     return {
         "correlation": correlation,
         "slope": slope,
         "intercept": intercept,
-        "r_squared": r_value ** 2,
-        "p_value": p_value
+        "r_squared": r_squared
     }
 
 def create_mlf_revenue_scatter(data):
     """
     Create scatter plot of MLF vs Revenue/MW
     """
-    template = get_battery_template()
-    
     # Calculate regression line
     stats_data = calculate_correlation(data)
     
@@ -136,7 +128,7 @@ def create_mlf_revenue_scatter(data):
     colors = data["revenue_quartile"].map(color_map)
     
     # Marker size based on capacity
-    marker_sizes = data["capacity_mw"] / 5  # Scale down for reasonable size
+    marker_sizes = data["capacity_mw"] / 5
     
     # Create figure
     fig = go.Figure()
@@ -160,7 +152,7 @@ def create_mlf_revenue_scatter(data):
             customdata=subset[["battery_name", "mlf", "revenue_per_mw", "capacity_mw", "battery_type", "duration_hr"]],
             hovertemplate=(
                 "<b>%{customdata[0]}</b><br>"
-                "MLF: %{customdata[2]:.3f}<br>"
+                "MLF: %{customdata[1]:.3f}<br>"
                 "Revenue/MW: $%{customdata[2]:,.0f}<br>"
                 "Capacity: %{customdata[3]:.0f} MW<br>"
                 "Type: %{customdata[4]}<br>"
@@ -198,12 +190,11 @@ def create_mlf_revenue_scatter(data):
     
     # Update layout
     fig.update_layout(
-        template=template,
+        template=TEMPLATE,
         title={
             "text": f"<b>MLF Impact on Battery Revenue: NSW 2025</b><br>" +
                    f"<sup>Correlation: {stats_data['correlation']:.3f} | "
-                   f"R² = {stats_data['r_squared']:.3f} | "
-                   f"p < 0.001</sup>",
+                   f"R² = {stats_data['r_squared']:.3f}</sup>",
             "x": 0.5,
             "xanchor": "center"
         },
@@ -234,43 +225,7 @@ def create_mlf_revenue_scatter(data):
         range=[data["revenue_per_mw"].min() - 10000, data["revenue_per_mw"].max() + 10000]
     )
     
-    # Add annotation
-    annotation_text = (
-        f"<b>Key Finding:</b><br>"
-        f"Each 0.01 increase in MLF ≈ ${stats_data['slope'] * 100:,.0f}/MW additional revenue<br>"
-        f"Moving from MLF 0.85 → 0.95 adds ≈ ${stats_data['slope'] * 1000:,.0f}/MW"
-    )
-    
-    fig.add_annotation(
-        x=0.02, y=0.98,
-        xref="paper", yref="paper",
-        xanchor="left", yanchor="top",
-        text=annotation_text,
-        showarrow=False,
-        bgcolor="rgba(255,255,255,0.8)",
-        bordercolor=COLORS["battery"],
-        borderwidth=2,
-        font=dict(size=11)
-    )
-    
     return fig
-
-def create_mlf_comparison_by_type(data):
-    """
-    Create side-by-side comparison of MLF distribution by battery type
-    """
-    template = get_battery_template()
-    
-    # Calculate statistics by type
-    type_stats = data.groupby("battery_type").agg({
-        "mlf": ["mean", "median", "std", "min", "max"],
-        "revenue_per_mw": ["mean", "median"]
-    }).round(4)
-    
-    print("\nMLF and Revenue Statistics by Battery Type:")
-    print(type_stats)
-    
-    return type_stats
 
 def main():
     """
@@ -288,17 +243,13 @@ def main():
     print(f"Correlation coefficient: {stats_data['correlation']:.3f}")
     print(f"R-squared: {stats_data['r_squared']:.3f}")
     print(f"Regression slope: ${stats_data['slope'] * 100:,.2f}/MW per 0.01 MLF")
-    print(f"P-value: {stats_data['p_value']:.2e}")
-    
-    # Create comparison by type
-    type_comparison = create_mlf_comparison_by_type(battery_data)
     
     # Create scatter plot
     fig = create_mlf_revenue_scatter(battery_data)
     
     # Save output
-    output_dir = OUTPUTS_PATH / "section4"
-    output_dir.mkdir(parents=True, exist_ok=True)
+    ensure_output_dirs()
+    output_dir = OUTPUTS_DIR / "section4"
     
     output_path = output_dir / "mlf_impact_revenue.html"
     fig.write_html(str(output_path), include_plotlyjs="cdn")

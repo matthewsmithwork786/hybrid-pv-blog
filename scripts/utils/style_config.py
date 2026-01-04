@@ -55,7 +55,7 @@ TEMPLATE = go.layout.Template(
             linewidth=1,
             linecolor=COLORS['grid'],
             tickfont=FONT_AXIS,
-            titlefont=FONT_AXIS
+            title=dict(font=FONT_AXIS)
         ),
         yaxis=dict(
             showgrid=True,
@@ -68,7 +68,7 @@ TEMPLATE = go.layout.Template(
             linewidth=1,
             linecolor=COLORS['grid'],
             tickfont=FONT_AXIS,
-            titlefont=FONT_AXIS
+            title=dict(font=FONT_AXIS)
         ),
         hovermode='x unified',
         hoverlabel=dict(
