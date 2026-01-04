@@ -1,0 +1,39 @@
+project:
+  type: book
+  output-dir: docs
+
+book:
+  title: "Beyond the Solar Curve"
+  subtitle: "A Capital Allocation Framework for Co-located vs. Standalone BESS in the NEM"
+  author: "Matt S"
+  date: today
+  chapters:
+    - index.qmd
+    - sections/01_investment_problem.qmd
+    - sections/02_bess_thesis.qmd
+    - sections/03_tradeoff_analysis.qmd
+    - sections/04_technical_constraints.qmd
+    - sections/05_strategic_framework.qmd
+
+format:
+  html:
+    theme:
+      - cosmo
+      - assets/styles/custom.css
+    toc: true
+    toc-depth: 3
+    code-fold: true
+    code-tools: true
+    code-link: true
+    embed-resources: false
+    smooth-scroll: true
+    link-external-newwindow: true
+
+execute:
+  freeze: true  # Use cached outputs
+  cache: true
+  echo: false   # Don't show code by default
+  warning: false
+  message: false
+
+jupyter: python3

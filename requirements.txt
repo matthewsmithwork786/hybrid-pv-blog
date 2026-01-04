@@ -1,0 +1,42 @@
+# Beyond the Solar Curve - Python Dependencies
+
+# Core data processing
+pandas>=2.0.0
+polars>=0.19.0
+numpy>=1.24.0
+
+# NEM data access
+nemosis>=3.5.0
+requests>=2.31.0
+
+# Visualization
+plotly>=5.18.0
+kaleido>=0.2.1
+folium>=0.15.0
+
+# PyPSA modeling
+pypsa>=0.25.0
+highspy>=1.5.0
+
+# File I/O
+openpyxl>=3.1.0
+pyarrow>=14.0.0
+
+# Geospatial
+geopy>=2.4.0
+
+# Diagramming
+graphviz>=0.20.0
+schemdraw>=0.17.0
+
+# Jupyter (for development)
+ipython>=8.12.0
+jupyter>=1.0.0
+notebook>=7.0.0
+
+# Utilities
+python-dateutil>=2.8.0
+tqdm>=4.66.0
+
+# Quarto (install separately via system package manager)
+# quarto>=1.3
