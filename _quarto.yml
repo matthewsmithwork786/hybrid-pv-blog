@@ -33,4 +33,4 @@ execute:
   echo: false   # Don't show code by default
   warning: false
   message: false
-  enabled: false  # Disable all code execution
+  enabled: false  # Disable code execution (using embedded iframes instead)

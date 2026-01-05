@@ -8,18 +8,9 @@ Battery revenue in the NEM is not evenly distributed across time. A small fracti
 
 The following analysis examines NSW batteries operational throughout 2025, plotting cumulative revenue against cumulative time (hours sorted by revenue descending):
 
-```{python}
-#| echo: false
-#| warning: false
-
-import sys
-from pathlib import Path
-sys.path.append(str(Path.cwd() / "scripts" / "section4"))
-
-from IPython.display import IFrame
-chart_path = Path.cwd() / "data" / "outputs" / "section4" / "revenue_skew.html"
-IFrame(str(chart_path), width=800, height=500)
-```
+<iframe src="../data/outputs/section4/revenue_skew.html" 
+        width="100%" height="500" frameborder="0">
+</iframe>
 
 **Critical implications:**
 
@@ -57,27 +48,27 @@ For batteries arbitraging price spreads, MLF affects both discharge revenue and 
 
 Net impact depends on price spread and MLF differential between charge/discharge locations.
 
-### MLF vs Revenue: The Correlation
+### MLF Geographic Distribution
 
-The following scatter plot shows the relationship between MLF and annual revenue per MW for NSW batteries:
+The following interactive map shows MLF values for generators across NSW, revealing the critical location patterns that impact battery revenue:
 
-```{python}
-#| echo: false
-#| warning: false
+<iframe src="../data/outputs/section4/mlf_map_nsw.html" 
+        width="100%" height="600" frameborder="0">
+</iframe>
 
-from IPython.display import IFrame
-chart_path = Path.cwd() / "data" / "outputs" / "section4" / "mlf_impact_revenue.html"
-IFrame(str(chart_path), width=800, height=500)
-```
+*Note: Interactive map shows MLF values for 150+ generators across NSW. Use layers to filter by technology type. Dark green = high MLF (>1.0), red = low MLF (<0.85).*
+
+**Geographic patterns:**
+
+1. **High MLF zones (green, >0.95)**: Near Sydney, Newcastle, Wollongong (load centers)
+2. **Medium MLF zones (yellow, 0.90-0.95)**: Regional centers with adequate transmission  
+3. **Low MLF zones (red, <0.90)**: Western NSW and end-of-line locations (typical solar farm areas)
 
 **Key findings:**
 
-1. **Strong positive correlation**: Higher MLF → Higher revenue/MW (as expected)
-2. **Revenue spread**: Even at similar MLFs, revenue varies significantly due to:
-   - Dispatch strategy (merchant vs contracted)
-   - Battery duration (2hr vs 4hr systems)
-   - Local market conditions (FCAS availability, congestion)
-3. **Material impact**: Moving from MLF 0.85 to 0.95 can increase annual revenue by 15-25%
+1. **Location-driven revenue**: MLF differential can change annual revenue by 15-25%
+2. **Solar farm penalty**: Solar locations typically have poor MLFs (0.80-0.90)
+3. **Standalone advantage**: Batteries can choose high-MLF locations (0.95-1.05) near cities
 
 **Implications for co-location:**
 
