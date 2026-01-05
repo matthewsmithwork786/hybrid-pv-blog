@@ -20,7 +20,7 @@ from plotly.subplots import make_subplots
 sys.path.append(str(Path(__file__).parent.parent / "utils"))
 
 from style_config import COLORS, get_color, format_currency, format_percentage, FONT_CONFIG
-from data_paths import get_output_path, NEMOSIS_DATA_DIR
+from data_paths import get_output_path, NEMOSIS_DATA_ROOT
 from nemosis_helpers import (
     load_cached_dispatchprice,
     load_cached_dispatchload,
@@ -33,9 +33,9 @@ print("=" * 80)
 print("Section 1: Solar Price Collapse and Curtailment Analysis")
 print("=" * 80)
 
-# Date range
-START_DATE = "2018-01-01"
-END_DATE = "2025-12-31"
+# Date range - 2024 data available from August onwards
+START_DATE = "2024-08-01"
+END_DATE = "2024-12-31"
 
 print(f"\nAnalyzing data from {START_DATE} to {END_DATE}")
 print(f"Region: NSW1")
@@ -50,9 +50,9 @@ print("Loading price data...")
 
 try:
     prices = load_cached_dispatchprice(START_DATE, END_DATE, region='NSW1')
-    print(f"✓ Loaded {len(prices):,} price records")
+    print(f"[OK] Loaded {len(prices):,} price records")
 except FileNotFoundError as e:
-    print(f"\n✗ Error: {e}")
+    print(f"\n[ERROR] {e}")
     print("\nPlease run data download scripts first:")
     print("  python scripts/download/download_dispatchprice.py")
     sys.exit(1)
@@ -60,7 +60,7 @@ except FileNotFoundError as e:
 # Filter for solar hours (10:00-16:00)
 print("Filtering for solar hours (10:00-16:00)...")
 solar_prices = filter_solar_hours(prices, start_hour=10, end_hour=16)
-print(f"✓ Filtered to {len(solar_prices):,} solar hour records")
+print(f"[OK] Filtered to {len(solar_prices):,} solar hour records")
 
 # Calculate annual average price
 print("Calculating annual average prices...")
@@ -90,9 +90,9 @@ print("Loading curtailment data...")
 print("Fetching solar generator DUIDs from OpenElectricity API...")
 try:
     solar_duids = get_solar_duids(region='NSW1')
-    print(f"✓ Found {len(solar_duids)} solar generators in NSW")
+    print(f"[OK] Found {len(solar_duids)} solar generators in NSW")
 except Exception as e:
-    print(f"\n✗ Error fetching solar DUIDs: {e}")
+    print(f"\n[ERROR] Error fetching solar DUIDs: {e}")
     print("\nPlease run:")
     print("  python scripts/download/download_generator_metadata.py")
     sys.exit(1)
@@ -101,9 +101,9 @@ except Exception as e:
 print(f"Loading DISPATCHLOAD for {len(solar_duids)} solar generators...")
 try:
     dispatch = load_cached_dispatchload(START_DATE, END_DATE, duids=solar_duids)
-    print(f"✓ Loaded {len(dispatch):,} dispatch records")
+    print(f"[OK] Loaded {len(dispatch):,} dispatch records")
 except FileNotFoundError as e:
-    print(f"\n✗ Error: {e}")
+    print(f"\n[ERROR] {e}")
     print("\nPlease run:")
     print("  python scripts/download/download_dispatchload.py")
     sys.exit(1)
@@ -134,7 +134,7 @@ annual_curtailment = (
 
 print("\nAnnual solar curtailment (NSW):")
 for row in annual_curtailment.iter_rows(named=True):
-    print(f"  {row['year']}: {row['curtailment_pct']:.2f}%")
+    print(f"  {int(row['year'])}: {row['curtailment_pct']:.2f}%")
 
 # ============================================================================
 # PART 3: Visualization
@@ -215,13 +215,13 @@ fig.update_layout(
 output_file = get_output_path("section1", "solar_price_curtailment.html")
 fig.write_html(str(output_file))
 
-print(f"\n✓ Visualization saved to: {output_file}")
+print(f"\n[OK] Visualization saved to: {output_file}")
 print(f"  File size: {output_file.stat().st_size / 1024:.1f} KB")
 
 # Also save as JSON for Quarto embedding
 json_file = get_output_path("section1", "solar_price_curtailment.json")
 fig.write_json(str(json_file))
-print(f"✓ JSON data saved to: {json_file}")
+print(f"[OK] JSON data saved to: {json_file}")
 
 # ============================================================================
 # Summary Statistics

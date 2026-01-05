@@ -42,21 +42,52 @@ def load_cached_dispatchprice(start_date, end_date, region=None):
     --------
     pl.DataFrame : Polars DataFrame with price data
     """
-    # Convert dates to NEMOSIS format
-    start_dt = f"{start_date} 00:00:00"
-    end_dt = f"{end_date} 23:59:59"
+    import re
 
-    # Load cached data using Polars lazy scan
-    data_files = list(NEMOSIS_DATA_DIR.glob("PUBLIC_ARCHIVE#DISPATCHPRICE#*.parquet"))
+    # Extract year from dates to limit file loading
+    start_year = int(start_date[:4])
+    end_year = int(end_date[:4])
+
+    # Find both old and new format files
+    all_files = list(NEMOSIS_DATA_DIR.glob("PUBLIC_ARCHIVE#DISPATCHPRICE#*.parquet")) + \
+                list(NEMOSIS_DATA_DIR.glob("PUBLIC_DVD_DISPATCHPRICE_*.parquet"))
+
+    # Filter files by date range
+    data_files = []
+    for file in all_files:
+        # Extract date from filename
+        match = re.search(r'(\d{8})', str(file))
+        if match:
+            file_date = match.group(1)
+            file_year = int(file_date[:4])
+
+            # Only load files within our date range
+            if start_year <= file_year <= end_year:
+                data_files.append(file)
 
     if not data_files:
         raise FileNotFoundError(
-            f"No DISPATCHPRICE cache files found in {NEMOSIS_DATA_DIR}. "
+            f"No DISPATCHPRICE cache files found for {start_date} to {end_date} in {NEMOSIS_DATA_DIR}. "
             "Run download scripts first."
         )
 
-    # Lazy load all parquet files
-    df = pl.scan_parquet(data_files)
+    print(f"Loading {len(data_files)} DISPATCHPRICE files for {start_date} to {end_date}...")
+
+    # Load and concatenate files
+    dfs = []
+    for i, file in enumerate(data_files, 1):
+        try:
+            df = pl.read_parquet(file)
+            dfs.append(df)
+            print(f"  [{i}/{len(data_files)}] Loaded {file.name}")
+        except Exception as e:
+            print(f"  Warning: Could not load {file.name}: {e}")
+
+    if not dfs:
+        raise FileNotFoundError("No valid DISPATCHPRICE files could be loaded")
+
+    print("Concatenating dataframes...")
+    df = pl.concat(dfs)
 
     # Parse datetime
     df = df.with_columns(
@@ -64,6 +95,7 @@ def load_cached_dispatchprice(start_date, end_date, region=None):
     )
 
     # Filter date range
+    print(f"Filtering for date range {start_date} to {end_date}...")
     df = df.filter(
         (pl.col("SETTLEMENTDATE") >= pl.lit(start_date).str.strptime(pl.Datetime, format="%Y-%m-%d")) &
         (pl.col("SETTLEMENTDATE") <= pl.lit(end_date).str.strptime(pl.Datetime, format="%Y-%m-%d"))
@@ -71,9 +103,11 @@ def load_cached_dispatchprice(start_date, end_date, region=None):
 
     # Filter region if specified
     if region:
+        print(f"Filtering for region {region}...")
         df = df.filter(pl.col("REGIONID") == region)
 
-    return df.collect()
+    print(f"Final dataset: {len(df):,} records")
+    return df
 
 
 def load_cached_dispatch_scada(start_date, end_date, duids=None):
@@ -139,16 +173,63 @@ def load_cached_dispatchload(start_date, end_date, duids=None):
     --------
     pl.DataFrame : Polars DataFrame with dispatch load data
     """
-    data_files = list(NEMOSIS_DATA_DIR.glob("PUBLIC_ARCHIVE#DISPATCHLOAD#*.parquet"))
+    import re
+
+    # Extract year/month from dates to limit file loading
+    start_year = int(start_date[:4])
+    end_year = int(end_date[:4])
+
+    # Try both parquet and feather formats
+    all_files = list(NEMOSIS_DATA_DIR.glob("PUBLIC_ARCHIVE#DISPATCHLOAD#*.parquet")) + \
+                list(NEMOSIS_DATA_DIR.glob("PUBLIC_DVD_DISPATCHLOAD_*.feather")) + \
+                list(NEMOSIS_DATA_DIR.glob("PUBLIC_ARCHIVE#DISPATCHLOAD#*.feather"))
+
+    # Filter files by date range to only load what we need
+    data_files = []
+    for file in all_files:
+        # Extract date from filename
+        match = re.search(r'(\d{8})', str(file))
+        if match:
+            file_date = match.group(1)
+            file_year = int(file_date[:4])
+
+            # Only load files within our date range
+            if start_year <= file_year <= end_year:
+                data_files.append(file)
 
     if not data_files:
         raise FileNotFoundError(
-            f"No DISPATCHLOAD cache files found in {NEMOSIS_DATA_DIR}. "
+            f"No DISPATCHLOAD cache files found for {start_date} to {end_date} in {NEMOSIS_DATA_DIR}. "
             "Run download scripts first."
         )
 
-    # Lazy load
-    df = pl.scan_parquet(data_files)
+    print(f"Loading {len(data_files)} DISPATCHLOAD files for {start_date} to {end_date}...")
+
+    # Load all files and concatenate
+    dfs = []
+    for i, file in enumerate(data_files, 1):
+        try:
+            if file.suffix == '.parquet':
+                df = pl.read_parquet(file)
+                dfs.append(df)
+                print(f"  [{i}/{len(data_files)}] Loaded {file.name}")
+            elif file.suffix == '.feather':
+                # Use pandas to read feather files, then convert to polars
+                df_pandas = pd.read_feather(file)
+                df = pl.from_pandas(df_pandas)
+                dfs.append(df)
+                print(f"  [{i}/{len(data_files)}] Loaded {file.name}")
+            else:
+                continue
+        except Exception as e:
+            print(f"  Warning: Could not load {file.name}: {e}")
+
+    if not dfs:
+        raise FileNotFoundError("No valid DISPATCHLOAD files could be loaded")
+
+    print("Concatenating dataframes...")
+    # Concatenate all dataframes
+    df = pl.concat(dfs)
 
     # Parse datetime
     df = df.with_columns(
@@ -156,6 +237,7 @@ def load_cached_dispatchload(start_date, end_date, duids=None):
     )
 
     # Filter date range
+    print(f"Filtering for date range {start_date} to {end_date}...")
     df = df.filter(
         (pl.col("SETTLEMENTDATE") >= pl.lit(start_date).str.strptime(pl.Datetime, format="%Y-%m-%d")) &
         (pl.col("SETTLEMENTDATE") <= pl.lit(end_date).str.strptime(pl.Datetime, format="%Y-%m-%d"))
@@ -163,9 +245,11 @@ def load_cached_dispatchload(start_date, end_date, duids=None):
 
     # Filter DUIDs if specified
     if duids:
+        print(f"Filtering for {len(duids)} specific DUIDs...")
         df = df.filter(pl.col("DUID").is_in(duids))
 
-    return df.collect()
+    print(f"Final dataset: {len(df):,} records")
+    return df
 
 
 def get_openelectricity_facilities(fueltech_id=None, region=None, status_id=None):
@@ -211,7 +295,7 @@ def get_openelectricity_facilities(fueltech_id=None, region=None, status_id=None
 
 def get_solar_duids(region='NSW1'):
     """
-    Get list of solar DUIDs for a region using OpenElectricity API.
+    Get list of solar DUIDs for a region using cached OpenElectricity data.
 
     Parameters:
     -----------
@@ -222,17 +306,55 @@ def get_solar_duids(region='NSW1'):
     --------
     list : List of DUIDs
     """
-    df = get_openelectricity_facilities(
-        fueltech_id='solar_utility',
-        region=region,
-        status_id=['operating', 'commissioned']
-    )
-    return df['duid'].dropna().unique().tolist()
+    import pandas as pd
+    from glob import glob
+
+    # Try to use cached OpenElectricity data first
+    cache_files = list(NEMOSIS_DATA_DIR.glob("*openelectricity*.csv"))
+
+    if cache_files:
+        # Use the most recent cache file
+        cache_file = sorted(cache_files)[-1]
+        print(f"Using cached OpenElectricity data: {cache_file.name}")
+
+        try:
+            df = pd.read_csv(cache_file)
+
+            # Handle different column names for DUID
+            duid_column = 'duid' if 'duid' in df.columns else 'unit_code'
+
+            # Filter for solar utilities in the specified region
+            solar_df = df[
+                (df['fueltech_id'] == 'solar_utility') &
+                (df['network_region'] == region) &
+                (df['status_id'].isin(['operating', 'commissioned']))
+            ]
+
+            solar_duids = solar_df[duid_column].dropna().unique().tolist()
+            print(f"Found {len(solar_duids)} solar generators in {region}")
+            return solar_duids
+
+        except Exception as e:
+            print(f"Warning: Could not load cached data ({e}), trying API...")
+
+    # Fallback to API if cache fails
+    print("Attempting to fetch from OpenElectricity API...")
+    try:
+        df = get_openelectricity_facilities(
+            fueltech_id='solar_utility',
+            region=region,
+            status_id=['operating', 'commissioned']
+        )
+        return df['duid'].dropna().unique().tolist()
+    except Exception as e:
+        print(f"Error: Could not fetch solar DUIDs from API: {e}")
+        print("Please run: python scripts/download/download_generator_metadata.py")
+        raise
 
 
 def get_battery_duids(region='NSW1', include_charging=True):
     """
-    Get list of battery DUIDs for a region.
+    Get list of battery DUIDs for a region using cached OpenElectricity data.
 
     Parameters:
     -----------
@@ -245,24 +367,74 @@ def get_battery_duids(region='NSW1', include_charging=True):
     --------
     dict : Dictionary with 'discharging' and optionally 'charging' DUID lists
     """
-    fueltech = ['battery_discharging']
-    if include_charging:
-        fueltech.append('battery_charging')
+    import pandas as pd
 
-    df = get_openelectricity_facilities(
-        fueltech_id=fueltech,
-        region=region,
-        status_id=['operating', 'commissioned']
-    )
+    # Try to use cached OpenElectricity data first
+    cache_files = list(NEMOSIS_DATA_DIR.glob("*openelectricity*.csv"))
 
-    result = {}
-    if 'battery_discharging' in df['fueltech_id'].values:
-        result['discharging'] = df[df['fueltech_id'] == 'battery_discharging']['duid'].dropna().unique().tolist()
+    if cache_files:
+        # Use the most recent cache file
+        cache_file = sorted(cache_files)[-1]
 
-    if include_charging and 'battery_charging' in df['fueltech_id'].values:
-        result['charging'] = df[df['fueltech_id'] == 'battery_charging']['duid'].dropna().unique().tolist()
+        try:
+            df = pd.read_csv(cache_file)
 
-    return result
+            # Handle different column names for DUID
+            duid_column = 'duid' if 'duid' in df.columns else 'unit_code'
+
+            # Filter for batteries in the specified region
+            fueltech = ['battery_discharging']
+            if include_charging:
+                fueltech.append('battery_charging')
+
+            battery_df = df[
+                (df['fueltech_id'].isin(fueltech)) &
+                (df['network_region'] == region) &
+                (df['status_id'].isin(['operating', 'commissioned']))
+            ]
+
+            result = {}
+            if 'battery_discharging' in battery_df['fueltech_id'].values:
+                result['discharging'] = battery_df[
+                    battery_df['fueltech_id'] == 'battery_discharging'
+                ][duid_column].dropna().unique().tolist()
+
+            if include_charging and 'battery_charging' in battery_df['fueltech_id'].values:
+                result['charging'] = battery_df[
+                    battery_df['fueltech_id'] == 'battery_charging'
+                ][duid_column].dropna().unique().tolist()
+
+            print(f"Found {len(result.get('discharging', []))} batteries in {region}")
+            return result
+
+        except Exception as e:
+            print(f"Warning: Could not load cached battery data ({e}), trying API...")
+
+    # Fallback to API if cache fails
+    print("Attempting to fetch batteries from OpenElectricity API...")
+    try:
+        fueltech = ['battery_discharging']
+        if include_charging:
+            fueltech.append('battery_charging')
+
+        df = get_openelectricity_facilities(
+            fueltech_id=fueltech,
+            region=region,
+            status_id=['operating', 'commissioned']
+        )
+
+        result = {}
+        if 'battery_discharging' in df['fueltech_id'].values:
+            result['discharging'] = df[df['fueltech_id'] == 'battery_discharging']['duid'].dropna().unique().tolist()
+
+        if include_charging and 'battery_charging' in df['fueltech_id'].values:
+            result['charging'] = df[df['fueltech_id'] == 'battery_charging']['duid'].dropna().unique().tolist()
+
+        return result
+    except Exception as e:
+        print(f"Error: Could not fetch battery DUIDs from API: {e}")
+        print("Please run: python scripts/download/download_generator_metadata.py")
+        raise
 
 
 def calculate_curtailment(dispatchload_df):
