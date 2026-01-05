@@ -10,10 +10,8 @@ book:
   chapters:
     - index.qmd
     - sections/01_investment_problem.qmd
-    - sections/02_bess_thesis.qmd
     - sections/03_tradeoff_analysis.qmd
     - sections/04_technical_constraints.qmd
-    - sections/05_strategic_framework.qmd
 
 format:
   html:
@@ -35,5 +33,4 @@ execute:
   echo: false   # Don't show code by default
   warning: false
   message: false
-
-jupyter: python3
+  enabled: false  # Disable all code execution

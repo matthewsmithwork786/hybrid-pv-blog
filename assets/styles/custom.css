@@ -1,3 +1,4 @@
+/*-- scss:defaults --*/
 /* Custom CSS for Beyond the Solar Curve Report */
 
 /* Import Lato font from Google Fonts */
@@ -119,6 +120,8 @@ figcaption {
   text-align: center;
   margin-top: 0.5rem;
 }
+
+/*-- scss:rules --*/
 
 /* Navigation and TOC */
 .sidebar-navigation {

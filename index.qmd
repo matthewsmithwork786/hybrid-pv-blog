@@ -1,0 +1,60 @@
+# Beyond the Solar Curve
+
+**A Capital Allocation Framework for Co-located vs. Standalone BESS in the NEM**
+
+Matt S | 2025
+
+---
+
+## About This Report
+
+This report provides infrastructure investors with a comprehensive framework for evaluating battery energy storage system (BESS) investment decisions in Australia's National Electricity Market (NEM).
+
+### The Core Question
+
+> Does co-locating battery storage with solar PV create value, or does it destroy returns compared to standalone BESS deployment?
+
+### Report Structure
+
+1. **The Investment Problem** - Solar's economic challenges and the BESS opportunity
+2. **Trade-off Analysis** - Standalone vs. co-located: A direct comparison  
+3. **Technical Constraints** - MLF, revenue concentration, and location value
+
+### Current Status
+
+> **🚧 Work in Progress**
+> 
+> This report is under active development. Completed sections:
+> - ✅ Section 1: Investment Problem
+> - ✅ Section 3: Trade-off Analysis  
+> - ✅ Section 4: Technical Constraints
+> - 🚧 Additional sections: In development
+
+### Key Findings (Preview)
+
+#### Revenue Concentration
+Battery returns are highly concentrated: **50% of annual revenue is generated in just 10% of operating hours**. This makes location optimization and dispatch flexibility critical.
+
+#### Location Value Matters
+Marginal Loss Factors (MLF) have material impact on returns:
+- **High MLF (0.98+)**: $100k+/MW additional annual revenue
+- **Low MLF (0.85)**: Significant revenue penalty
+- **Solar farm locations**: Typically have poor MLFs (0.80-0.90)
+
+#### Co-location Trade-offs
+- **Pros**: Capex savings ($50-100/kW), green premiums, CIS eligibility
+- **Cons**: Location constraints, reduced flexibility, MLF penalties
+- **Decision context**: Retrofit vs. greenfield, contracting options, return targets
+
+---
+
+## Citation
+
+**Suggested Citation:**
+> Matt S. 2025. *Beyond the Solar Curve: A Capital Allocation Framework for Co-located vs. Standalone BESS in the NEM*. Hybrid PV Blog.
+
+**License:** Creative Commons Attribution 4.0 International (CC BY 4.0)
+
+---
+
+© 2025 Matt S. All rights reserved.
