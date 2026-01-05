@@ -1,60 +1,142 @@
 # The Investment Problem {#sec-investment-problem}
 
+<div class="section-summary">
+<div class="section-summary-title">In This Section</div>
+<ul class="section-summary-list">
+<li>Why the historical investment model for utility-scale solar PV is broken</li>
+<li>Solar price cannibalization and curtailment trends (2018-2025)</li>
+<li>The collapse of the unfirmed PPA market</li>
+<li>LGC certificate cliff and the transition to Guarantees of Origin</li>
+</ul>
+</div>
+
 ## The End of "Plain" Solar
 
 The historical investment model for utility-scale solar PV in the Australian National Electricity Market is broken. For years, renewable energy developers relied on long-term fixed-price Power Purchase Agreements (PPAs) spanning 7-15 years to secure project finance. These contracts provided the revenue certainty needed to support high-leverage debt structures typical of infrastructure investments.
 
-That model has collapsed.
+<div class="callout callout-important">
+<div class="callout-title">
+<span class="callout-icon">🚨</span>
+The Core Problem
+</div>
+<p>Pure solar is no longer financeable at acceptable risk-adjusted returns in competitive regions of the NEM. The traditional financing waterfall has collapsed.</p>
+</div>
 
 ## The Collapse of the Unfirmed PPA
 
-With the end of the Large-scale Renewable Energy Target (LRET) and rapidly increasing solar penetration, the economics of daytime generation have fundamentally changed. The problem is straightforward: when everyone generates at the same time, prices collapse.
+With the end of the Large-scale Renewable Energy Target (LRET) and rapidly increasing solar penetration, the economics of daytime generation have fundamentally changed. The problem is straightforward: **when everyone generates at the same time, prices collapse.**
 
 ### Solar Anti-Correlation
 
 The wholesale electricity price during solar hours (10:00-16:00) in NSW tells the story clearly:
 
-<div style="background: #f8f9fa; border-left: 4px solid #FFD700; padding: 20px; margin: 20px 0;">
-    <h4>📊 Chart: Solar Price Collapse & Curtailment Growth</h4>
-    <p><strong>Analysis:</strong> Dual-axis chart showing annual average wholesale prices during solar hours (10:00-16:00) in NSW and solar curtailment percentage from 2018-2025.</p>
-    <p><strong>Key Trend:</strong> Prices declined from ~$85/MWh (2018) to <$40/MWh (2025) while curtailment increased from <1% to >5%.</p>
-    <p><em>Chart generation in progress... Analysis scripts completed, awaiting final rendering.</em></p>
+<div class="chart-container">
+<div class="chart-header">
+<h4 class="chart-title">
+<span class="chart-title-icon">☀️</span>
+Solar Price Collapse & Curtailment Growth
+</h4>
+<span class="chart-status chart-status--pending">In Progress</span>
+</div>
+<div class="chart-placeholder chart-placeholder--pv">
+<div class="chart-placeholder-icon">📊</div>
+<div class="chart-placeholder-title">NSW Solar Hour Prices & Curtailment (2018-2025)</div>
+<p class="chart-placeholder-description">
+Dual-axis chart showing annual average wholesale prices during solar hours (10:00-16:00) in NSW and solar curtailment percentage.
+</p>
+<div class="chart-placeholder-insight">
+<strong>Key Trend:</strong> Prices declined from ~$85/MWh (2018) to <$40/MWh (2025) while curtailment increased from <1% to >5%.
+</div>
+</div>
+<div class="chart-footer">
+<span class="chart-source">Data: AEMO via NEMOSIS (2018-2025)</span>
+<span class="chart-code-link">Script: scripts/section1/s1_solar_price_curtailment.py</span>
+</div>
+</div>
+
+<div class="key-finding key-finding--pv">
+<div class="key-finding-stat">>50%</div>
+<div class="key-finding-label">Decline in solar-hour wholesale prices (2018-2025)</div>
+<p class="key-finding-description">
+Solar hour wholesale prices in NSW have collapsed from approximately $80-90/MWh to less than $40/MWh, while curtailment has increased from less than 1% to over 5%.
+</p>
 </div>
 
 The data reveals two devastating trends for solar investors:
 
-1. **Price Cannibalization**: Solar hour wholesale prices have declined by over 50% from 2018 to 2025, from approximately $80-90/MWh to less than $40/MWh
+1. **Price Cannibalization**: Solar hour wholesale prices have declined by over 50% from 2018 to 2025
 
-2. **Physical Curtailment**: Solar generators are not just facing low prices—they're being physically curtailed due to grid congestion during solar peaks. Curtailment has increased from less than 1% in 2018 to over 5% by 2025.
+2. **Physical Curtailment**: Solar generators are not just facing low prices—they're being physically curtailed due to grid congestion during solar peaks. Curtailment has increased >5x over the same period.
 
 ### The PPA Problem
 
 Infrastructure investors don't just want high prices—they need **contracted** revenue. The challenge is that corporate offtakers increasingly refuse to sign long-term PPAs for plain solar at any price. Why would a commercial buyer lock in a fixed rate for power that's only generated when grid prices are lowest?
 
-The traditional financing waterfall is broken:
-- **Can't contract** → Can't size debt
-- **Can't size debt** → Can't hit return hurdles
-- **Can't hit returns** → Can't deploy capital
+<div class="analysis-box analysis-box--pv">
+<div class="analysis-box-header">
+<div class="analysis-box-icon">📉</div>
+<div>
+<h4 class="analysis-box-title">The Broken Financing Waterfall</h4>
+<p class="analysis-box-subtitle">How uncontracted revenue blocks project finance</p>
+</div>
+</div>
+<div class="analysis-box-content">
+
+| Stage | Problem | Consequence |
+|-------|---------|-------------|
+| **Contracting** | Can't secure long-term PPA | Revenue uncertainty |
+| **Debt sizing** | Lenders won't underwrite merchant risk | Lower leverage possible |
+| **Return hurdles** | Reduced debt → lower equity returns | Can't hit target IRR |
+| **Capital deployment** | Project doesn't proceed | Capital sits idle |
+
+</div>
+</div>
 
 ## The Certificate Cliff
 
 The revenue problem extends beyond wholesale electricity. Large-scale Generation Certificates (LGCs), which historically provided 30-40% of solar project revenue, have collapsed as the LRET obligation has been fulfilled.
 
-**LGC pricing trajectory:**
-- January 2024: ~$50/certificate
-- January 2026: ~$6.50/certificate
+<div class="key-finding">
+<div class="key-finding-stat">$50 → $6.50</div>
+<div class="key-finding-label">LGC price collapse (January 2024 to January 2026)</div>
+<p class="key-finding-description">
+The certificate market has collapsed by ~87% in just two years as the LRET obligation was fulfilled. This removes a critical revenue stream that historically supported project economics.
+</p>
+</div>
 
-The market transitions to a voluntary scheme post-2030 through Guarantees of Origin (GOs). However, GOs include a **time-stamp element**—certificates are matched to the exact hour of consumption. Just as physical solar-hour power is oversupplied, solar-hour GOs will likely trade at a significant discount to off-peak certificates, further depressing returns.
+<div class="callout callout-warning">
+<div class="callout-title">
+<span class="callout-icon">⚠️</span>
+Regulatory Uncertainty: Guarantees of Origin
+</div>
+<p>The market transitions to a voluntary scheme post-2030 through Guarantees of Origin (GOs). However, GOs include a <strong>time-stamp element</strong>—certificates are matched to the exact hour of consumption.</p>
+<p>Just as physical solar-hour power is oversupplied, <strong>solar-hour GOs will likely trade at a significant discount</strong> to off-peak certificates, further depressing returns.</p>
+</div>
 
 ## The Curtailment Risk
 
 Investors are not just facing revenue risk from low prices. They face **volume risk** from physical curtailment:
 
+<div class="analysis-box analysis-box--pv">
+<div class="analysis-box-header">
+<div class="analysis-box-icon">⚡</div>
+<div>
+<h4 class="analysis-box-title">Curtailment Drivers</h4>
+<p class="analysis-box-subtitle">Why solar farms can't always export their generation</p>
+</div>
+</div>
+<div class="analysis-box-content">
+
 - **Grid congestion**: Solar farms in regional NSW are often at the end of transmission lines with limited export capacity
 - **AEMO intervention**: Semi-scheduled generators can be directed to reduce output when local network constraints bind
 - **Wasted generation**: Curtailed energy represents sunk capital with zero return
 
+</div>
+</div>
+
 For existing solar assets approaching PPA expiry, the prospect of uncontracted merchant exposure to these conditions represents a material valuation risk. A solar farm that can't reliably sell its output is an infrastructure asset with a fundamental flaw.
+
+---
 
 ## The Investment Imperative
 
@@ -62,22 +144,32 @@ The conclusion for infrastructure capital is clear: **pure solar is no longer fi
 
 Battery energy storage systems (BESS) offer the obvious technical solution—shift generation from oversupplied daylight hours to valuable evening peaks. But this raises the critical question that motivates this entire analysis:
 
-**Should batteries be co-located with solar, or deployed as standalone assets?**
+<div class="callout callout-tip">
+<div class="callout-title">
+<span class="callout-icon">💡</span>
+The Core Investment Question
+</div>
+<p><strong>Should batteries be co-located with solar, or deployed as standalone assets?</strong></p>
+</div>
 
 The answer determines:
-- Capital deployment sizing (small vs. large projects)
-- Revenue structure (contracted vs. merchant)
-- Location optimization (solar sites vs. grid access points)
-- Return profiles (infrastructure vs. opportunistic)
+
+- **Capital deployment sizing** (small vs. large projects)
+- **Revenue structure** (contracted vs. merchant)
+- **Location optimization** (solar sites vs. grid access points)
+- **Return profiles** (infrastructure vs. opportunistic)
 
 The following sections provide a framework for making this decision systematically.
 
 ---
 
-**Key Takeaways:**
-
-- Solar hour wholesale prices in NSW have declined >50% from 2018-2025
-- Curtailment has increased >5x over the same period
-- LGC revenues have collapsed from $50 to $6.50/certificate
-- Pure solar PPA contracting has become increasingly difficult
-- Infrastructure investors face a binary choice: add BESS or accept merchant risk
+<div class="key-takeaways">
+<div class="key-takeaways-title">Key Takeaways</div>
+<ul class="key-takeaways-list">
+<li>Solar hour wholesale prices in NSW have declined >50% from 2018-2025</li>
+<li>Curtailment has increased >5x over the same period</li>
+<li>LGC revenues have collapsed from $50 to $6.50/certificate</li>
+<li>Pure solar PPA contracting has become increasingly difficult</li>
+<li>Infrastructure investors face a binary choice: add BESS or accept merchant risk</li>
+</ul>
+</div>

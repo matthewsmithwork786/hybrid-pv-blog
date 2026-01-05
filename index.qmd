@@ -1,60 +1,136 @@
-# Beyond the Solar Curve
+# Beyond the Solar Curve {.unnumbered}
 
 **A Capital Allocation Framework for Co-located vs. Standalone BESS in the NEM**
 
-Matt S | 2025
+<div class="section-summary">
+<div class="section-summary-title">Report Overview</div>
+<ul class="section-summary-list">
+<li>Framework for evaluating battery storage deployment strategies</li>
+<li>Quantitative analysis of standalone vs. co-located trade-offs</li>
+<li>Technical constraints: MLFs, curtailment, and revenue concentration</li>
+<li>Decision framework for infrastructure investors</li>
+</ul>
+</div>
+
+---
+
+## The Core Question
+
+<div class="callout callout-tip">
+<div class="callout-title">
+<span class="callout-icon">💡</span>
+Investment Decision
+</div>
+<p><strong>Does co-locating battery storage with solar PV create value, or does it destroy returns compared to standalone BESS deployment?</strong></p>
+</div>
+
+This report provides infrastructure investors with a comprehensive framework for evaluating battery energy storage system (BESS) investment decisions in Australia's National Electricity Market (NEM).
+
+---
+
+## Report Structure
+
+### Part 1: The Investment Problem
+
+Why the historical investment model for pure solar PV is broken, and why capital must pivot to storage-integrated solutions.
+
+### Part 2: Trade-off Analysis
+
+A direct comparison of standalone vs. co-located deployment models, including strategic advantages and revenue structure analysis.
+
+### Part 3: Technical Constraints
+
+The "hidden killers" of returns—revenue concentration, Marginal Loss Factors, and grid constraints that can make or break battery investments.
+
+---
+
+## Key Findings Preview
+
+<div class="key-finding key-finding--battery">
+<div class="key-finding-stat">50% in 10%</div>
+<div class="key-finding-label">Revenue Concentration</div>
+<p class="key-finding-description">
+Battery returns are highly concentrated: <strong>50% of annual revenue is generated in just 10% of operating hours</strong>. This makes location optimization and dispatch flexibility critical.
+</p>
+</div>
+
+<div class="key-finding key-finding--pv">
+<div class="key-finding-stat">15-25%</div>
+<div class="key-finding-label">MLF Revenue Impact</div>
+<p class="key-finding-description">
+Marginal Loss Factors have material impact on returns. High MLF locations (0.98+) can generate 15-25% more annual revenue than poor MLF locations (0.85) typical of solar farms.
+</p>
+</div>
+
+### Co-location Trade-offs
+
+<div class="analysis-box analysis-box--hybrid">
+<div class="analysis-box-header">
+<div class="analysis-box-icon">⚖️</div>
+<div>
+<h4 class="analysis-box-title">Standalone vs. Co-located Summary</h4>
+<p class="analysis-box-subtitle">Key factors in the deployment decision</p>
+</div>
+</div>
+<div class="analysis-box-content">
+
+| Factor | Standalone | Co-located |
+|--------|------------|------------|
+| **Location** | Optimized for MLF/FCAS | Constrained by solar site |
+| **Capex** | Full grid connection cost | Shared infrastructure ($50-100/kW saving) |
+| **Grid charging** | Full flexibility | Limited (especially DC-coupled) |
+| **Green premium** | None | Potential ESG/PPA premium |
+| **CIS eligibility** | May not qualify | Explicitly eligible |
+
+**Decision context matters:** Retrofit vs. greenfield, contracting options, return targets
+
+</div>
+</div>
+
+---
+
+## Current Status
+
+<div class="callout callout-note">
+<div class="callout-title">
+<span class="callout-icon">ℹ️</span>
+Work in Progress
+</div>
+<p>This report is under active development. Interactive charts and analysis are being added progressively.</p>
+<ul>
+<li>✅ Section 1: Investment Problem</li>
+<li>✅ Section 3: Trade-off Analysis</li>
+<li>✅ Section 4: Technical Constraints (with interactive charts)</li>
+<li>🚧 Additional sections: In development</li>
+</ul>
+</div>
 
 ---
 
 ## About This Report
 
-This report provides infrastructure investors with a comprehensive framework for evaluating battery energy storage system (BESS) investment decisions in Australia's National Electricity Market (NEM).
+This analysis is designed for:
 
-### The Core Question
+- **Infrastructure investors** evaluating BESS deployment strategies
+- **Renewable energy developers** considering battery additions to solar portfolios
+- **Asset managers** with existing solar assets approaching PPA expiry
+- **Policy analysts** interested in NEM market dynamics
 
-> Does co-locating battery storage with solar PV create value, or does it destroy returns compared to standalone BESS deployment?
+### Methodology
 
-### Report Structure
+Analysis uses:
 
-1. **The Investment Problem** - Solar's economic challenges and the BESS opportunity
-2. **Trade-off Analysis** - Standalone vs. co-located: A direct comparison  
-3. **Technical Constraints** - MLF, revenue concentration, and location value
+- **NEMOSIS**: Historical NEM dispatch and pricing data
+- **OpenElectricity API**: Generator metadata and locations
+- **Plotly/Folium**: Interactive visualizations
+- **PyPSA**: Dispatch optimization modeling (in development)
 
-### Current Status
-
-> **🚧 Work in Progress**
-> 
-> This report is under active development. Completed sections:
-> - ✅ Section 1: Investment Problem
-> - ✅ Section 3: Trade-off Analysis  
-> - ✅ Section 4: Technical Constraints
-> - 🚧 Additional sections: In development
-
-### Key Findings (Preview)
-
-#### Revenue Concentration
-Battery returns are highly concentrated: **50% of annual revenue is generated in just 10% of operating hours**. This makes location optimization and dispatch flexibility critical.
-
-#### Location Value Matters
-Marginal Loss Factors (MLF) have material impact on returns:
-- **High MLF (0.98+)**: $100k+/MW additional annual revenue
-- **Low MLF (0.85)**: Significant revenue penalty
-- **Solar farm locations**: Typically have poor MLFs (0.80-0.90)
-
-#### Co-location Trade-offs
-- **Pros**: Capex savings ($50-100/kW), green premiums, CIS eligibility
-- **Cons**: Location constraints, reduced flexibility, MLF penalties
-- **Decision context**: Retrofit vs. greenfield, contracting options, return targets
+All analysis code is available in the project repository for transparency and reproducibility.
 
 ---
 
 ## Citation
 
-**Suggested Citation:**
-> Matt S. 2025. *Beyond the Solar Curve: A Capital Allocation Framework for Co-located vs. Standalone BESS in the NEM*. Hybrid PV Blog.
+> Matt S. 2025. *Beyond the Solar Curve: A Capital Allocation Framework for Co-located vs. Standalone BESS in the NEM*.
 
 **License:** Creative Commons Attribution 4.0 International (CC BY 4.0)
-
----
-
-© 2025 Matt S. All rights reserved.

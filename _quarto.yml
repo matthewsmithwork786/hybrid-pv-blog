@@ -1,36 +1,116 @@
 project:
   type: book
   output-dir: docs
+  resources:
+    - data/outputs/**/*.html
+    - data/outputs/**/*.json
 
 book:
   title: "Beyond the Solar Curve"
   subtitle: "A Capital Allocation Framework for Co-located vs. Standalone BESS in the NEM"
   author: "Matt S"
   date: today
+  date-format: "MMMM YYYY"
+
+  # Navigation
+  sidebar:
+    style: docked
+    background: light
+    border: true
+    collapse-level: 2
+
+  # Page navigation
+  page-navigation: true
+
+  # Search
+  search: true
+
+  # Sharing
+  sharing: [twitter, linkedin]
+
+  # Chapters
   chapters:
     - index.qmd
-    - sections/01_investment_problem.qmd
-    - sections/03_tradeoff_analysis.qmd
-    - sections/04_technical_constraints.qmd
+    - part: "Analysis"
+      chapters:
+        - sections/01_investment_problem.qmd
+        - sections/03_tradeoff_analysis.qmd
+        - sections/04_technical_constraints.qmd
+
+  # Footer
+  page-footer:
+    left: |
+      Beyond the Solar Curve
+    center: |
+      A BESS Investment Framework
+    right: |
+      &copy; 2025 Matt S
 
 format:
   html:
     theme:
       - cosmo
       - assets/styles/custom.css
+
+    # Typography
+    mainfont: "Lato"
+    monofont: "Source Code Pro"
+
+    # Layout
     toc: true
     toc-depth: 3
+    toc-title: "On This Page"
+    toc-location: right
+
+    # Code display
     code-fold: true
     code-tools: true
     code-link: true
+    code-copy: true
+    highlight-style: github
+
+    # Resources
     embed-resources: false
+    self-contained: false
+
+    # Behavior
     smooth-scroll: true
     link-external-newwindow: true
+    anchor-sections: true
+
+    # Grid layout
+    grid:
+      sidebar-width: 280px
+      body-width: 900px
+      margin-width: 280px
+      gutter-width: 1.5rem
+
+    # Metadata
+    description: "A comprehensive framework for infrastructure investors evaluating battery energy storage system (BESS) deployment strategies in Australia's National Electricity Market."
+    keywords:
+      - BESS
+      - Battery Storage
+      - Solar PV
+      - NEM
+      - Australia
+      - Renewable Energy
+      - Infrastructure Investment
+
+    # Open Graph / Social sharing
+    open-graph: true
+    twitter-card: true
 
 execute:
-  freeze: true  # Use cached outputs
+  freeze: true
   cache: true
-  echo: false   # Don't show code by default
+  echo: false
   warning: false
   message: false
-  enabled: false  # Disable code execution (using embedded iframes instead)
+  enabled: false  # Disabled - using pre-rendered iframe charts
+
+# Bibliography (for future use)
+# bibliography: references.bib
+# csl: apa.csl
+
+# Language
+lang: en-AU

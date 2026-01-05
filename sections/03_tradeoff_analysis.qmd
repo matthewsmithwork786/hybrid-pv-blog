@@ -1,13 +1,68 @@
 # The Trade-Off Analysis {#sec-tradeoff}
 
+<div class="section-summary">
+<div class="section-summary-title">In This Section</div>
+<ul class="section-summary-list">
+<li>Standalone vs. co-located BESS: two distinct asset classes</li>
+<li>Strategic advantages of each deployment model</li>
+<li>Revenue structure and where batteries make money</li>
+<li>Configuration options: AC-coupled, DC-coupled, non-hybrid</li>
+</ul>
+</div>
+
 ## Standalone vs. Co-located: A Direct Comparison
 
 Battery energy storage is the obvious technical solution to solar's intermittency problem. But BESS deployment in the NEM is splitting into two distinct asset classes, each optimizing for different objectives:
 
-- **Standalone BESS**: Optimize location, grid services, and arbitrage
-- **Co-located (Hybrid)**: Optimize infrastructure efficiency, firming, and "green" product creation
+<div class="analysis-box analysis-box--battery">
+<div class="analysis-box-header">
+<div class="analysis-box-icon">🔋</div>
+<div>
+<h4 class="analysis-box-title">Standalone BESS</h4>
+<p class="analysis-box-subtitle">Independent deployment model</p>
+</div>
+</div>
+<div class="analysis-box-content">
 
-The critical question for capital allocators: Does the solar PV plant **add value** to the battery investment, or is it a constraint that reduces returns?
+Optimize for: **Location, grid services, and arbitrage**
+
+- Free to site in high-MLF, unconstrained locations
+- Full grid charging capability (negative pricing revenue)
+- Independent dispatch optimization
+- Target pure energy arbitrage + FCAS revenue
+
+</div>
+</div>
+
+<div class="analysis-box analysis-box--hybrid">
+<div class="analysis-box-header">
+<div class="analysis-box-icon">⚡</div>
+<div>
+<h4 class="analysis-box-title">Co-located (Hybrid)</h4>
+<p class="analysis-box-subtitle">Integrated deployment model</p>
+</div>
+</div>
+<div class="analysis-box-content">
+
+Optimize for: **Infrastructure efficiency, firming, and "green" product creation**
+
+- Shared infrastructure with solar (capex synergies)
+- Constrained by solar site location/MLF
+- "Guaranteed green" product for ESG buyers
+- CIS eligibility and structured contracting
+
+</div>
+</div>
+
+<div class="callout callout-tip">
+<div class="callout-title">
+<span class="callout-icon">💡</span>
+The Critical Question
+</div>
+<p>Does the solar PV plant <strong>add value</strong> to the battery investment, or is it a constraint that reduces returns?</p>
+</div>
+
+---
 
 ## The Case for Standalone: Flexibility & Location
 
@@ -15,27 +70,57 @@ Utility-scale batteries have become a critical component of the NEM, driven by s
 
 ### BESS Deployment Trajectory
 
-<div style="background: #f8f9fa; border-left: 4px solid #7B1FA2; padding: 20px; margin: 20px 0;">
-    <h4>📈 Chart: BESS Capacity Growth Trajectory</h4>
-    <p><strong>Analysis:</strong> Column chart showing BESS MWh by year (2018-2028) stacked by status (operating, committed, anticipated).</p>
-    <p><strong>Key Trend:</strong> Rapid growth from ~500 MWh (2019) to 10,000+ MWh (2026-2027 projected).</p>
-    <p><em>Chart generation in progress... Analysis scripts completed, awaiting final rendering.</em></p>
+<div class="chart-container">
+<div class="chart-header">
+<h4 class="chart-title">
+<span class="chart-title-icon">📈</span>
+BESS Capacity Growth Trajectory (2018-2028)
+</h4>
+<span class="chart-status chart-status--pending">In Progress</span>
 </div>
-
-The growth trajectory demonstrates a clear trend: battery storage has transitioned from niche application to mainstream infrastructure asset. Deployment accelerated dramatically from 2021 onward, with significant committed and anticipated capacity in the pipeline through 2028.
+<div class="chart-placeholder chart-placeholder--battery">
+<div class="chart-placeholder-icon">📊</div>
+<div class="chart-placeholder-title">NEM BESS Capacity by Status</div>
+<p class="chart-placeholder-description">
+Column chart showing BESS MWh by year (2018-2028) stacked by status: operating, committed, anticipated.
+</p>
+<div class="chart-placeholder-insight">
+<strong>Key Trend:</strong> Rapid growth from ~500 MWh (2019) to 10,000+ MWh (2026-2027 projected). Battery storage has transitioned from niche to mainstream infrastructure.
+</div>
+</div>
+<div class="chart-footer">
+<span class="chart-source">Data: AEMO NEM Generation Information</span>
+<span class="chart-code-link">Script: scripts/section3/s3_bess_capacity_growth.py</span>
+</div>
+</div>
 
 ### The Standalone Model
 
 **Current market reality:** The majority of batteries in the NEM are deployed as standalone facilities. This is not by accident—it reflects deliberate optimization for multiple revenue streams.
 
-<div style="background: #f8f9fa; border-left: 4px solid #7B1FA2; padding: 20px; margin: 20px 0;">
-    <h4>🗺️ Map: Battery Co-location Patterns</h4>
-    <p><strong>Analysis:</strong> Interactive map showing standalone (purple) vs co-located (dark orange) batteries across the NEM.</p>
-    <p><strong>Key Insight:</strong> Most batteries operate standalone, positioned independently of solar generation for optimal location.</p>
-    <p><em>Chart generation in progress... Analysis scripts completed, awaiting final rendering.</em></p>
+<div class="chart-container">
+<div class="chart-header">
+<h4 class="chart-title">
+<span class="chart-title-icon">🗺️</span>
+Battery Co-location Patterns Across NEM
+</h4>
+<span class="chart-status chart-status--pending">In Progress</span>
 </div>
-
-The interactive map reveals a crucial insight: **most batteries operate standalone**, positioned independently of solar generation. This deployment pattern reflects strategic advantages that standalone configuration provides.
+<div class="chart-placeholder chart-placeholder--battery">
+<div class="chart-placeholder-icon">🗺️</div>
+<div class="chart-placeholder-title">Standalone vs. Co-located Battery Map</div>
+<p class="chart-placeholder-description">
+Interactive map showing standalone (purple) vs co-located (dark orange) batteries across the NEM. Co-located defined as within 1km of a solar PV facility.
+</p>
+<div class="chart-placeholder-insight">
+<strong>Key Insight:</strong> Most batteries operate standalone, positioned independently of solar generation for optimal grid value capture.
+</div>
+</div>
+<div class="chart-footer">
+<span class="chart-source">Data: OpenElectricity API + geospatial analysis</span>
+<span class="chart-code-link">Script: scripts/section3/s3_bess_map_colocation.py</span>
+</div>
+</div>
 
 ### Strategic Advantages of Standalone BESS
 
@@ -43,21 +128,30 @@ The interactive map reveals a crucial insight: **most batteries operate standalo
 
 Standalone batteries can be located to **maximize grid value** rather than accommodate solar farm constraints:
 
-- **Marginal Loss Factors (MLFs)**: Site in high-MLF regions to avoid transmission losses
-- **Congestion zones**: Capture localized price premiums from grid constraints
-- **FCAS value**: Position for frequency control ancillary services revenue
-- **Transmission access**: Avoid curtailment-prone areas at end of transmission lines
+| Factor | Standalone Advantage | Co-located Constraint |
+|--------|---------------------|----------------------|
+| **MLF** | Site in high-MLF regions (0.95-1.05) | Inherit solar farm's poor MLF (0.80-0.90) |
+| **Congestion** | Capture localized price premiums | Compete with solar exports |
+| **FCAS** | Position for ancillary services | Limited by solar site capabilities |
+| **Transmission** | Avoid curtailment-prone areas | End-of-line locations typical |
 
-Solar farms are typically located based on land availability and solar resource. These sites often have poor MLFs (end-of-line locations) and face transmission constraints. Forcing a battery to share this location **destroys** arbitrage value.
+<div class="callout callout-warning">
+<div class="callout-title">
+<span class="callout-icon">⚠️</span>
+Location Lock-in
+</div>
+<p>Solar farms are typically located based on land availability and solar resource. These sites often have poor MLFs and face transmission constraints. Forcing a battery to share this location <strong>destroys arbitrage value</strong>.</p>
+</div>
 
 #### 2. Speed to Market
 
 Standalone BESS projects can be deployed significantly faster:
 
-- **BESS permitting**: 12-18 months typical
-- **PV + BESS permitting**: 24-36 months typical
-- **No coordination delays**: Single technology approval process
-- **Modular augmentation**: Add capacity incrementally as market evolves
+| Project Type | Typical Timeline |
+|--------------|------------------|
+| **BESS only** | 12-18 months |
+| **PV + BESS** | 24-36 months |
+| **Modular augmentation** | 6-12 months |
 
 For investors targeting near-term deployment to capture current market conditions, standalone provides critical time advantages.
 
@@ -69,181 +163,70 @@ Battery and solar have fundamentally different operational lives:
 - **PV**: 30-35 years asset life
 - **Mismatch risk**: Battery reaches end-of-life while PV continues operating
 
-Standalone deployment avoids the complexity of:
-- Shared infrastructure replacement decisions
-- Misaligned ownership structures after battery replacement
-- Stranded cost allocation when one asset is decommissioned
+Standalone deployment avoids the complexity of shared infrastructure replacement decisions and misaligned ownership structures.
 
 #### 4. Negative Pricing Revenue
 
-This is perhaps the most significant standalone advantage: **ability to earn revenue by charging during negative price periods**.
+<div class="key-finding key-finding--battery">
+<div class="key-finding-stat">Double-dip</div>
+<div class="key-finding-label">Revenue from negative pricing: get paid to charge, then paid to discharge</div>
+<p class="key-finding-description">
+When wholesale prices go negative (excess solar), standalone batteries get <strong>paid to charge</strong> and can discharge hours later at positive prices. This revenue stream is largely unavailable to co-located batteries.
+</p>
+</div>
 
-When wholesale prices go negative (typically due to excess solar), standalone batteries:
-- Get **paid** to charge (negative price × charging load)
-- Can discharge hours later at positive prices
-- Effectively generate revenue on both sides of the transaction
-
-Co-located batteries **can** charge during negative prices, but only if they curtail their own solar generation to create grid import capacity. This is rarely economically optimal, as it wastes zero-marginal-cost solar output.
+Co-located batteries **can** charge during negative prices, but only by curtailing their own solar generation to create grid import capacity. This is rarely economically optimal.
 
 ### The "Pure Merchant" Misconception
 
-**Critical clarification:** Standalone BESS are **not** synonymous with pure merchant/volatility exposure. Many standalone batteries operate under:
+<div class="callout callout-note">
+<div class="callout-title">
+<span class="callout-icon">ℹ️</span>
+Standalone ≠ Merchant
+</div>
+<p>Standalone BESS are <strong>not</strong> synonymous with pure merchant/volatility exposure. Many operate under:</p>
+<ul>
+<li><strong>Tolling agreements:</strong> Fixed capacity payments + merchant upside</li>
+<li><strong>FCAS contracts:</strong> Firm grid services revenue</li>
+<li><strong>CfD structures:</strong> Contracted arbitrage with price hedging</li>
+<li><strong>CIS contracts:</strong> Government-backed revenue floor</li>
+</ul>
+<p>The key distinction is that standalone batteries choose location to <strong>maximize</strong> these revenue opportunities.</p>
+</div>
 
-- **Tolling agreements**: Fixed capacity payments + merchant upside
-- **FCAS contracts**: Firm grid services revenue
-- **CfD structures**: Contracted arbitrage with price hedging
-- **Capacity Investment Scheme**: Government-backed contracts (Australia-specific)
-
-The key distinction is that standalone batteries choose their location to **maximize** these contracted revenue opportunities, rather than being constrained by solar farm siting.
+---
 
 ## The Case for Co-located: Capital Efficiency & Product Definition
 
 Despite standalone advantages, co-location can be the optimal choice under specific conditions. The decision depends on the investor's objectives and the specific solar asset situation.
 
-### Co-location Models
+### Co-location Configuration Models
 
-Co-location exists on a spectrum from loose contractual relationships to full physical integration:
-
-[Diagram to be inserted: AC-coupled, DC-coupled, and non-hybrid configurations]
-
-- **Non-hybrid**: Separate grid connections, independent dispatch, dual MLFs
-- **AC-coupled**: Shared connection, independent DC systems, separate DUIDs
-- **DC-coupled**: Single DUID, behind-the-meter, highest integration
-
-Each configuration represents different trade-offs between flexibility and cost savings.
-
-### Strategic Advantages of Co-located BESS
-
-#### 1. Capex Synergies
-
-Co-location delivers genuine infrastructure cost savings:
-
-- **Shared grid connection**: $50-100/kW saving (connection assets, approval costs)
-- **Electrical infrastructure**: Switchgear, transformers, transmission line
-- **Land costs**: Single site acquisition and lease
-- **Planning approvals**: Single development consent process (6-12 month saving)
-- **Balance of plant**: Site civil works, security, operations buildings
-
-For large-scale projects (100+ MW battery with 200+ MW solar), these savings can exceed $10-20M in total capex.
-
-#### 2. Capital Deployment Scale
-
-Infrastructure investors often **prefer** larger capital deployment per project:
-
-- **Fee structures**: Investment management fees scale with AUM
-- **Transaction costs**: Due diligence and legal costs are largely fixed
-- **Portfolio management**: Prefer fewer, larger assets to many small ones
-- **Return on equity**: Larger projects provide higher absolute return even at lower IRR
-
-A 200MW solar + 100MW/400MWh battery project deploys significantly more capital than a 100MW/400MWh standalone battery, making it more attractive for infrastructure funds targeting $100M+ deployment per asset.
-
-#### 3. Operational Efficiencies
-
-Single-site operations reduce ongoing costs:
-
-- **O&M contractor**: One site, one contract
-- **Insurance**: Combined policy vs. separate policies
-- **Network charges**: Potential savings on transmission charges
-- **Ancillary services**: Co-optimized dispatch strategy
-
-These savings are modest (2-5% of opex) but material over a 20-year asset life.
-
-#### 4. Grid Access in Constrained Regions
-
-In some constrained network areas, adding storage to a solar farm can actually **improve** grid access:
-
-- **Stability services**: Battery provides voltage/frequency support
-- **Reduced peak export**: Battery absorbs midday solar, reduces network strain
-- **System strength**: Inverter capabilities strengthen local grid
-
-This can enable projects in regions where standalone solar would face:
-- Connection refusal from network operator
-- Significant connection cost to upgrade network
-- Ongoing curtailment risk from system security constraints
-
-#### 5. The "Green Premium"
-
-For certain offtakers, co-located product is structurally superior:
-
-**Guaranteed renewable source**: Battery can only charge from solar (if configured as behind-the-meter DC-coupled). This creates:
-- **Additionality proof**: Storage demonstrably shifts *new* renewable generation
-- **Time-stamped GOs**: Renewable certificates matched to consumption hour
-- **ESG credibility**: Corporate buyers value "pure green" electrons
-
-While the premium varies by market (typically $5-15/MWh over brown power), for ESG-focused corporates this can justify the co-location choice even if theoretical arbitrage revenue is lower than standalone.
-
-#### 6. CIS Eligibility (Australia-Specific)
-
-Australia's Capacity Investment Scheme provides government-backed contracts to de-risk renewable investments. Co-located solar+storage projects are **explicitly eligible**, providing:
-
-- Long-term revenue floor
-- Reduced financing cost (government credit support)
-- Competitive advantage vs. standalone batteries (which may not qualify)
-
-This can flip the investment decision decisively toward co-location.
-
-#### 7. The Retrofit Logic
-
-For investors with **existing PV portfolios**, co-location is often a defensive necessity rather than pure optimization:
-
-**The problem:**
-- Existing solar farm approaching PPA expiry
-- Cannot re-contract at acceptable terms (plain solar unsellable)
-- Merchant exposure to low prices and curtailment represents valuation risk
-
-**The solution:**
-- Add BESS to create firmable capacity
-- Structure new PPA for shaped delivery (firm capacity + time-of-use energy)
-- Accept **lower BESS return** to preserve overall project IRR
-- Deploy capital quickly to avoid merchant exposure window
-
-In this context, the comparison is not "co-located vs. standalone BESS." It's "co-located BESS vs. uncontracted merchant solar." The bar for the battery investment is lower—it needs to be return-accretive to the combined asset, not competitive with a greenfield standalone battery.
-
-This "preserve the PV asset" logic is driving significant co-location activity in Australia, particularly for solar farms commissioned 2016-2020 that face PPA expiry in 2023-2027.
-
----
-
-## Revenue Structure: Where Batteries Make Money
-
-Understanding **how** batteries generate revenue is critical to evaluating the co-location decision. Battery returns are highly concentrated in specific price events, not uniformly distributed across hours.
-
-### Revenue Concentration by Price Bucket
-
-The following analysis examines NSW batteries operational throughout 2025, calculating net revenue (discharge revenue minus charging cost) across different wholesale price ranges:
-
-<div style="background: #f8f9fa; border-left: 4px solid #7B1FA2; padding: 20px; margin: 20px 0;">
-    <h4>💰 Chart: Battery Revenue by Price Bucket</h4>
-    <p><strong>Analysis:</strong> Column chart showing % of revenue by price bucket (<-$1000, -$1000 to -$500, ..., >$2000) for NSW batteries in 2025.</p>
-    <p><strong>Key Insight:</strong> Significant revenue from negative pricing and extreme high-price events.</p>
-    <p><em>Chart generation in progress... Analysis scripts completed, awaiting final rendering.</em></p>
+<div class="chart-container">
+<div class="chart-header">
+<h4 class="chart-title">
+<span class="chart-title-icon">⚡</span>
+Co-location Configuration Options
+</h4>
+<span class="chart-status chart-status--pending">In Progress</span>
+</div>
+<div class="chart-placeholder chart-placeholder--hybrid">
+<div class="chart-placeholder-icon">⚙️</div>
+<div class="chart-placeholder-title">AC-coupled, DC-coupled, and Non-hybrid Configurations</div>
+<p class="chart-placeholder-description">
+Technical schematic showing electrical connections, DUIDs, and grid charging capabilities for each configuration type.
+</p>
+<div class="chart-placeholder-insight">
+<strong>Key Trade-offs:</strong> Non-hybrid (max flexibility) → AC-coupled (balanced) → DC-coupled (highest capex savings, most constrained).
+</div>
+</div>
+<div class="chart-footer">
+<span class="chart-source">Reference: Modo Energy configuration analysis</span>
+<span class="chart-code-link">Script: scripts/section3/s3_colocation_diagram.py</span>
+</div>
 </div>
 
-**Critical observations:**
-
-1. **Negative pricing revenue**: Batteries earn significant revenue by charging during negative price periods (getting **paid** to charge), then discharging hours later at positive prices. This "double-dip" revenue stream is only available to standalone batteries with grid import capability.
-
-2. **High-price event concentration**: A substantial portion of revenue comes from extreme price events (>$1000/MWh), which occur during tight supply-demand conditions (typically evening peaks, network constraints, or generator outages).
-
-3. **Base revenue is minimal**: The $0-300/MWh bucket (representing "normal" market conditions) contributes relatively little to total returns. Battery economics depend on price volatility, not average prices.
-
-**Implications for co-location:**
-
-- **DC-coupled batteries** cannot charge from the grid during negative prices (behind-the-meter constraint). They forfeit this revenue stream entirely.
-- **AC-coupled batteries** can charge from grid but only by curtailing solar (wasting zero-marginal-cost generation). Rarely economically optimal.
-- **Standalone batteries** capture full arbitrage value, optimizing charge/discharge independently of solar output.
-
-### Co-location Configuration Options
-
-Co-location exists on a spectrum from loose integration to full behind-the-meter coupling. Each configuration represents different trade-offs:
-
-<div style="background: #f8f9fa; border-left: 4px solid #7B1FA2; padding: 20px; margin: 20px 0;">
-    <h4>⚡ Diagram: Co-location Configuration Options</h4>
-    <p><strong>Analysis:</strong> Technical schematic showing AC-coupled, DC-coupled, and non-hybrid configurations with electrical connection details.</p>
-    <p><strong>Key Trade-offs:</strong> Non-hybrid (max flexibility) vs AC-coupled (balanced) vs DC-coupled (highest capex savings, most constrained).</p>
-    <p><em>Diagram generation in progress... Analysis scripts completed, awaiting final rendering.</em></p>
-</div>
-
-**Configuration comparison:**
+### Configuration Comparison
 
 | Configuration | Connection | DUIDs | Grid Charging | Capex Savings | Dispatch Flexibility |
 |---------------|------------|-------|---------------|---------------|---------------------|
@@ -251,23 +234,154 @@ Co-location exists on a spectrum from loose integration to full behind-the-meter
 | **AC-coupled** | Shared | Dual | Yes (battery) | $50-100/kW | High |
 | **DC-coupled** | Shared | Single | Limited | $70-120/kW | Constrained |
 
-**Decision framework:**
+### Strategic Advantages of Co-located BESS
 
-- **Non-hybrid**: Choose when MLF differential is significant, or when battery targets different revenue streams (FCAS, different price zone)
-- **AC-coupled**: Choose when capex savings are material but independent dispatch is valuable (common retrofit scenario)
-- **DC-coupled**: Choose when creating "guaranteed green" product (corporate PPA requirement) or when grid charging is explicitly unwanted
+#### 1. Capex Synergies
+
+<div class="key-finding">
+<div class="key-finding-stat">$50-100/kW</div>
+<div class="key-finding-label">Typical infrastructure savings from co-location</div>
+<p class="key-finding-description">
+Shared grid connection, electrical infrastructure, land, and planning approvals. For 100+ MW battery with 200+ MW solar, savings can exceed <strong>$10-20M in total capex</strong>.
+</p>
+</div>
+
+#### 2. Capital Deployment Scale
+
+Infrastructure investors often **prefer** larger capital deployment per project:
+
+- **Fee structures**: Investment management fees scale with AUM
+- **Transaction costs**: Due diligence and legal costs are largely fixed
+- **Portfolio management**: Prefer fewer, larger assets
+- **Return on equity**: Larger projects = higher absolute return even at lower IRR
+
+#### 3. The "Green Premium"
+
+<div class="analysis-box analysis-box--hybrid">
+<div class="analysis-box-header">
+<div class="analysis-box-icon">🌱</div>
+<div>
+<h4 class="analysis-box-title">Guaranteed Renewable Source</h4>
+<p class="analysis-box-subtitle">DC-coupled batteries can only charge from solar</p>
+</div>
+</div>
+<div class="analysis-box-content">
+
+- **Additionality proof**: Storage demonstrably shifts *new* renewable generation
+- **Time-stamped GOs**: Renewable certificates matched to consumption hour
+- **ESG credibility**: Corporate buyers value "pure green" electrons
+- **Premium value**: Typically $5-15/MWh over brown power
+
+</div>
+</div>
+
+#### 4. CIS Eligibility (Australia-Specific)
+
+Australia's Capacity Investment Scheme provides government-backed contracts. Co-located solar+storage projects are **explicitly eligible**, providing:
+
+- Long-term revenue floor
+- Reduced financing cost (government credit support)
+- Competitive advantage vs. standalone (which may not qualify)
+
+#### 5. The Retrofit Logic
+
+<div class="callout callout-important">
+<div class="callout-title">
+<span class="callout-icon">🚨</span>
+Defensive Co-location
+</div>
+<p>For investors with <strong>existing PV portfolios</strong> approaching PPA expiry, co-location is often a defensive necessity:</p>
+<ul>
+<li>Add BESS to create firmable capacity</li>
+<li>Structure new PPA for shaped delivery</li>
+<li>Accept <strong>lower BESS return</strong> to preserve overall project IRR</li>
+</ul>
+<p>The comparison isn't "co-located vs. standalone"—it's "co-located BESS vs. uncontracted merchant solar."</p>
+</div>
+
+---
+
+## Revenue Structure: Where Batteries Make Money
+
+Understanding **how** batteries generate revenue is critical to evaluating the co-location decision. Battery returns are highly concentrated in specific price events.
+
+### Revenue Concentration by Price Bucket
+
+<div class="chart-container">
+<div class="chart-header">
+<h4 class="chart-title">
+<span class="chart-title-icon">💰</span>
+Battery Revenue by Price Bucket (NSW 2025)
+</h4>
+<span class="chart-status chart-status--pending">In Progress</span>
+</div>
+<div class="chart-placeholder chart-placeholder--battery">
+<div class="chart-placeholder-icon">📊</div>
+<div class="chart-placeholder-title">Revenue Distribution Across Price Ranges</div>
+<p class="chart-placeholder-description">
+Column chart showing % of revenue by price bucket (<-$1000, -$1000 to -$500, ..., >$2000) for NSW batteries.
+</p>
+<div class="chart-placeholder-insight">
+<strong>Key Insight:</strong> Significant revenue from negative pricing (get paid to charge) and extreme high-price events (>$1000/MWh). Normal prices ($0-300/MWh) contribute minimal revenue.
+</div>
+</div>
+<div class="chart-footer">
+<span class="chart-source">Data: AEMO dispatch data via NEMOSIS (2025)</span>
+<span class="chart-code-link">Script: scripts/section3/s3_battery_revenue_buckets.py</span>
+</div>
+</div>
+
+**Critical observations:**
+
+1. **Negative pricing revenue**: Standalone batteries earn revenue by charging during negative prices (getting **paid** to charge). This is unavailable to DC-coupled co-located batteries.
+
+2. **High-price event concentration**: Extreme price events (>$1000/MWh) drive substantial revenue. These occur during tight supply-demand conditions.
+
+3. **Base revenue is minimal**: "Normal" market conditions ($0-300/MWh) contribute relatively little. Battery economics depend on price volatility, not average prices.
+
+### Implications for Co-location
+
+| Configuration | Negative Pricing | High-Price Events | Overall Flexibility |
+|---------------|------------------|-------------------|---------------------|
+| **Standalone** | Full access | Optimized dispatch | Maximum |
+| **AC-coupled** | Partial (curtail solar) | Good | High |
+| **DC-coupled** | None | Constrained | Limited |
+
+---
+
+## Decision Framework Summary
+
+### Configuration Choice Drivers
+
+**Choose Non-hybrid when:**
+- MLF differential is significant between sites
+- Battery targets different revenue streams (FCAS, different price zone)
+- Maximum dispatch flexibility required
+
+**Choose AC-coupled when:**
+- Capex savings are material
+- Independent dispatch still valuable
+- Common retrofit scenario
+
+**Choose DC-coupled when:**
+- Creating "guaranteed green" product (corporate PPA requirement)
+- Grid charging explicitly unwanted
+- Maximum capex savings prioritized
 
 The configuration choice is **not** purely technical—it's driven by commercial objectives (PPA structure, green premium, financing requirements).
 
 ---
 
-**Key Takeaways:**
-
-- BESS deployment has grown rapidly: 500 MWh (2019) → 10,000+ MWh (2026-2027 projected)
-- Majority of current batteries are standalone, optimizing for location and flexibility
-- Standalone advantages: siting freedom, speed, lifecycle independence, negative pricing revenue
-- Co-located advantages: capex synergies, capital deployment scale, green premium, retrofit logic
-- Battery revenue is highly concentrated in negative pricing and extreme high-price events
-- DC-coupled configurations forfeit grid charging revenue (significant opportunity cost)
-- Configuration choice (non-hybrid vs AC vs DC-coupled) is driven by commercial objectives, not purely technical factors
-- Decision is **context-dependent**: new build vs. retrofit, return targets, contracting options
+<div class="key-takeaways">
+<div class="key-takeaways-title">Key Takeaways</div>
+<ul class="key-takeaways-list">
+<li>BESS deployment has grown rapidly: 500 MWh (2019) → 10,000+ MWh (2026-2027 projected)</li>
+<li>Majority of current batteries are standalone, optimizing for location and flexibility</li>
+<li>Standalone advantages: siting freedom, speed, lifecycle independence, negative pricing revenue</li>
+<li>Co-located advantages: capex synergies ($50-100/kW), capital deployment scale, green premium, retrofit logic</li>
+<li>Battery revenue is highly concentrated in negative pricing and extreme high-price events</li>
+<li>DC-coupled configurations forfeit grid charging revenue (significant opportunity cost)</li>
+<li>Configuration choice is driven by commercial objectives, not purely technical factors</li>
+<li>Decision is context-dependent: new build vs. retrofit, return targets, contracting options</li>
+</ul>
+</div>
