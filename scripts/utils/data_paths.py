@@ -5,11 +5,18 @@ All file paths used across the project are defined here.
 
 from pathlib import Path
 
-# Base directories
-PROJECT_ROOT = Path(r"C:\Users\matts\Documents\Aus research\Hybrid PV BESS vs standalone\Code\Git\Hybrid_PV_Blog")
-CONTEXT_ROOT = Path(r"C:\Users\matts\Documents\Aus research\Hybrid PV BESS vs standalone\Code\Context")
-NEMOSIS_DATA_ROOT = Path(r"C:\Users\matts\Documents\Aus research\Nemosis_data")
-PYPSA_ROOT = Path(r"C:\Users\matts\Documents\Aus research\Gen modelling\PyPSA")
+# Base directories - detect environment
+import os
+if os.name == 'nt':  # Windows
+    PROJECT_ROOT = Path(r"C:\Users\matts\Documents\Aus research\Hybrid PV BESS vs standalone\Code\Git\Hybrid_PV_Blog")
+    CONTEXT_ROOT = Path(r"C:\Users\matts\Documents\Aus research\Hybrid PV BESS vs standalone\Code\Context")
+    NEMOSIS_DATA_ROOT = Path(r"C:\Users\matts\Documents\Aus research\Nemosis_data")
+    PYPSA_ROOT = Path(r"C:\Users\matts\Documents\Aus research\Gen modelling\PyPSA")
+else:  # Linux/Mac - use relative paths from script location
+    PROJECT_ROOT = Path(__file__).parent.parent.parent.resolve()
+    CONTEXT_ROOT = PROJECT_ROOT / "context"
+    NEMOSIS_DATA_ROOT = PROJECT_ROOT / "data" / "nemosis"
+    PYPSA_ROOT = PROJECT_ROOT / "pypsa"
 
 # Project subdirectories
 SCRIPTS_DIR = PROJECT_ROOT / "scripts"
