@@ -1,0 +1,245 @@
+# The BESS Integration Thesis {#sec-bess-integration}
+
+<div class="section-summary">
+<div class="section-summary-title">In This Section</div>
+<ul class="section-summary-list">
+<li>How battery storage restores value to solar assets</li>
+<li>The investor dilemma: two distinct deployment models</li>
+<li>Why the co-location decision is not purely technical</li>
+<li>Framework for the analysis that follows</li>
+</ul>
+</div>
+
+## Restoring Value Through Storage
+
+The previous section established that pure solar PV faces fundamental economic challenges in the NEM: price cannibalization, curtailment risk, and an inability to secure long-term contracts. Battery energy storage systems (BESS) offer a path forward.
+
+<div class="analysis-box analysis-box--battery">
+<div class="analysis-box-header">
+<div class="analysis-box-icon">🔋</div>
+<div>
+<h4 class="analysis-box-title">How BESS Solves the Solar Problem</h4>
+<p class="analysis-box-subtitle">Three value restoration mechanisms</p>
+</div>
+</div>
+<div class="analysis-box-content">
+
+### 1. Time-Shifting Generation
+
+Batteries can shift solar generation from oversupplied daytime hours to high-value evening peaks:
+
+| Period | Solar Output | Battery Action | Value Captured |
+|--------|--------------|----------------|----------------|
+| **10:00-16:00** | Maximum | Charge | Avoid low/negative prices |
+| **16:00-20:00** | Declining | Discharge | Capture evening peak ($200-500/MWh) |
+| **20:00-06:00** | Zero | Hold/Discharge | Respond to overnight volatility |
+
+This arbitrage converts low-value midday MWh into high-value evening MWh.
+
+### 2. Curtailment Protection
+
+Behind-the-meter battery storage can absorb excess solar generation that would otherwise be curtailed:
+
+- **Grid constraint**: Network operator directs solar farm to reduce output
+- **Without battery**: Lost generation, zero revenue
+- **With battery**: Store curtailed energy, discharge when constraint clears
+
+For solar farms facing 5-10% curtailment, this represents significant recovered revenue.
+
+### 3. Enabling Contractability
+
+The combination of solar + storage creates a **firmable capacity product** that offtakers will actually buy:
+
+- **Plain solar**: "We'll give you power... when the sun shines... if we're not curtailed"
+- **Solar + storage**: "We guarantee X MW of firm capacity during Y hours"
+
+This transforms an intermittent asset into a dispatchable one, enabling long-term PPAs and project finance.
+
+</div>
+</div>
+
+---
+
+## The Investor Dilemma
+
+While BESS solves the technical problem, it creates a commercial dilemma. Battery storage does **not** need to be co-located with solar PV to provide these benefits to the grid. The market is splitting into two distinct investment approaches.
+
+<div class="callout callout-tip">
+<div class="callout-title">
+<span class="callout-icon">💡</span>
+The Core Dilemma
+</div>
+<p>Batteries can time-shift and firm renewable generation from <strong>anywhere on the grid</strong>. They don't need to be physically connected to a solar farm to capture arbitrage value or provide system services.</p>
+</div>
+
+### Two Distinct Asset Classes
+
+<div class="key-finding key-finding--battery">
+<div class="key-finding-stat">2 Models</div>
+<div class="key-finding-label">The market has bifurcated into distinct deployment strategies</div>
+<p class="key-finding-description">
+Infrastructure investors must choose between optimizing for <strong>location and flexibility</strong> (standalone) or <strong>capital efficiency and product definition</strong> (co-located). These are fundamentally different investment theses.
+</p>
+</div>
+
+#### Model 1: Standalone BESS
+
+<div class="analysis-box analysis-box--battery">
+<div class="analysis-box-header">
+<div class="analysis-box-icon">🔋</div>
+<div>
+<h4 class="analysis-box-title">Standalone Deployment</h4>
+<p class="analysis-box-subtitle">Battery as independent infrastructure asset</p>
+</div>
+</div>
+<div class="analysis-box-content">
+
+**Investment thesis**: Maximize battery returns by optimizing location, grid services, and merchant arbitrage.
+
+**Key characteristics**:
+- Site selected for optimal MLF and grid access
+- Full flexibility to charge from grid (including negative pricing)
+- Independent dispatch optimization
+- Revenue from arbitrage, FCAS, and capacity payments
+- Typically 2-4 hour duration for price volatility capture
+
+**Investor profile**: Merchant-tolerant investors, trading-oriented asset managers, FCAS specialists
+
+</div>
+</div>
+
+#### Model 2: Co-located (Hybrid)
+
+<div class="analysis-box analysis-box--hybrid">
+<div class="analysis-box-header">
+<div class="analysis-box-icon">⚡</div>
+<div>
+<h4 class="analysis-box-title">Co-located Deployment</h4>
+<p class="analysis-box-subtitle">Battery integrated with solar PV asset</p>
+</div>
+</div>
+<div class="analysis-box-content">
+
+**Investment thesis**: Create a firmable renewable product with infrastructure cost synergies and contracted revenue.
+
+**Key characteristics**:
+- Site determined by solar farm location (MLF inherited)
+- Shared grid connection and infrastructure
+- "Green" product definition for ESG-focused offtakers
+- CIS eligibility for government-backed contracts
+- Often longer duration (4+ hours) for firming requirements
+
+**Investor profile**: Infrastructure funds, yield-focused investors, existing solar asset owners
+
+</div>
+</div>
+
+---
+
+## The Critical Question
+
+For new investors evaluating BESS deployment, the question is straightforward but consequential:
+
+<div class="callout callout-important">
+<div class="callout-title">
+<span class="callout-icon">🚨</span>
+Does the Solar Plant Add Value?
+</div>
+<p>For a <strong>new build</strong>: Does adding solar PV to the battery project increase risk-adjusted returns, or does it constrain location and reduce flexibility?</p>
+<p>For a <strong>retrofit</strong>: Does adding a battery to an existing solar farm preserve the asset's value, or would capital be better deployed in a standalone battery elsewhere?</p>
+</div>
+
+### The Answer Is Context-Dependent
+
+There is no universal answer. The optimal deployment model depends on:
+
+| Factor | Favors Standalone | Favors Co-located |
+|--------|-------------------|-------------------|
+| **Location quality** | Poor solar site MLF | Strong solar site MLF |
+| **Contracting** | Merchant-tolerant | PPA-dependent |
+| **Existing assets** | Greenfield | Retrofit of existing solar |
+| **Return targets** | High IRR, lower scale | Moderate IRR, larger scale |
+| **Offtaker requirements** | Flexibility valued | "Green" credentials required |
+| **CIS eligibility** | Not critical | Important for financing |
+
+---
+
+## Framework for Analysis
+
+The remainder of this report provides a systematic framework for making the standalone vs. co-located decision:
+
+<div class="section-summary">
+<div class="section-summary-title">What Follows</div>
+<ul class="section-summary-list">
+<li><strong>Section 3: Trade-off Analysis</strong> — Detailed comparison of advantages and revenue structures</li>
+<li><strong>Section 4: Technical Constraints</strong> — MLF impact, revenue concentration, and location value</li>
+<li><strong>Section 5: Strategic Framework</strong> — Step-by-step decision process and modeling approach</li>
+</ul>
+</div>
+
+### Decision Hierarchy
+
+The framework follows a logical sequence:
+
+1. **Define the benchmark**: What return hurdle must the battery achieve? Is this a new build or retrofit?
+
+2. **Quantify location impact**: What is the MLF penalty of co-location? What is the curtailment risk?
+
+3. **Assess contracting options**: Is a "green premium" available? Is CIS eligibility valuable?
+
+4. **Model the alternatives**: Use dispatch optimization to compare scenarios quantitatively
+
+5. **Make the decision**: Compare risk-adjusted returns against the benchmark
+
+<div class="callout callout-note">
+<div class="callout-title">
+<span class="callout-icon">ℹ️</span>
+The Retrofit Exception
+</div>
+<p>For investors with <strong>existing solar assets</strong> approaching PPA expiry, the decision framework is different. The comparison is not "standalone vs. co-located BESS" but rather "co-located BESS vs. uncontracted merchant solar."</p>
+<p>In this context, a lower battery return may be acceptable if it <strong>preserves the value of the solar asset</strong> that would otherwise face merchant exposure.</p>
+</div>
+
+---
+
+## Why This Matters
+
+The standalone vs. co-located decision has significant implications for:
+
+### Capital Allocation
+
+- **Standalone**: Smaller check size per project, more projects needed
+- **Co-located**: Larger check size, fewer but bigger projects
+
+For infrastructure funds with deployment targets, this affects portfolio construction.
+
+### Risk Profile
+
+- **Standalone**: Higher merchant exposure, but location-optimized
+- **Co-located**: More contractable, but location-constrained
+
+The appropriate choice depends on the investor's risk tolerance and return requirements.
+
+### Market Structure
+
+As the NEM evolves, the mix of standalone vs. co-located batteries will shape:
+
+- Grid stability and congestion patterns
+- Price formation in different regions
+- The value of "green" vs. "brown" electrons
+
+Understanding these dynamics is essential for long-term investment success.
+
+---
+
+<div class="key-takeaways">
+<div class="key-takeaways-title">Key Takeaways</div>
+<ul class="key-takeaways-list">
+<li>BESS solves solar's value problem through time-shifting, curtailment protection, and enabling contractability</li>
+<li>Batteries do NOT need to be co-located with solar to provide grid benefits</li>
+<li>The market has bifurcated into two distinct models: standalone (location-optimized) and co-located (integration-optimized)</li>
+<li>The optimal choice is context-dependent: location quality, contracting needs, existing assets, return targets</li>
+<li>Retrofit scenarios have different economics than greenfield development</li>
+<li>The following sections provide a systematic framework for making this decision</li>
+</ul>
+</div>

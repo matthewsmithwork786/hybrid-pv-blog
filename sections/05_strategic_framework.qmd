@@ -1,0 +1,465 @@
+# The Strategic Framework {#sec-strategic-framework}
+
+<div class="section-summary">
+<div class="section-summary-title">In This Section</div>
+<ul class="section-summary-list">
+<li>Step-by-step decision framework for standalone vs. co-located BESS</li>
+<li>Investment scenario assessment and benchmarking</li>
+<li>Quantifying location value and infrastructure synergies</li>
+<li>Modeling approach for validation</li>
+</ul>
+</div>
+
+## The Decision Framework
+
+This section synthesizes the analysis from previous sections into an actionable decision framework. The goal is to provide a systematic approach for evaluating whether BESS should be deployed standalone or co-located with solar PV.
+
+<div class="callout callout-tip">
+<div class="callout-title">
+<span class="callout-icon">💡</span>
+Framework Purpose
+</div>
+<p>This framework helps investors answer: <strong>Given my specific circumstances, which deployment model maximizes risk-adjusted returns?</strong></p>
+</div>
+
+---
+
+## Step 1: Define the Investment Scenario
+
+The first step is to clearly define what you're evaluating. The decision framework differs significantly between scenarios.
+
+### Scenario Classification
+
+<div class="chart-container">
+<div class="chart-header">
+<h4 class="chart-title">
+<span class="chart-title-icon">📋</span>
+Investment Decision Tree
+</h4>
+<span class="chart-status chart-status--pending">In Progress</span>
+</div>
+<div class="chart-placeholder chart-placeholder--battery">
+<div class="chart-placeholder-icon">🌳</div>
+<div class="chart-placeholder-title">Standalone vs. Co-located Decision Framework</div>
+<p class="chart-placeholder-description">
+Interactive decision tree guiding investors through the key decision points: scenario type, location quality, contracting requirements, and return benchmarks.
+</p>
+<div class="chart-placeholder-insight">
+<strong>Key Decision Points:</strong> New build vs. retrofit, MLF quality, green premium availability, CIS eligibility, return hurdle requirements.
+</div>
+</div>
+<div class="chart-footer">
+<span class="chart-source">Framework: Beyond the Solar Curve analysis</span>
+<span class="chart-code-link">Script: scripts/section5/s5_decision_tree.py</span>
+</div>
+</div>
+
+### Scenario A: Greenfield Development
+
+<div class="analysis-box analysis-box--battery">
+<div class="analysis-box-header">
+<div class="analysis-box-icon">🏗️</div>
+<div>
+<h4 class="analysis-box-title">New Build Assessment</h4>
+<p class="analysis-box-subtitle">Evaluating a new battery investment from scratch</p>
+</div>
+</div>
+<div class="analysis-box-content">
+
+**Key questions:**
+- Do I have a specific solar site in mind, or am I location-flexible?
+- What are my return hurdles (levered IRR target)?
+- Do I need contracted revenue, or can I accept merchant exposure?
+- Is CIS eligibility important for my financing?
+
+**Comparison basis:** Standalone BESS at optimal location vs. Co-located BESS at solar site
+
+**Decision driver:** Which option provides higher risk-adjusted returns?
+
+</div>
+</div>
+
+### Scenario B: Solar Retrofit
+
+<div class="analysis-box analysis-box--hybrid">
+<div class="analysis-box-header">
+<div class="analysis-box-icon">🔧</div>
+<div>
+<h4 class="analysis-box-title">Existing Solar Assessment</h4>
+<p class="analysis-box-subtitle">Adding battery to an existing solar asset</p>
+</div>
+</div>
+<div class="analysis-box-content">
+
+**Key questions:**
+- When does my current PPA expire?
+- What is the merchant value of my solar asset without battery?
+- Can I re-contract with battery addition?
+- What battery return is acceptable to preserve overall project value?
+
+**Comparison basis:** Co-located BESS vs. Merchant solar exposure (do nothing)
+
+**Decision driver:** Does battery addition preserve/enhance solar asset value?
+
+</div>
+</div>
+
+<div class="callout callout-warning">
+<div class="callout-title">
+<span class="callout-icon">⚠️</span>
+Retrofit ≠ Greenfield Economics
+</div>
+<p>In retrofit scenarios, the battery doesn't need to compete with standalone returns. It needs to be <strong>accretive to the combined asset</strong>. A 10% battery IRR may be acceptable if it preserves a solar asset that would otherwise face 5% merchant returns.</p>
+</div>
+
+---
+
+## Step 2: Establish the Benchmark
+
+Before evaluating options, establish clear return benchmarks.
+
+### Return Hurdle Framework
+
+| Investor Type | Typical Levered IRR | Risk Profile | Contracting Preference |
+|---------------|---------------------|--------------|------------------------|
+| **Infrastructure Fund** | 8-12% | Low | 70%+ contracted |
+| **Yield Vehicle** | 6-9% | Very Low | 90%+ contracted |
+| **Merchant Investor** | 15-20% | High | <50% contracted acceptable |
+| **Developer** | 12-18% | Medium-High | Flexible |
+
+### Setting Your Benchmark
+
+<div class="key-finding">
+<div class="key-finding-stat">Step 2.1</div>
+<div class="key-finding-label">Define your minimum acceptable return</div>
+<p class="key-finding-description">
+What levered IRR must the battery investment achieve? This becomes the hurdle rate against which all options are evaluated.
+</p>
+</div>
+
+**For greenfield:** Benchmark is typically a standalone BESS at an optimal location. The question becomes: does co-location beat this benchmark?
+
+**For retrofit:** Benchmark is often the "do nothing" case—what happens to the solar asset without battery addition?
+
+---
+
+## Step 3: Quantify Location Value
+
+Location is the primary driver of battery revenue. Quantify the impact before proceeding.
+
+### MLF Assessment
+
+<div class="analysis-box analysis-box--pv">
+<div class="analysis-box-header">
+<div class="analysis-box-icon">📍</div>
+<div>
+<h4 class="analysis-box-title">Location Quality Checklist</h4>
+<p class="analysis-box-subtitle">Assessing the co-location site vs. standalone alternatives</p>
+</div>
+</div>
+<div class="analysis-box-content">
+
+| Factor | Co-located Site | Best Standalone Alternative | Difference |
+|--------|-----------------|----------------------------|------------|
+| **MLF** | _____ | _____ | _____ |
+| **Curtailment risk** | _____ % | _____ % | _____ % |
+| **FCAS market access** | Yes / No | Yes / No | — |
+| **Transmission capacity** | _____ MW | _____ MW | _____ MW |
+
+</div>
+</div>
+
+### Revenue Impact Calculation
+
+From Section 4, we know that MLF differences compound during high-price events:
+
+<div class="key-finding key-finding--battery">
+<div class="key-finding-stat">15-25%</div>
+<div class="key-finding-label">Typical annual revenue difference between poor (0.85) and excellent (0.98) MLF</div>
+<p class="key-finding-description">
+Calculate the annual revenue impact: <code>(MLF_standalone - MLF_colocated) × Expected_Annual_Revenue</code>
+</p>
+</div>
+
+**Example calculation:**
+
+- Expected annual revenue at MLF 1.0: $15M
+- Standalone site MLF: 0.98 → Revenue = $14.7M
+- Co-located site MLF: 0.88 → Revenue = $13.2M
+- **Annual revenue penalty: $1.5M** (10% reduction)
+
+Over a 15-year asset life, this compounds to significant value destruction.
+
+---
+
+## Step 4: Quantify Infrastructure Synergies
+
+Co-location provides genuine cost savings. Quantify these to offset location penalties.
+
+### Capex Synergies
+
+<div class="analysis-box analysis-box--hybrid">
+<div class="analysis-box-header">
+<div class="analysis-box-icon">💰</div>
+<div>
+<h4 class="analysis-box-title">Infrastructure Savings Assessment</h4>
+<p class="analysis-box-subtitle">Quantifying co-location capex benefits</p>
+</div>
+</div>
+<div class="analysis-box-content">
+
+| Component | Standalone Cost | Co-located Cost | Saving |
+|-----------|-----------------|-----------------|--------|
+| **Grid connection** | $___/kW | $___/kW | $___/kW |
+| **Electrical infrastructure** | $___/kW | $___/kW | $___/kW |
+| **Land/site costs** | $___/kW | $___/kW | $___/kW |
+| **Planning/approvals** | $___/kW | $___/kW | $___/kW |
+| **Balance of plant** | $___/kW | $___/kW | $___/kW |
+| **TOTAL** | $___/kW | $___/kW | **$___/kW** |
+
+</div>
+</div>
+
+### Typical Synergy Ranges
+
+| Configuration | Typical Capex Saving | Notes |
+|---------------|---------------------|-------|
+| **Non-hybrid** | $0/kW | Separate connections |
+| **AC-coupled** | $50-100/kW | Shared connection, dual DUID |
+| **DC-coupled** | $70-120/kW | Behind-the-meter, single DUID |
+
+### Opex Synergies
+
+Co-location also provides ongoing operational savings:
+
+- **O&M**: Single site contract (2-5% saving)
+- **Insurance**: Combined policy (5-10% saving)
+- **Land lease**: Marginal cost vs. new site
+- **Network charges**: Potential TUOS/DUOS savings
+
+---
+
+## Step 5: Assess Contracting Options
+
+The value of co-location often depends on contracting requirements.
+
+### Green Premium Assessment
+
+<div class="callout callout-note">
+<div class="callout-title">
+<span class="callout-icon">ℹ️</span>
+Is a Green Premium Available?
+</div>
+<p>DC-coupled batteries can only charge from solar, creating a "guaranteed green" product. This may command a premium from ESG-focused offtakers.</p>
+<ul>
+<li><strong>If premium available:</strong> Add $5-15/MWh to co-located revenue assumptions</li>
+<li><strong>If no premium:</strong> No adjustment needed</li>
+</ul>
+</div>
+
+### CIS Eligibility
+
+For Australian projects, Capacity Investment Scheme eligibility can be decisive:
+
+| Project Type | CIS Eligible? | Revenue Impact |
+|--------------|---------------|----------------|
+| **Standalone BESS** | Sometimes | Depends on tender |
+| **Co-located solar+storage** | Yes | Long-term floor price |
+
+<div class="key-finding">
+<div class="key-finding-stat">CIS Value</div>
+<div class="key-finding-label">Government-backed revenue floor reduces financing cost by 50-100bps</div>
+<p class="key-finding-description">
+If CIS eligibility is critical for your financing structure, this may override location considerations.
+</p>
+</div>
+
+### PPA Structuring
+
+| Structure | Standalone Compatibility | Co-located Compatibility |
+|-----------|-------------------------|-------------------------|
+| **Tolling agreement** | Excellent | Good |
+| **Shaped PPA** | Limited | Excellent |
+| **Green PPA** | Poor | Excellent |
+| **Merchant** | Excellent | Good |
+
+---
+
+## Step 6: Decision Matrix
+
+Synthesize the analysis into a decision matrix.
+
+### Quantitative Comparison
+
+<div class="analysis-box analysis-box--battery">
+<div class="analysis-box-header">
+<div class="analysis-box-icon">📊</div>
+<div>
+<h4 class="analysis-box-title">Scenario Comparison Template</h4>
+<p class="analysis-box-subtitle">Fill in with project-specific values</p>
+</div>
+</div>
+<div class="analysis-box-content">
+
+| Metric | Standalone | Co-located | Difference |
+|--------|------------|------------|------------|
+| **Capex ($/kW)** | $___ | $___ | $___ |
+| **Annual revenue ($M)** | $___ | $___ | $___ |
+| **Annual opex ($M)** | $___ | $___ | $___ |
+| **Contracted %** | ___% | ___% | ___% |
+| **Levered IRR** | ___% | ___% | ___% |
+| **Equity multiple** | ___x | ___x | ___x |
+
+</div>
+</div>
+
+### Decision Rules
+
+Based on the analysis framework:
+
+<div class="key-finding key-finding--battery">
+<div class="key-finding-stat">Choose Standalone When:</div>
+<div class="key-finding-label">Location value exceeds infrastructure synergies</div>
+<p class="key-finding-description">
+<strong>MLF revenue gain > Capex synergy saving</strong>, AND you can accept higher merchant exposure, AND CIS eligibility is not critical.
+</p>
+</div>
+
+<div class="key-finding key-finding--hybrid">
+<div class="key-finding-stat">Choose Co-located When:</div>
+<div class="key-finding-label">Infrastructure synergies and contracting value exceed location penalty</div>
+<p class="key-finding-description">
+<strong>Capex synergy + Green premium + CIS value > MLF penalty</strong>, OR this is a retrofit scenario where battery preserves solar asset value.
+</p>
+</div>
+
+---
+
+## Step 7: Model and Validate
+
+Before final decision, validate assumptions with dispatch modeling.
+
+### Modeling Approach
+
+<div class="chart-container">
+<div class="chart-header">
+<h4 class="chart-title">
+<span class="chart-title-icon">⚙️</span>
+PyPSA Dispatch Optimization Results
+</h4>
+<span class="chart-status chart-status--pending">In Progress</span>
+</div>
+<div class="chart-placeholder chart-placeholder--battery">
+<div class="chart-placeholder-icon">📈</div>
+<div class="chart-placeholder-title">Scenario Comparison: Dispatch & Revenue</div>
+<p class="chart-placeholder-description">
+Comparative analysis showing annual dispatch patterns, revenue by source, and financial metrics for standalone vs. co-located configurations.
+</p>
+<div class="chart-placeholder-insight">
+<strong>Modeling Outputs:</strong> Optimal dispatch schedule, annual revenue breakdown, cycling degradation, IRR sensitivity analysis.
+</div>
+</div>
+<div class="chart-footer">
+<span class="chart-source">Model: PyPSA optimization framework</span>
+<span class="chart-code-link">Script: scripts/section5/pypsa_model/run_scenarios.py</span>
+</div>
+</div>
+
+### Key Modeling Inputs
+
+| Parameter | Standalone Scenario | Co-located Scenario |
+|-----------|--------------------|--------------------|
+| **Battery capacity** | ___ MW / ___ MWh | ___ MW / ___ MWh |
+| **Solar capacity** | N/A | ___ MW |
+| **MLF** | ___ | ___ |
+| **Price timeseries** | Historical 2024-25 | Historical 2024-25 |
+| **FCAS availability** | Yes | Limited |
+| **Grid charging** | Full | Configuration-dependent |
+
+### Sensitivity Analysis
+
+Test key assumptions to understand risk:
+
+1. **Price volatility**: +/- 20% from base case
+2. **MLF changes**: What if MLF improves/deteriorates?
+3. **Curtailment risk**: 0%, 5%, 10% scenarios
+4. **Capex variance**: +/- 15% from estimate
+5. **Green premium**: $0, $5, $10, $15/MWh scenarios
+
+---
+
+## Decision Summary
+
+### Framework Checklist
+
+<div class="key-takeaways">
+<div class="key-takeaways-title">Before Making Your Decision</div>
+<ul class="key-takeaways-list">
+<li>☐ Classified scenario (greenfield vs. retrofit)</li>
+<li>☐ Established return benchmark</li>
+<li>☐ Quantified MLF impact at co-located site</li>
+<li>☐ Calculated infrastructure synergies</li>
+<li>☐ Assessed green premium and CIS eligibility</li>
+<li>☐ Completed decision matrix comparison</li>
+<li>☐ Validated with dispatch modeling</li>
+<li>☐ Tested key sensitivities</li>
+</ul>
+</div>
+
+### Final Decision Framework
+
+<div class="analysis-box analysis-box--battery">
+<div class="analysis-box-header">
+<div class="analysis-box-icon">✅</div>
+<div>
+<h4 class="analysis-box-title">Decision Summary</h4>
+<p class="analysis-box-subtitle">Synthesizing the analysis</p>
+</div>
+</div>
+<div class="analysis-box-content">
+
+**If greenfield and location-flexible:**
+- Default to standalone unless co-location provides clear IRR advantage
+- Location value typically exceeds infrastructure synergies
+
+**If greenfield but CIS-dependent:**
+- Co-location likely preferred for eligibility
+- Accept some location penalty for financing benefit
+
+**If retrofit with expiring PPA:**
+- Co-location typically preferred
+- Battery protects solar asset value
+- Lower battery IRR acceptable if combined returns meet hurdle
+
+**If retrofit but solar has strong MLF:**
+- Evaluate standalone at same site (AC-coupled, separate DUID)
+- May capture both location value and synergies
+
+</div>
+</div>
+
+---
+
+<div class="callout callout-important">
+<div class="callout-title">
+<span class="callout-icon">🚨</span>
+Remember
+</div>
+<p>This framework provides structure, but every project is unique. The quantitative analysis should inform—not replace—commercial judgment. Engage technical and financial advisors to validate assumptions before committing capital.</p>
+</div>
+
+---
+
+<div class="key-takeaways">
+<div class="key-takeaways-title">Key Takeaways</div>
+<ul class="key-takeaways-list">
+<li>First classify your scenario: greenfield vs. retrofit changes the decision framework</li>
+<li>Establish a clear return benchmark before evaluating options</li>
+<li>Quantify location value (MLF impact) and infrastructure synergies separately</li>
+<li>Consider contracting requirements: green premium, CIS eligibility, PPA structure</li>
+<li>Use dispatch modeling to validate assumptions and test sensitivities</li>
+<li>For greenfield: standalone typically wins unless specific co-location benefits apply</li>
+<li>For retrofit: co-location typically wins as it protects existing solar value</li>
+<li>Every project is unique—use this framework as a guide, not a prescription</li>
+</ul>
+</div>

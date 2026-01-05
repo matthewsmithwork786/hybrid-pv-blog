@@ -30,17 +30,21 @@ This report provides infrastructure investors with a comprehensive framework for
 
 ## Report Structure
 
-### Part 1: The Investment Problem
+### Part I: The Investment Context
 
-Why the historical investment model for pure solar PV is broken, and why capital must pivot to storage-integrated solutions.
+**Section 1: The Investment Problem** — Why the historical investment model for pure solar PV is broken, and why capital must pivot to storage-integrated solutions.
 
-### Part 2: Trade-off Analysis
+**Section 2: The BESS Integration Thesis** — How battery storage restores value to solar assets, and why the market has bifurcated into two distinct deployment models.
 
-A direct comparison of standalone vs. co-located deployment models, including strategic advantages and revenue structure analysis.
+### Part II: Analysis
 
-### Part 3: Technical Constraints
+**Section 3: Trade-off Analysis** — A direct comparison of standalone vs. co-located deployment models, including strategic advantages and revenue structure analysis.
 
-The "hidden killers" of returns—revenue concentration, Marginal Loss Factors, and grid constraints that can make or break battery investments.
+**Section 4: Technical Constraints** — The "hidden killers" of returns—revenue concentration, Marginal Loss Factors, and grid constraints that can make or break battery investments.
+
+### Part III: Framework
+
+**Section 5: Strategic Framework** — Step-by-step decision framework for evaluating standalone vs. co-located BESS, with quantitative assessment templates and modeling guidance.
 
 ---
 
@@ -94,14 +98,15 @@ Marginal Loss Factors have material impact on returns. High MLF locations (0.98+
 <div class="callout callout-note">
 <div class="callout-title">
 <span class="callout-icon">ℹ️</span>
-Work in Progress
+Report Status
 </div>
-<p>This report is under active development. Interactive charts and analysis are being added progressively.</p>
+<p>All five sections are now complete. Interactive charts are being added progressively.</p>
 <ul>
-<li>✅ Section 1: Investment Problem</li>
+<li>✅ Section 1: The Investment Problem</li>
+<li>✅ Section 2: The BESS Integration Thesis</li>
 <li>✅ Section 3: Trade-off Analysis</li>
 <li>✅ Section 4: Technical Constraints (with interactive charts)</li>
-<li>🚧 Additional sections: In development</li>
+<li>✅ Section 5: Strategic Framework</li>
 </ul>
 </div>
 

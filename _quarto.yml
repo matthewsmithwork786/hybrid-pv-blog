@@ -31,11 +31,17 @@ book:
   # Chapters
   chapters:
     - index.qmd
-    - part: "Analysis"
+    - part: "The Investment Context"
       chapters:
         - sections/01_investment_problem.qmd
+        - sections/02_bess_integration.qmd
+    - part: "Analysis"
+      chapters:
         - sections/03_tradeoff_analysis.qmd
         - sections/04_technical_constraints.qmd
+    - part: "Framework"
+      chapters:
+        - sections/05_strategic_framework.qmd
 
   # Footer
   page-footer:
