@@ -15,13 +15,14 @@ This project is a Quarto-based research report analyzing battery energy storage 
 
 | Component | Status | Notes |
 |-----------|--------|-------|
-| **Content (Sections 1-5)** | Complete | All five narrative sections written |
-| **Chart Scripts** | Mostly Complete | 16 Python scripts exist |
-| **Chart Outputs (HTML)** | Minimal | Only 1 HTML chart generated |
-| **PyPSA Model** | Infrastructure Ready | Code exists, needs testing/outputs |
+| **Content (Sections 1-5)** | Needs Polish | Narrative exists but reads too AI-like, needs more depth |
+| **Chart Scripts** | Complete | Scripts exist for all required charts |
+| **Chart Outputs (HTML)** | Not Generated | Scripts need to be run locally with real NEMOSIS data |
 | **Quarto Rendering** | Functional | Using iframe embedding pattern |
 
-**Primary Gap:** Scripts exist but chart outputs have not been generated. The report structure is complete but visualizations need to be rendered.
+**Primary Gaps:**
+1. **Content quality** - Section narratives need editing to sound more natural and add substantive detail
+2. **Chart generation** - Scripts must be run locally to generate HTML outputs using real NEM data
 
 ---
 
@@ -145,34 +146,34 @@ hybrid-pv-blog/
 | Script | Output | Status |
 |--------|--------|--------|
 | `s5_decision_tree.py` | `decision_tree.html` | Script exists, output not generated |
-| `pypsa_model/run_scenarios.py` | `scenario_comparison.html` | Full PyPSA model infrastructure exists |
-
-**PyPSA Model Components:**
-- `pypsa_model/__init__.py` - Package init
-- `pypsa_model/network.py` - Network setup
-- `pypsa_model/scenarios.py` - Scenario definitions (standalone, AC-coupled, DC-coupled)
-- `pypsa_model/timeseries.py` - Time series data loading
-- `pypsa_model/financials.py` - IRR, NPV calculations
-- `pypsa_model/run_scenarios.py` - Main execution script
 
 **Chart Requirements:**
 1. **Decision Tree:** Interactive flowchart for standalone vs co-located decision
-2. **Scenario Comparison:** Bar chart comparing IRR across scenarios
-3. **Dispatch Profile:** Sample week showing charging/discharging patterns (optional)
+
+**Note:** PyPSA model infrastructure exists in `scripts/section5/pypsa_model/` but is **out of scope** for the current phase. Focus on the decision tree and narrative content first.
 
 ---
 
 ## Priority Task List
 
-### Priority 1: Generate Core Chart Outputs
+### Priority 1: Improve Content Quality (Can be done remotely)
 
-These scripts should be run to generate the HTML chart outputs:
+The section narratives currently read too AI-like and lack depth. Content editing needed:
+- Make writing more natural and less formulaic
+- Add substantive detail and industry insight
+- Improve flow between sections
+- Ensure professional but accessible tone
+
+**Sections needing attention:**
+- All five sections could benefit from polish
+- Add more specific examples and real-world context
+- Strengthen the analytical narrative
+
+### Priority 2: Generate Chart Outputs (Requires local environment)
+
+Scripts must be run locally with real NEMOSIS data:
 
 ```bash
-# Section 4 (documented as previously working)
-python scripts/section4/s4_revenue_skew.py
-python scripts/section4/s4_mlf_map_nsw.py
-
 # Section 1
 python scripts/section1/s1_solar_price_curtailment.py
 
@@ -180,34 +181,24 @@ python scripts/section1/s1_solar_price_curtailment.py
 python scripts/section3/s3_bess_capacity_growth.py
 python scripts/section3/s3_bess_map_colocation.py
 python scripts/section3/s3_battery_revenue_buckets.py
-```
 
-### Priority 2: Test and Fix Any Broken Scripts
+# Section 4
+python scripts/section4/s4_revenue_skew.py
+python scripts/section4/s4_mlf_map_nsw.py
+python scripts/section4/s4_mlf_impact_revenue.py
 
-If scripts fail, check:
-1. **Import errors:** Install missing packages (`pip install <package>`)
-2. **Path errors:** Update `data_paths.py` for current environment
-3. **Data errors:** Scripts should fall back to synthetic data if real data unavailable
-
-### Priority 3: Run PyPSA Model
-
-```bash
-# Test individual modules first
-python scripts/section5/pypsa_model/scenarios.py
-python scripts/section5/pypsa_model/timeseries.py
-python scripts/section5/pypsa_model/financials.py
-
-# Run full scenario comparison
-python scripts/section5/pypsa_model/run_scenarios.py
-```
-
-### Priority 4: Generate Decision Tree
-
-```bash
+# Section 5
 python scripts/section5/s5_decision_tree.py
 ```
 
-### Priority 5: Render Quarto Book
+### Priority 3: Debug Script Issues (If needed)
+
+If scripts fail:
+1. **Import errors:** Install missing packages (`pip install <package>`)
+2. **Path errors:** Update `data_paths.py` for current environment
+3. **Data errors:** Ensure NEMOSIS data cache is properly configured
+
+### Priority 4: Render Quarto Book
 
 ```bash
 quarto render
@@ -257,25 +248,25 @@ Charts are embedded in QMD files using iframes:
 
 ## Data Strategy
 
-### Current Approach
-
-Scripts use **synthetic/example data** when real NEMOSIS data is unavailable. This allows development without the external data cache.
-
 ### Data Sources
 
-1. **NEMOSIS:** Historical NEM dispatch and pricing (requires external cache)
+All analysis uses **real NEM data** - no synthetic data:
+
+1. **NEMOSIS:** Historical NEM dispatch and pricing data
+   - Cached locally at `C:\Users\matts\Documents\Aus research\Nemosis_data`
+   - See `skills/NEMOSIS_skill.md` for usage patterns
+
 2. **OpenElectricity API:** Generator metadata, locations
-3. **Synthetic:** Generated data matching expected patterns
+   - Public API for facility information
+
+3. **AEMO Excel Files:** Generation information spreadsheets
+   - `NEM Generation Information Oct 2025.xlsx` for capacity data
 
 ### Path Configuration
 
-Update `scripts/utils/data_paths.py` for your environment:
-
-```python
-# Key path constants
-OUTPUTS_DIR = Path(__file__).parent.parent.parent / "data" / "outputs"
-NEMOSIS_DATA_ROOT = Path(os.environ.get("NEMOSIS_DATA_PATH", "/path/to/nemosis"))
-```
+Paths configured in `scripts/utils/data_paths.py`:
+- Windows paths are set for the development environment
+- Cross-platform detection handles Linux/Mac if needed
 
 ---
 
@@ -283,60 +274,64 @@ NEMOSIS_DATA_ROOT = Path(os.environ.get("NEMOSIS_DATA_PATH", "/path/to/nemosis")
 
 ### Issue 1: Quarto Python Execution Disabled
 
-**Cause:** Jupyter kernel compatibility issues with system Python
+**Cause:** Jupyter kernel compatibility issues with system Python 3.14
 **Workaround:** Pre-render all charts as HTML, embed via iframe
+**Status:** This is the intended approach - not a bug
 
-### Issue 2: Windows Paths in Scripts
+### Issue 2: NEMOSIS Data External to Repo
 
-**Cause:** Original development on Windows, some paths hardcoded
-**Workaround:** Scripts should use `data_paths.py` constants; update as needed
-
-### Issue 3: NEMOSIS Data Not Available
-
-**Cause:** Large data cache is external to repository
-**Workaround:** Scripts fall back to synthetic data generation
-
-### Issue 4: MLF Impact Script Errors
-
-**Status:** Reported in previous plans, may need debugging
-**Action:** Test script, fix if errors occur, or simplify to synthetic data
+**Cause:** Large data cache (GB+) is stored outside the git repository
+**Location:** `C:\Users\matts\Documents\Aus research\Nemosis_data`
+**Action:** Ensure this path is accessible when running scripts locally
 
 ---
 
 ## Success Criteria
 
-### Minimum Viable Product
+### Content Quality
+
+- [ ] Section narratives read naturally (not AI-like)
+- [ ] Sufficient depth and industry insight
+- [ ] Professional but accessible tone
+- [ ] Clear logical flow between sections
+
+### Technical Completeness
 
 - [ ] All section content renders in Quarto
-- [ ] At least one chart per section (4 charts minimum)
-- [ ] Charts are interactive (hover, zoom)
+- [ ] Charts generated for each section using real NEM data
+- [ ] Charts are interactive (hover, zoom, pan)
 - [ ] Decision tree provides actionable framework
-
-### Full Implementation
-
-- [ ] All 10+ planned charts generated
-- [ ] PyPSA scenarios run successfully
-- [ ] IRR comparison across scenarios displayed
-- [ ] Report provides quantitative investment guidance
+- [ ] Report provides clear investment guidance
 
 ---
 
 ## Agent Instructions
 
-When working on this project:
+### For Cloud/Remote Agents (no Python execution)
 
+Focus on **content improvement**:
+1. Edit QMD section files to improve narrative quality
+2. Make writing less AI-like, more natural and substantive
+3. Add industry context and specific examples
+4. Review and fix any documentation issues
+
+### For Local Agents (with Python environment)
+
+Focus on **chart generation**:
 1. **Read CLAUDE.md first** - Critical development context
-2. **Check script status** - Many scripts exist but outputs don't
-3. **Use style_config.py** - Maintain consistent styling
-4. **Test incrementally** - Run one script, check output, then proceed
-5. **Use synthetic data** - Don't block on missing real data
-6. **Commit frequently** - Preserve working state
+2. **Activate environment:** `mamba activate hybridpv`
+3. **Run scripts** to generate chart outputs
+4. **Use real data** - NEMOSIS cache must be accessible
+5. **Test in browser** - Verify charts are interactive
 
-### Testing a Script
+### Testing a Script Locally
 
 ```bash
 # Navigate to project root
 cd /path/to/hybrid-pv-blog
+
+# Activate environment
+mamba activate hybridpv
 
 # Run script
 python scripts/sectionX/script_name.py
@@ -345,16 +340,15 @@ python scripts/sectionX/script_name.py
 ls data/outputs/sectionX/
 
 # View in browser
-# Open the generated HTML file
+start data/outputs/sectionX/chart.html  # Windows
 ```
 
 ### If a Script Fails
 
-1. Read the error message carefully
-2. Check for missing imports (`pip install <package>`)
-3. Check for path issues (update `data_paths.py`)
-4. Check for data issues (ensure fallback to synthetic data exists)
-5. Simplify the script if needed to generate basic output
+1. Check error message carefully
+2. Verify NEMOSIS data path is correct
+3. Install missing packages (`pip install <package>`)
+4. Check `data_paths.py` configuration
 
 ---
 
