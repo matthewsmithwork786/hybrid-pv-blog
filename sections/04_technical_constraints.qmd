@@ -1,5 +1,15 @@
 # Technical Constraints & Location Value {#sec-technical-constraints}
 
+<div class="section-summary">
+<div class="section-summary-title">In This Section</div>
+<ul class="section-summary-list">
+<li>Revenue concentration analysis: why a small fraction of hours drives most returns</li>
+<li>Marginal Loss Factors (MLFs): the "hidden tax" on co-located batteries</li>
+<li>Geographic patterns in NSW network losses</li>
+<li>Network constraints and curtailment risk implications</li>
+</ul>
+</div>
+
 ## The Revenue Concentration Problem
 
 Battery revenue in the NEM is not evenly distributed across time. A small fraction of hours drive the majority of returns, making location optimization critical for economic viability.
@@ -8,9 +18,36 @@ Battery revenue in the NEM is not evenly distributed across time. A small fracti
 
 The following analysis examines NSW batteries operational throughout 2025, plotting cumulative revenue against cumulative time (hours sorted by revenue descending):
 
-<iframe src="../data/outputs/section4/revenue_skew.html" 
-        width="100%" height="500" frameborder="0">
+<div class="chart-container">
+<div class="chart-header">
+<h4 class="chart-title">
+<span class="chart-title-icon">📊</span>
+Battery Revenue Concentration: NSW 2025
+</h4>
+<span class="chart-status chart-status--complete">Complete</span>
+</div>
+<div class="chart-iframe-wrapper">
+<iframe src="../data/outputs/section4/revenue_skew.html"
+        class="chart-iframe"
+        title="Cumulative revenue distribution showing 50% of revenue from 10% of hours">
 </iframe>
+</div>
+<div class="chart-footer">
+<span class="chart-source">Data: NSW battery dispatch analysis (2025)</span>
+<a href="https://github.com/matthewsmithwork786/hybrid-pv-blog/blob/main/scripts/section4/s4_revenue_skew.py"
+   class="chart-code-link" target="_blank">
+View Analysis Code →
+</a>
+</div>
+</div>
+
+<div class="key-finding key-finding--battery">
+<div class="key-finding-stat">50% in 10%</div>
+<div class="key-finding-label">Half of annual revenue generated in just one-tenth of operating hours</div>
+<p class="key-finding-description">
+Battery economics depend entirely on capturing extreme price events. Missing even a few of these critical hours—due to curtailment, poor MLF, or grid constraints—materially impacts annual returns.
+</p>
+</div>
 
 **Critical implications:**
 
@@ -18,11 +55,17 @@ The following analysis examines NSW batteries operational throughout 2025, plott
 2. **Volatility dependence**: Battery economics depend on price extremes, not average prices
 3. **Location sensitivity**: Missing key high-price events (due to curtailment, poor MLF, or grid constraints) materially impacts returns
 
-**Why this matters for co-location:**
-
-- **DC-coupled batteries** may miss high-price discharge events if solar is generating (constrained by inverter capacity)
-- **Poor MLF locations** compound revenue loss during critical high-price periods
-- **Transmission curtailment** disproportionately impacts returns by eliminating top revenue hours
+<div class="callout callout-warning">
+<div class="callout-title">
+<span class="callout-icon">⚠️</span>
+Why This Matters for Co-location
+</div>
+<ul>
+<li><strong>DC-coupled batteries</strong> may miss high-price discharge events if solar is generating (constrained by inverter capacity)</li>
+<li><strong>Poor MLF locations</strong> compound revenue loss during critical high-price periods</li>
+<li><strong>Transmission curtailment</strong> disproportionately impacts returns by eliminating top revenue hours</li>
+</ul>
+</div>
 
 The investment decision hinges on capturing these fat-tail events. Standalone batteries optimize for this by siting in high-MLF locations with minimal curtailment risk.
 
@@ -34,114 +77,101 @@ The investment decision hinges on capturing these fat-tail events. Standalone ba
 
 Marginal Loss Factors (MLFs) represent the energy lost when electricity passes through the transmission network. Generators are paid (or pay) based on MLF-adjusted prices:
 
-- **MLF > 1.0**: Generator receives premium (located near load centers, minimal losses)
-- **MLF = 1.0**: Neutral (hub pricing reference)
-- **MLF < 1.0**: Discount applied (end-of-line locations, high transmission losses)
+| MLF Value | Meaning | Typical Location |
+|-----------|---------|------------------|
+| **> 1.0** | Premium received | Near load centers (Sydney, Newcastle) |
+| **= 1.0** | Neutral (hub reference) | Regional reference nodes |
+| **< 1.0** | Discount applied | End-of-line, high transmission losses |
 
-**Example:** If wholesale price = $100/MWh and MLF = 0.90:
-- Generator receives: $100 × 0.90 = $90/MWh
+**Example calculation:** If wholesale price = $100/MWh and MLF = 0.90:
+
+- Generator receives: $100 × 0.90 = **$90/MWh**
 - 10% discount due to transmission losses
 
-For batteries arbitraging price spreads, MLF affects both discharge revenue and charging cost:
-- **Discharge**: Revenue discounted by MLF
-- **Charge**: Cost discounted by MLF (pay less to charge)
-
-Net impact depends on price spread and MLF differential between charge/discharge locations.
+<div class="callout callout-note">
+<div class="callout-title">
+<span class="callout-icon">ℹ️</span>
+MLF Impact on Battery Arbitrage
+</div>
+<p>For batteries arbitraging price spreads, MLF affects <strong>both</strong> discharge revenue and charging cost:</p>
+<ul>
+<li><strong>Discharge:</strong> Revenue discounted by MLF</li>
+<li><strong>Charge:</strong> Cost discounted by MLF (pay less to charge)</li>
+</ul>
+<p>Net impact depends on price spread and MLF differential between charge/discharge locations.</p>
+</div>
 
 ### MLF Geographic Distribution
 
 The following interactive map shows MLF values for generators across NSW, revealing the critical location patterns that impact battery revenue:
 
-<iframe src="../data/outputs/section4/mlf_map_nsw.html" 
-        width="100%" height="600" frameborder="0">
+<div class="chart-container">
+<div class="chart-header">
+<h4 class="chart-title">
+<span class="chart-title-icon">🗺️</span>
+NSW Generator MLF Distribution Map
+</h4>
+<span class="chart-status chart-status--complete">Complete</span>
+</div>
+<div class="chart-iframe-wrapper">
+<iframe src="../data/outputs/section4/mlf_map_nsw.html"
+        class="chart-iframe chart-iframe--tall"
+        title="Interactive map showing MLF values for 150+ generators across NSW">
 </iframe>
+</div>
+<div class="chart-footer">
+<span class="chart-source">Data: AEMO generator registration data (2025)</span>
+<a href="https://github.com/matthewsmithwork786/hybrid-pv-blog/blob/main/scripts/section4/s4_mlf_map_nsw.py"
+   class="chart-code-link" target="_blank">
+View Analysis Code →
+</a>
+</div>
+</div>
 
-*Note: Interactive map shows MLF values for 150+ generators across NSW. Use layers to filter by technology type. Dark green = high MLF (>1.0), red = low MLF (<0.85).*
+*Use the layer controls to filter by technology type. Dark green = high MLF (>1.0), red = low MLF (<0.85).*
 
-**Geographic patterns:**
+**Geographic patterns revealed:**
 
 1. **High MLF zones (green, >0.95)**: Near Sydney, Newcastle, Wollongong (load centers)
-2. **Medium MLF zones (yellow, 0.90-0.95)**: Regional centers with adequate transmission  
+2. **Medium MLF zones (yellow, 0.90-0.95)**: Regional centers with adequate transmission
 3. **Low MLF zones (red, <0.90)**: Western NSW and end-of-line locations (typical solar farm areas)
 
-**Key findings:**
-
-1. **Location-driven revenue**: MLF differential can change annual revenue by 15-25%
-2. **Solar farm penalty**: Solar locations typically have poor MLFs (0.80-0.90)
-3. **Standalone advantage**: Batteries can choose high-MLF locations (0.95-1.05) near cities
-
-**Implications for co-location:**
-
-- **Solar farm locations** typically have poor MLFs (0.80-0.90) due to end-of-line siting
-- **Standalone batteries** can target high-MLF locations (0.95-1.05) near load centers
-- **MLF penalty** on co-located batteries reduces arbitrage revenue during critical high-price events
-
-**The revenue compounding effect:**
-
-During a $2000/MWh price event:
-- **Standalone battery (MLF 0.98)**: Earns $1960/MWh discharged
-- **Co-located battery (MLF 0.88)**: Earns $1760/MWh discharged
-- **Difference**: $200/MWh × 100MW × 2hr = $40,000 per event
-
-For batteries dependent on extreme price events, MLF location is a make-or-break factor.
+<div class="key-finding key-finding--pv">
+<div class="key-finding-stat">15-25%</div>
+<div class="key-finding-label">Revenue differential between poor (0.85) and excellent (0.98) MLF locations</div>
+<p class="key-finding-description">
+Solar farms typically have poor MLFs (0.80-0.90) due to end-of-line siting. Standalone batteries can access high-MLF locations (0.95-1.05) near load centers, capturing significantly more revenue from the same dispatch strategy.
+</p>
+</div>
 
 ---
 
-## The MLF Geography: Mapping Location Value
+## The Revenue Compounding Effect
 
-### Spatial Distribution of Loss Factors
+During high-price events, MLF differences compound dramatically:
 
-MLF values vary dramatically across the NSW network, reflecting the distance from load centers and transmission network constraints:
+<div class="analysis-box analysis-box--battery">
+<div class="analysis-box-header">
+<div class="analysis-box-icon">💰</div>
+<div>
+<h4 class="analysis-box-title">MLF Impact During $2000/MWh Price Event</h4>
+<p class="analysis-box-subtitle">100MW battery, 2-hour discharge</p>
+</div>
+</div>
+<div class="analysis-box-content">
 
-```{python}
-#| echo: false
-#| warning: false
+| Location Type | MLF | Revenue per MWh | Event Revenue |
+|--------------|-----|-----------------|---------------|
+| **Standalone** (near Sydney) | 0.98 | $1,960 | **$392,000** |
+| **Co-located** (Western NSW) | 0.88 | $1,760 | **$352,000** |
+| **Difference** | — | $200/MWh | **$40,000 per event** |
 
-from IPython.display import IFrame
-map_path = Path.cwd() / "data" / "outputs" / "section4" / "mlf_map_nsw.html"
-IFrame(str(map_path), width=800, height=600)
-```
+Over a year with 50 such events, the MLF differential alone accounts for **$2M+ in lost revenue** for the co-located battery.
 
-**Geographic patterns:**
+</div>
+</div>
 
-1. **High MLF zones (green, >0.95)**:
-   - Near Sydney, Newcastle, Wollongong (load centers)
-   - Well-connected transmission corridors
-   - Minimal line losses
-
-2. **Medium MLF zones (yellow, 0.90-0.95)**:
-   - Regional centers with adequate transmission
-   - Some renewable development areas
-
-3. **Low MLF zones (red, <0.90)**:
-   - Western NSW and end-of-line locations
-   - Areas with high solar/wind development (resource-rich, transmission-poor)
-   - High congestion and curtailment risk
-
-**The co-location dilemma:**
-
-Solar farms require large land areas and high solar resource, which are typically found in regional areas with **poor MLFs**. Batteries co-located with solar inherit this penalty.
-
-Standalone batteries can be sited near load centers with **excellent MLFs**, maximizing arbitrage revenue.
-
-### Case Study: Solar vs Battery MLF Differential
-
-**Typical solar farm location:** Western NSW
-- Solar resource: Excellent
-- MLF: 0.85-0.90
-- Curtailment risk: High (transmission constraints)
-
-**Typical standalone battery location:** Central Coast NSW
-- Transmission: Excellent (near Sydney load center)
-- MLF: 0.98-1.02
-- Curtailment risk: Low
-- FCAS opportunities: Abundant
-
-**Revenue impact:**
-
-A 100MW/200MWh battery earning $10M/year at MLF 0.88 would earn $11.5-12M/year at MLF 0.98 (15-20% uplift) — **without changing dispatch strategy or market conditions**.
-
-This location-driven revenue differential is larger than the capex savings from co-location.
+For batteries dependent on extreme price events, MLF location is a make-or-break factor.
 
 ---
 
@@ -157,9 +187,13 @@ Even with favorable MLF, batteries face curtailment risk when transmission netwo
 2. **Network limits**: Transmission lines at capacity, exports restricted
 3. **Local network issues**: Voltage or thermal limits in distribution networks
 
-**Impact on revenue concentration:**
-
-Since 50% of revenue comes from ~10% of hours (typically high-price periods with tight system conditions), curtailment during these events has an outsized impact on annual returns.
+<div class="callout callout-important">
+<div class="callout-title">
+<span class="callout-icon">🚨</span>
+Impact on Revenue Concentration
+</div>
+<p>Since <strong>50% of revenue comes from ~10% of hours</strong> (typically high-price periods with tight system conditions), curtailment during these events has an <strong>outsized impact</strong> on annual returns.</p>
+</div>
 
 **Co-location vulnerability:**
 
@@ -187,19 +221,45 @@ For battery investors, location optimization follows a clear hierarchy:
 4. **FCAS market access** (ancillary services revenue)
 5. **Transmission capacity** (ability to export full capacity)
 
-**Co-location can make sense when:**
+### When Co-location Makes Sense
+
+<div class="analysis-box analysis-box--hybrid">
+<div class="analysis-box-header">
+<div class="analysis-box-icon">⚡</div>
+<div>
+<h4 class="analysis-box-title">Co-location Can Be Optimal When:</h4>
+<p class="analysis-box-subtitle">Conditions favoring hybrid deployment</p>
+</div>
+</div>
+<div class="analysis-box-content">
 
 - **Grid upgrades planned**: Transmission improvements will improve MLF/reduce curtailment
 - **Green premium sufficient**: ESG buyers pay enough to offset MLF penalty
 - **Retrofit scenario**: Adding battery to existing solar (location constraint already exists)
 - **CIS eligibility**: Government contracts compensate for location disadvantage
 
-**Standalone preferred when:**
+</div>
+</div>
+
+### When Standalone Is Preferred
+
+<div class="analysis-box analysis-box--battery">
+<div class="analysis-box-header">
+<div class="analysis-box-icon">🔋</div>
+<div>
+<h4 class="analysis-box-title">Standalone Is Preferred When:</h4>
+<p class="analysis-box-subtitle">Conditions favoring independent deployment</p>
+</div>
+</div>
+<div class="analysis-box-content">
 
 - **Greenfield development**: Free to choose optimal location
 - **Merchant exposure**: Targeting pure arbitrage without PPA protection
 - **High hurdle rates**: Need maximum revenue per MW
 - **FCAS focus**: Ancillary services revenue is significant
+
+</div>
+</div>
 
 ---
 
@@ -218,24 +278,28 @@ However, 2hr batteries (the current market standard) are **highly MLF-sensitive*
 ### Degradation and Revenue Quality
 
 High-MLF locations often correlate with:
+
 - **More cycling**: Volatile prices = frequent charge/discharge = faster degradation
 - **Higher temperatures**: Load centers = hotter climate = reduced battery life
 
 Investors must balance:
-- **Higher revenue** (good MLF)
-- **Higher opex** (increased maintenance, shorter replacement cycle)
+
+- **Higher revenue** (good MLF) vs **Higher opex** (increased maintenance, shorter replacement cycle)
 
 Standalone batteries in high-MLF locations may face 15-20% higher degradation rates than co-located batteries in milder climates — partially offsetting the revenue advantage.
 
 ---
 
-**Key Takeaways:**
-
-- Battery revenue is highly concentrated: 50% of revenue from ~10% of hours
-- MLF materially impacts returns: 15-25% revenue difference between poor (0.85) and excellent (0.98) locations
-- Solar farms typically have poor MLFs (0.80-0.90) due to end-of-line siting
-- Standalone batteries can access high-MLF locations (0.95-1.05) near load centers
-- Curtailment risk disproportionately impacts returns by eliminating top revenue hours
-- Location-driven revenue differential often exceeds capex savings from co-location
-- Duration matters: 2hr batteries more MLF-sensitive than 4hr+ systems
-- Operational factors (degradation, temperature) partially offset high-MLF advantages
+<div class="key-takeaways">
+<div class="key-takeaways-title">Key Takeaways</div>
+<ul class="key-takeaways-list">
+<li>Battery revenue is highly concentrated: 50% of revenue from ~10% of hours</li>
+<li>MLF materially impacts returns: 15-25% revenue difference between poor (0.85) and excellent (0.98) locations</li>
+<li>Solar farms typically have poor MLFs (0.80-0.90) due to end-of-line siting</li>
+<li>Standalone batteries can access high-MLF locations (0.95-1.05) near load centers</li>
+<li>Curtailment risk disproportionately impacts returns by eliminating top revenue hours</li>
+<li>Location-driven revenue differential often exceeds capex savings from co-location</li>
+<li>Duration matters: 2hr batteries more MLF-sensitive than 4hr+ systems</li>
+<li>Operational factors (degradation, temperature) partially offset high-MLF advantages</li>
+</ul>
+</div>

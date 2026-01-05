@@ -1,0 +1,186 @@
+<!--
+  Chart Container Macros
+  Use these patterns for consistent chart embedding throughout the report.
+  Copy and customize as needed.
+-->
+
+<!--
+  PATTERN 1: Complete Chart (with iframe)
+  Use when chart file exists and is ready
+-->
+<!--
+<div class="chart-container">
+  <div class="chart-header">
+    <h4 class="chart-title">
+      <span class="chart-title-icon">📊</span>
+      Chart Title Here
+    </h4>
+    <span class="chart-status chart-status--complete">Complete</span>
+  </div>
+  <div class="chart-iframe-wrapper">
+    <iframe src="../data/outputs/sectionX/chart_name.html"
+            class="chart-iframe"
+            title="Chart description for accessibility">
+    </iframe>
+  </div>
+  <div class="chart-footer">
+    <span class="chart-source">Data: AEMO via NEMOSIS (2018-2025)</span>
+    <a href="https://github.com/user/repo/blob/main/scripts/sectionX/script.py"
+       class="chart-code-link" target="_blank">
+      View Analysis Code →
+    </a>
+  </div>
+</div>
+-->
+
+<!--
+  PATTERN 2: Pending Chart (placeholder with key insight)
+  Use when chart is not yet generated but content is planned
+-->
+<!--
+<div class="chart-container">
+  <div class="chart-header">
+    <h4 class="chart-title">
+      <span class="chart-title-icon">📈</span>
+      Chart Title Here
+    </h4>
+    <span class="chart-status chart-status--pending">In Progress</span>
+  </div>
+  <div class="chart-placeholder chart-placeholder--battery">
+    <div class="chart-placeholder-icon">📊</div>
+    <div class="chart-placeholder-title">Chart: Title of Analysis</div>
+    <p class="chart-placeholder-description">
+      Brief description of what this chart will show when complete.
+    </p>
+    <div class="chart-placeholder-insight">
+      <strong>Key Insight Preview:</strong> The main finding this chart will demonstrate,
+      e.g., "50% of battery revenue is generated in just 10% of operating hours."
+    </div>
+  </div>
+  <div class="chart-footer">
+    <span class="chart-source">Data: Source description</span>
+    <span class="chart-code-link">Script: scripts/sectionX/script.py</span>
+  </div>
+</div>
+-->
+
+<!--
+  PATTERN 3: Key Finding Box
+  Use to highlight important statistics or insights
+-->
+<!--
+<div class="key-finding key-finding--battery">
+  <div class="key-finding-stat">50%</div>
+  <div class="key-finding-label">of annual revenue generated in just 10% of hours</div>
+  <p class="key-finding-description">
+    Battery returns are extremely concentrated in high-price events. This makes
+    location optimization and avoiding curtailment critical for economic viability.
+  </p>
+</div>
+-->
+
+<!--
+  PATTERN 4: Section Summary Box
+  Use at the start of each section to preview key points
+-->
+<!--
+<div class="section-summary">
+  <div class="section-summary-title">In This Section</div>
+  <ul class="section-summary-list">
+    <li>First key topic covered in this section</li>
+    <li>Second key topic with important details</li>
+    <li>Third topic: quantitative findings</li>
+    <li>Implications for investment decisions</li>
+  </ul>
+</div>
+-->
+
+<!--
+  PATTERN 5: Key Takeaways Box
+  Use at the end of each section to summarize learnings
+-->
+<!--
+<div class="key-takeaways">
+  <div class="key-takeaways-title">Key Takeaways</div>
+  <ul class="key-takeaways-list">
+    <li>First important conclusion from this section</li>
+    <li>Second conclusion with specific data point</li>
+    <li>Third conclusion about implications</li>
+    <li>Final recommendation or insight</li>
+  </ul>
+</div>
+-->
+
+<!--
+  PATTERN 6: Analysis Box with Technology Theme
+  Use for grouping related analysis with visual hierarchy
+-->
+<!--
+<div class="analysis-box analysis-box--pv">
+  <div class="analysis-box-header">
+    <div class="analysis-box-icon">☀️</div>
+    <div>
+      <h4 class="analysis-box-title">Solar Price Analysis</h4>
+      <p class="analysis-box-subtitle">NSW wholesale prices 2018-2025</p>
+    </div>
+  </div>
+  <div class="analysis-box-content">
+    Content goes here...
+  </div>
+</div>
+-->
+
+<!--
+  PATTERN 7: Callout Boxes (Note, Warning, Important, Tip)
+-->
+<!--
+<div class="callout callout-note">
+  <div class="callout-title">
+    <span class="callout-icon">ℹ️</span>
+    Note
+  </div>
+  <p>Informational content that provides additional context.</p>
+</div>
+
+<div class="callout callout-warning">
+  <div class="callout-title">
+    <span class="callout-icon">⚠️</span>
+    Warning
+  </div>
+  <p>Important caveat or caution for the reader.</p>
+</div>
+
+<div class="callout callout-important">
+  <div class="callout-title">
+    <span class="callout-icon">🚨</span>
+    Important
+  </div>
+  <p>Critical information that affects the analysis.</p>
+</div>
+
+<div class="callout callout-tip">
+  <div class="callout-title">
+    <span class="callout-icon">💡</span>
+    Tip
+  </div>
+  <p>Helpful suggestion or best practice.</p>
+</div>
+-->
+
+<!--
+  ICONS REFERENCE:
+  📊 Charts/Data
+  📈 Growth/Trends
+  🗺️ Maps
+  ⚡ Energy/Power
+  💰 Revenue/Money
+  🔋 Battery
+  ☀️ Solar
+  🌬️ Wind
+  📍 Location
+  ⚙️ Technical
+  📋 Framework/Process
+  ✓ Complete
+  ⏳ Pending
+  ❌ Error
+-->
