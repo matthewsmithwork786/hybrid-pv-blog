@@ -58,9 +58,9 @@ format:
       - cosmo
       - assets/styles/custom.css
 
-    # Typography
-    mainfont: "Lato"
-    monofont: "Source Code Pro"
+    # Typography - Pudding Style
+    mainfont: "DM Sans"
+    monofont: "Fira Code"
 
     # Layout
     toc: true

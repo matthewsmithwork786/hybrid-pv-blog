@@ -1,45 +1,47 @@
 """
 Style configuration for Beyond the Solar Curve report.
-Provides consistent Plotly themes, color palettes, and formatting.
+Pudding.cool Style - Bold, modern, playful design.
 """
 
 import plotly.io as pio
 import plotly.graph_objects as go
 
-# Color palette
+# Color palette - Pudding Style
 COLORS = {
-    'pv': '#FFD700',           # Yellow (solar PV)
-    'wind': '#2E7D32',         # Green (wind)
-    'battery': '#7B1FA2',      # Purple (battery standalone)
-    'battery_colocated': '#FF6F00',  # Dark orange (battery co-located)
-    'accent': '#00ACC1',       # Teal (accent color)
-    'text': '#2C3E50',         # Dark blue-grey (text)
-    'background': '#FFFFFF',   # White (background)
-    'grid': '#E5E5E5',         # Light grey (gridlines)
-    'negative': '#D32F2F',     # Red (negative values, curtailment)
-    'positive': '#388E3C',     # Dark green (positive values)
+    'pv': '#FFE066',           # Bright yellow (solar PV)
+    'wind': '#00D4AA',         # Teal (wind)
+    'battery': '#6C63FF',      # Purple (battery standalone)
+    'battery_colocated': '#FF6B9D',  # Hot pink (battery co-located)
+    'accent': '#00D4AA',       # Teal (accent color)
+    'primary': '#6C63FF',      # Vibrant purple (primary)
+    'secondary': '#FF6B9D',    # Hot pink
+    'text': '#1A1A2E',         # Dark blue-grey (text)
+    'background': '#FAFAFE',   # Cool off-white (background)
+    'grid': '#E0E0EC',         # Light purple-grey (gridlines)
+    'negative': '#FF5C5C',     # Coral red (negative values)
+    'positive': '#00D4AA',     # Teal (positive values)
 }
 
-# Lato font configuration
+# Space Grotesk / DM Sans font configuration
 FONT_CONFIG = dict(
-    family="Lato, sans-serif",
+    family="DM Sans, -apple-system, sans-serif",
     size=14,
     color=COLORS['text']
 )
 
 FONT_TITLE = dict(
-    family="Lato, sans-serif",
+    family="Space Grotesk, sans-serif",
     size=20,
     color=COLORS['text']
 )
 
 FONT_AXIS = dict(
-    family="Lato, sans-serif",
+    family="DM Sans, -apple-system, sans-serif",
     size=12,
     color=COLORS['text']
 )
 
-# Default Plotly template for NEM report
+# Default Plotly template - Pudding Style
 TEMPLATE = go.layout.Template(
     layout=go.Layout(
         font=FONT_CONFIG,
@@ -52,8 +54,8 @@ TEMPLATE = go.layout.Template(
             zerolinecolor=COLORS['grid'],
             zerolinewidth=1,
             showline=True,
-            linewidth=1,
-            linecolor=COLORS['grid'],
+            linewidth=2,
+            linecolor=COLORS['primary'],
             tickfont=FONT_AXIS,
             title=dict(font=FONT_AXIS)
         ),
@@ -62,19 +64,21 @@ TEMPLATE = go.layout.Template(
             gridcolor=COLORS['grid'],
             gridwidth=1,
             zeroline=True,
-            zerolinecolor=COLORS['grid'],
-            zerolinewidth=1,
+            zerolinecolor=COLORS['primary'],
+            zerolinewidth=2,
             showline=True,
-            linewidth=1,
-            linecolor=COLORS['grid'],
+            linewidth=2,
+            linecolor=COLORS['primary'],
             tickfont=FONT_AXIS,
             title=dict(font=FONT_AXIS)
         ),
         hovermode='x unified',
         hoverlabel=dict(
-            bgcolor='white',
-            font_size=12,
-            font_family='Lato, sans-serif'
+            bgcolor=COLORS['primary'],
+            font_size=13,
+            font_family='DM Sans, sans-serif',
+            font_color='white',
+            bordercolor=COLORS['secondary']
         ),
         legend=dict(
             orientation="h",
@@ -83,11 +87,19 @@ TEMPLATE = go.layout.Template(
             xanchor="right",
             x=1,
             font=FONT_CONFIG,
-            bgcolor='rgba(255, 255, 255, 0.8)',
+            bgcolor='rgba(250, 250, 254, 0.95)',
             bordercolor=COLORS['grid'],
             borderwidth=1
         ),
-        margin=dict(l=60, r=40, t=80, b=60)
+        margin=dict(l=60, r=40, t=80, b=60),
+        colorway=[
+            COLORS['primary'],    # Purple
+            COLORS['secondary'],  # Hot pink
+            COLORS['accent'],     # Teal
+            COLORS['pv'],         # Yellow
+            COLORS['negative'],   # Coral
+            '#FFB547',            # Orange
+        ]
     )
 )
 
@@ -220,20 +232,20 @@ def create_hover_template(metrics):
 STATUS_COLORS = {
     'operating': COLORS['positive'],
     'in service': COLORS['positive'],
-    'committed': COLORS['accent'],
-    'commissioning': '#FFA726',  # Orange
-    'in commissioning': '#FFA726',
-    'anticipated': '#9E9E9E'  # Grey
+    'committed': COLORS['primary'],
+    'commissioning': COLORS['secondary'],
+    'in commissioning': COLORS['secondary'],
+    'anticipated': '#7A7A8C'  # Muted grey
 }
 
 
-# MLF color scale (for maps)
+# MLF color scale (for maps) - Pudding palette
 MLF_COLORSCALE = [
-    [0.0, '#D32F2F'],    # Red (low MLF <0.85)
-    [0.25, '#FF9800'],   # Orange (0.85-0.90)
-    [0.5, '#FFD700'],    # Yellow (0.90-0.95)
-    [0.75, '#66BB6A'],   # Light green (0.95-1.00)
-    [1.0, '#2E7D32']     # Dark green (>1.00)
+    [0.0, '#FF5C5C'],    # Coral (low MLF <0.85)
+    [0.25, '#FF6B9D'],   # Pink (0.85-0.90)
+    [0.5, '#FFE066'],    # Yellow (0.90-0.95)
+    [0.75, '#33E0BD'],   # Light teal (0.95-1.00)
+    [1.0, '#00D4AA']     # Teal (>1.00)
 ]
 
 
@@ -251,12 +263,12 @@ def get_mlf_color(mlf_value):
     str : Hex color code
     """
     if mlf_value < 0.85:
-        return '#D32F2F'  # Red
+        return '#FF5C5C'  # Coral
     elif mlf_value < 0.90:
-        return '#FF9800'  # Orange
+        return '#FF6B9D'  # Pink
     elif mlf_value < 0.95:
-        return '#FFD700'  # Yellow
+        return '#FFE066'  # Yellow
     elif mlf_value < 1.00:
-        return '#66BB6A'  # Light green
+        return '#33E0BD'  # Light teal
     else:
-        return '#2E7D32'  # Dark green
+        return '#00D4AA'  # Teal
