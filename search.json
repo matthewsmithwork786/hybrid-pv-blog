@@ -1,0 +1,457 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Beyond the Solar Curve",
+    "section": "",
+    "text": "Beyond the Solar Curve\nA Capital Allocation Framework for Co-located vs. Standalone BESS in the NEM",
+    "crumbs": [
+      "Beyond the Solar Curve"
+    ]
+  },
+  {
+    "objectID": "index.html#the-core-question",
+    "href": "index.html#the-core-question",
+    "title": "Beyond the Solar Curve",
+    "section": "The Core Question",
+    "text": "The Core Question\n\n\n\n\n\n\n\n💡 Investment Decision\n\n\nDoes co-locating battery storage with solar PV create value, or does it destroy returns compared to standalone BESS deployment?\n\n\n\n\nThis report provides infrastructure investors with a comprehensive framework for evaluating battery energy storage system (BESS) investment decisions in Australia’s National Electricity Market (NEM).",
+    "crumbs": [
+      "Beyond the Solar Curve"
+    ]
+  },
+  {
+    "objectID": "index.html#report-structure",
+    "href": "index.html#report-structure",
+    "title": "Beyond the Solar Curve",
+    "section": "Report Structure",
+    "text": "Report Structure\n\nPart I: The Investment Context\nSection 1: The Investment Problem — Why the historical investment model for pure solar PV is broken, and why capital must pivot to storage-integrated solutions.\nSection 2: The BESS Integration Thesis — How battery storage restores value to solar assets, and why the market has bifurcated into two distinct deployment models.\n\n\nPart II: Analysis\nSection 3: Trade-off Analysis — A direct comparison of standalone vs. co-located deployment models, including strategic advantages and revenue structure analysis.\nSection 4: Technical Constraints — The “hidden killers” of returns—revenue concentration, Marginal Loss Factors, and grid constraints that can make or break battery investments.\n\n\nPart III: Framework\nSection 5: Strategic Framework — Step-by-step decision framework for evaluating standalone vs. co-located BESS, with quantitative assessment templates and modeling guidance.",
+    "crumbs": [
+      "Beyond the Solar Curve"
+    ]
+  },
+  {
+    "objectID": "index.html#key-findings-preview",
+    "href": "index.html#key-findings-preview",
+    "title": "Beyond the Solar Curve",
+    "section": "Key Findings Preview",
+    "text": "Key Findings Preview\n\n\n50% in 10%\n\n\nRevenue Concentration\n\n\nBattery returns are highly concentrated: 50% of annual revenue is generated in just 10% of operating hours. This makes location optimization and dispatch flexibility critical.\n\n\n\n\n15-25%\n\n\nMLF Revenue Impact\n\n\nMarginal Loss Factors have material impact on returns. High MLF locations (0.98+) can generate 15-25% more annual revenue than poor MLF locations (0.85) typical of solar farms.\n\n\n\nCo-location Trade-offs\n\n\n\n⚖️\n\n\n\nStandalone vs. Co-located Summary\n\n\nKey factors in the deployment decision\n\n\n\n\n\n\n\n\n\n\n\n\nFactor\nStandalone\nCo-located\n\n\n\n\nLocation\nOptimized for MLF/FCAS\nConstrained by solar site\n\n\nCapex\nFull grid connection cost\nShared infrastructure ($50-100/kW saving)\n\n\nGrid charging\nFull flexibility\nLimited (especially DC-coupled)\n\n\nGreen premium\nNone\nPotential ESG/PPA premium\n\n\nCIS eligibility\nMay not qualify\nExplicitly eligible\n\n\n\nDecision context matters: Retrofit vs. greenfield, contracting options, return targets",
+    "crumbs": [
+      "Beyond the Solar Curve"
+    ]
+  },
+  {
+    "objectID": "index.html#current-status",
+    "href": "index.html#current-status",
+    "title": "Beyond the Solar Curve",
+    "section": "Current Status",
+    "text": "Current Status\n\n\n\n\n\n\n\nℹ️ Report Status\n\n\nAll five sections are now complete. Interactive charts are being added progressively.\n\n\n\n✅ Section 1: The Investment Problem\n\n\n✅ Section 2: The BESS Integration Thesis\n\n\n✅ Section 3: Trade-off Analysis\n\n\n✅ Section 4: Technical Constraints (with interactive charts)\n\n\n✅ Section 5: Strategic Framework",
+    "crumbs": [
+      "Beyond the Solar Curve"
+    ]
+  },
+  {
+    "objectID": "index.html#about-this-report",
+    "href": "index.html#about-this-report",
+    "title": "Beyond the Solar Curve",
+    "section": "About This Report",
+    "text": "About This Report\nThis analysis is designed for:\n\nInfrastructure investors evaluating BESS deployment strategies\nRenewable energy developers considering battery additions to solar portfolios\nAsset managers with existing solar assets approaching PPA expiry\nPolicy analysts interested in NEM market dynamics\n\n\nMethodology\nAnalysis uses:\n\nNEMOSIS: Historical NEM dispatch and pricing data\nOpenElectricity API: Generator metadata and locations\nPlotly/Folium: Interactive visualizations\nPyPSA: Dispatch optimization modeling (in development)\n\nAll analysis code is available in the project repository for transparency and reproducibility.",
+    "crumbs": [
+      "Beyond the Solar Curve"
+    ]
+  },
+  {
+    "objectID": "index.html#citation",
+    "href": "index.html#citation",
+    "title": "Beyond the Solar Curve",
+    "section": "Citation",
+    "text": "Citation\n\nMatt S. 2025. Beyond the Solar Curve: A Capital Allocation Framework for Co-located vs. Standalone BESS in the NEM.\n\nLicense: Creative Commons Attribution 4.0 International (CC BY 4.0)",
+    "crumbs": [
+      "Beyond the Solar Curve"
+    ]
+  },
+  {
+    "objectID": "sections/01_investment_problem.html",
+    "href": "sections/01_investment_problem.html",
+    "title": "1  The Investment Problem",
+    "section": "",
+    "text": "1.1 The End of “Plain” Solar\nThe historical investment model for utility-scale solar PV in the Australian National Electricity Market is broken. For years, renewable energy developers relied on long-term fixed-price Power Purchase Agreements (PPAs) spanning 7-15 years to secure project finance. These contracts provided the revenue certainty needed to support high-leverage debt structures typical of infrastructure investments.",
+    "crumbs": [
+      "The Investment Context",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>The Investment Problem</span>"
+    ]
+  },
+  {
+    "objectID": "sections/01_investment_problem.html#the-end-of-plain-solar",
+    "href": "sections/01_investment_problem.html#the-end-of-plain-solar",
+    "title": "1  The Investment Problem",
+    "section": "",
+    "text": "🚨 The Core Problem\n\n\nPure solar is no longer financeable at acceptable risk-adjusted returns in competitive regions of the NEM. The traditional financing waterfall has collapsed.",
+    "crumbs": [
+      "The Investment Context",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>The Investment Problem</span>"
+    ]
+  },
+  {
+    "objectID": "sections/01_investment_problem.html#the-collapse-of-the-unfirmed-ppa",
+    "href": "sections/01_investment_problem.html#the-collapse-of-the-unfirmed-ppa",
+    "title": "1  The Investment Problem",
+    "section": "1.2 The Collapse of the Unfirmed PPA",
+    "text": "1.2 The Collapse of the Unfirmed PPA\nWith the end of the Large-scale Renewable Energy Target (LRET) and rapidly increasing solar penetration, the economics of daytime generation have fundamentally changed. The problem is straightforward: when everyone generates at the same time, prices collapse.\n\n1.2.1 Solar Anti-Correlation\nThe wholesale electricity price during solar hours (10:00-16:00) in NSW tells the story clearly:\n\n\n\n☀️ Solar Price Collapse & Curtailment Growth\n\nIn Progress\n\n\n\n📊\n\n\nNSW Solar Hour Prices & Curtailment (2018-2025)\n\n\nDual-axis chart showing annual average wholesale prices during solar hours (10:00-16:00) in NSW and solar curtailment percentage.\n\n\nKey Trend: Prices declined from ~$85/MWh (2018) to &lt;$40/MWh (2025) while curtailment increased from &lt;1% to &gt;5%.\n\n\n\nData: AEMO via NEMOSIS (2018-2025) Script: scripts/section1/s1_solar_price_curtailment.py\n\n\n\n\n\n50%\n\n\nDecline in solar-hour wholesale prices (2018-2025)\n\n\nSolar hour wholesale prices in NSW have collapsed from approximately $80-90/MWh to less than $40/MWh, while curtailment has increased from less than 1% to over 5%.\n\n\n\nThe data reveals two devastating trends for solar investors:\n\nPrice Cannibalization: Solar hour wholesale prices have declined by over 50% from 2018 to 2025\nPhysical Curtailment: Solar generators are not just facing low prices—they’re being physically curtailed due to grid congestion during solar peaks. Curtailment has increased &gt;5x over the same period.\n\n\n1.2.2 The PPA Problem\nInfrastructure investors don’t just want high prices—they need contracted revenue. The challenge is that corporate offtakers increasingly refuse to sign long-term PPAs for plain solar at any price. Why would a commercial buyer lock in a fixed rate for power that’s only generated when grid prices are lowest?\n\n\n\n📉\n\n\n\nThe Broken Financing Waterfall\n\n\nHow uncontracted revenue blocks project finance\n\n\n\n\n\n\n\n\n\n\n\n\nStage\nProblem\nConsequence\n\n\n\n\nContracting\nCan’t secure long-term PPA\nRevenue uncertainty\n\n\nDebt sizing\nLenders won’t underwrite merchant risk\nLower leverage possible\n\n\nReturn hurdles\nReduced debt → lower equity returns\nCan’t hit target IRR\n\n\nCapital deployment\nProject doesn’t proceed\nCapital sits idle\n\n\n\n\n\n\n\n1.3 The Certificate Cliff\nThe revenue problem extends beyond wholesale electricity. Large-scale Generation Certificates (LGCs), which historically provided 30-40% of solar project revenue, have collapsed as the LRET obligation has been fulfilled.\n\n\n$50 → $6.50\n\n\nLGC price collapse (January 2024 to January 2026)\n\n\nThe certificate market has collapsed by ~87% in just two years as the LRET obligation was fulfilled. This removes a critical revenue stream that historically supported project economics.\n\n\n\n\n\n\n\n\n\n⚠️ Regulatory Uncertainty: Guarantees of Origin\n\n\nThe market transitions to a voluntary scheme post-2030 through Guarantees of Origin (GOs). However, GOs include a time-stamp element—certificates are matched to the exact hour of consumption.\n\n\nJust as physical solar-hour power is oversupplied, solar-hour GOs will likely trade at a significant discount to off-peak certificates, further depressing returns.\n\n\n\n\n\n\n1.4 The Curtailment Risk\nInvestors are not just facing revenue risk from low prices. They face volume risk from physical curtailment:\n\n\n\n⚡\n\n\n\nCurtailment Drivers\n\n\nWhy solar farms can’t always export their generation\n\n\n\n\n\nGrid congestion: Solar farms in regional NSW are often at the end of transmission lines with limited export capacity\nAEMO intervention: Semi-scheduled generators can be directed to reduce output when local network constraints bind\nWasted generation: Curtailed energy represents sunk capital with zero return\n\n\n\nFor existing solar assets approaching PPA expiry, the prospect of uncontracted merchant exposure to these conditions represents a material valuation risk. A solar farm that can’t reliably sell its output is an infrastructure asset with a fundamental flaw.\n\n\n\n1.5 The Investment Imperative\nThe conclusion for infrastructure capital is clear: pure solar is no longer financeable at acceptable risk-adjusted returns in competitive regions of the NEM.\nBattery energy storage systems (BESS) offer the obvious technical solution—shift generation from oversupplied daylight hours to valuable evening peaks. But this raises the critical question that motivates this entire analysis:\n\n\n\n\n\n\n\n💡 The Core Investment Question\n\n\nShould batteries be co-located with solar, or deployed as standalone assets?\n\n\n\n\nThe answer determines:\n\nCapital deployment sizing (small vs. large projects)\nRevenue structure (contracted vs. merchant)\nLocation optimization (solar sites vs. grid access points)\nReturn profiles (infrastructure vs. opportunistic)\n\nThe following sections provide a framework for making this decision systematically.\n\n\n\nKey Takeaways\n\n\n\nSolar hour wholesale prices in NSW have declined &gt;50% from 2018-2025\n\n\nCurtailment has increased &gt;5x over the same period\n\n\nLGC revenues have collapsed from $50 to $6.50/certificate\n\n\nPure solar PPA contracting has become increasingly difficult\n\n\nInfrastructure investors face a binary choice: add BESS or accept merchant risk",
+    "crumbs": [
+      "The Investment Context",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>The Investment Problem</span>"
+    ]
+  },
+  {
+    "objectID": "sections/01_investment_problem.html#the-certificate-cliff",
+    "href": "sections/01_investment_problem.html#the-certificate-cliff",
+    "title": "1  The Investment Problem",
+    "section": "1.3 The Certificate Cliff",
+    "text": "1.3 The Certificate Cliff\nThe revenue problem extends beyond wholesale electricity. Large-scale Generation Certificates (LGCs), which historically provided 30-40% of solar project revenue, have collapsed as the LRET obligation has been fulfilled.\n\n\n$50 → $6.50\n\n\nLGC price collapse (January 2024 to January 2026)\n\n\nThe certificate market has collapsed by ~87% in just two years as the LRET obligation was fulfilled. This removes a critical revenue stream that historically supported project economics.\n\n\n\n\n\n\n\n\n\n⚠️ Regulatory Uncertainty: Guarantees of Origin\n\n\nThe market transitions to a voluntary scheme post-2030 through Guarantees of Origin (GOs). However, GOs include a time-stamp element—certificates are matched to the exact hour of consumption.\n\n\nJust as physical solar-hour power is oversupplied, solar-hour GOs will likely trade at a significant discount to off-peak certificates, further depressing returns.",
+    "crumbs": [
+      "The Investment Context",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>The Investment Problem</span>"
+    ]
+  },
+  {
+    "objectID": "sections/01_investment_problem.html#the-curtailment-risk",
+    "href": "sections/01_investment_problem.html#the-curtailment-risk",
+    "title": "1  The Investment Problem",
+    "section": "1.4 The Curtailment Risk",
+    "text": "1.4 The Curtailment Risk\nInvestors are not just facing revenue risk from low prices. They face volume risk from physical curtailment:\n\n\n\n⚡\n\n\n\nCurtailment Drivers\n\n\nWhy solar farms can’t always export their generation\n\n\n\n\n\nGrid congestion: Solar farms in regional NSW are often at the end of transmission lines with limited export capacity\nAEMO intervention: Semi-scheduled generators can be directed to reduce output when local network constraints bind\nWasted generation: Curtailed energy represents sunk capital with zero return\n\n\n\nFor existing solar assets approaching PPA expiry, the prospect of uncontracted merchant exposure to these conditions represents a material valuation risk. A solar farm that can’t reliably sell its output is an infrastructure asset with a fundamental flaw.",
+    "crumbs": [
+      "The Investment Context",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>The Investment Problem</span>"
+    ]
+  },
+  {
+    "objectID": "sections/01_investment_problem.html#the-investment-imperative",
+    "href": "sections/01_investment_problem.html#the-investment-imperative",
+    "title": "1  The Investment Problem",
+    "section": "1.5 The Investment Imperative",
+    "text": "1.5 The Investment Imperative\nThe conclusion for infrastructure capital is clear: pure solar is no longer financeable at acceptable risk-adjusted returns in competitive regions of the NEM.\nBattery energy storage systems (BESS) offer the obvious technical solution—shift generation from oversupplied daylight hours to valuable evening peaks. But this raises the critical question that motivates this entire analysis:\n\n\n\n\n\n\n\n💡 The Core Investment Question\n\n\nShould batteries be co-located with solar, or deployed as standalone assets?\n\n\n\n\nThe answer determines:\n\nCapital deployment sizing (small vs. large projects)\nRevenue structure (contracted vs. merchant)\nLocation optimization (solar sites vs. grid access points)\nReturn profiles (infrastructure vs. opportunistic)\n\nThe following sections provide a framework for making this decision systematically.\n\n\n\nKey Takeaways\n\n\n\nSolar hour wholesale prices in NSW have declined &gt;50% from 2018-2025\n\n\nCurtailment has increased &gt;5x over the same period\n\n\nLGC revenues have collapsed from $50 to $6.50/certificate\n\n\nPure solar PPA contracting has become increasingly difficult\n\n\nInfrastructure investors face a binary choice: add BESS or accept merchant risk",
+    "crumbs": [
+      "The Investment Context",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>The Investment Problem</span>"
+    ]
+  },
+  {
+    "objectID": "sections/02_bess_integration.html",
+    "href": "sections/02_bess_integration.html",
+    "title": "2  The BESS Integration Thesis",
+    "section": "",
+    "text": "2.1 Restoring Value Through Storage\nThe previous section established that pure solar PV faces fundamental economic challenges in the NEM: price cannibalization, curtailment risk, and an inability to secure long-term contracts. Battery energy storage systems (BESS) offer a path forward.",
+    "crumbs": [
+      "The Investment Context",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>The BESS Integration Thesis</span>"
+    ]
+  },
+  {
+    "objectID": "sections/02_bess_integration.html#restoring-value-through-storage",
+    "href": "sections/02_bess_integration.html#restoring-value-through-storage",
+    "title": "2  The BESS Integration Thesis",
+    "section": "",
+    "text": "🔋\n\n\n\nHow BESS Solves the Solar Problem\n\n\nThree value restoration mechanisms\n\n\n\n\n\n2.1.1 1. Time-Shifting Generation\nBatteries can shift solar generation from oversupplied daytime hours to high-value evening peaks:\n\n\n\n\n\n\n\n\n\nPeriod\nSolar Output\nBattery Action\nValue Captured\n\n\n\n\n10:00-16:00\nMaximum\nCharge\nAvoid low/negative prices\n\n\n16:00-20:00\nDeclining\nDischarge\nCapture evening peak ($200-500/MWh)\n\n\n20:00-06:00\nZero\nHold/Discharge\nRespond to overnight volatility\n\n\n\nThis arbitrage converts low-value midday MWh into high-value evening MWh.\n\n\n2.1.2 2. Curtailment Protection\nBehind-the-meter battery storage can absorb excess solar generation that would otherwise be curtailed:\n\nGrid constraint: Network operator directs solar farm to reduce output\nWithout battery: Lost generation, zero revenue\nWith battery: Store curtailed energy, discharge when constraint clears\n\nFor solar farms facing 5-10% curtailment, this represents significant recovered revenue.\n\n\n2.1.3 3. Enabling Contractability\nThe combination of solar + storage creates a firmable capacity product that offtakers will actually buy:\n\nPlain solar: “We’ll give you power… when the sun shines… if we’re not curtailed”\nSolar + storage: “We guarantee X MW of firm capacity during Y hours”\n\nThis transforms an intermittent asset into a dispatchable one, enabling long-term PPAs and project finance.",
+    "crumbs": [
+      "The Investment Context",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>The BESS Integration Thesis</span>"
+    ]
+  },
+  {
+    "objectID": "sections/02_bess_integration.html#the-investor-dilemma",
+    "href": "sections/02_bess_integration.html#the-investor-dilemma",
+    "title": "2  The BESS Integration Thesis",
+    "section": "2.2 The Investor Dilemma",
+    "text": "2.2 The Investor Dilemma\nWhile BESS solves the technical problem, it creates a commercial dilemma. Battery storage does not need to be co-located with solar PV to provide these benefits to the grid. The market is splitting into two distinct investment approaches.\n\n\n\n\n\n\n\n💡 The Core Dilemma\n\n\nBatteries can time-shift and firm renewable generation from anywhere on the grid. They don’t need to be physically connected to a solar farm to capture arbitrage value or provide system services.\n\n\n\n\n\n2.2.1 Two Distinct Asset Classes\n\n\n2 Models\n\n\nThe market has bifurcated into distinct deployment strategies\n\n\nInfrastructure investors must choose between optimizing for location and flexibility (standalone) or capital efficiency and product definition (co-located). These are fundamentally different investment theses.\n\n\n\n2.2.1.1 Model 1: Standalone BESS\n\n\n\n🔋\n\n\n\nStandalone Deployment\n\n\nBattery as independent infrastructure asset\n\n\n\n\nInvestment thesis: Maximize battery returns by optimizing location, grid services, and merchant arbitrage.\nKey characteristics: - Site selected for optimal MLF and grid access - Full flexibility to charge from grid (including negative pricing) - Independent dispatch optimization - Revenue from arbitrage, FCAS, and capacity payments - Typically 2-4 hour duration for price volatility capture\nInvestor profile: Merchant-tolerant investors, trading-oriented asset managers, FCAS specialists\n\n\n\n\n2.2.1.2 Model 2: Co-located (Hybrid)\n\n\n\n⚡\n\n\n\nCo-located Deployment\n\n\nBattery integrated with solar PV asset\n\n\n\n\nInvestment thesis: Create a firmable renewable product with infrastructure cost synergies and contracted revenue.\nKey characteristics: - Site determined by solar farm location (MLF inherited) - Shared grid connection and infrastructure - “Green” product definition for ESG-focused offtakers - CIS eligibility for government-backed contracts - Often longer duration (4+ hours) for firming requirements\nInvestor profile: Infrastructure funds, yield-focused investors, existing solar asset owners",
+    "crumbs": [
+      "The Investment Context",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>The BESS Integration Thesis</span>"
+    ]
+  },
+  {
+    "objectID": "sections/02_bess_integration.html#the-critical-question",
+    "href": "sections/02_bess_integration.html#the-critical-question",
+    "title": "2  The BESS Integration Thesis",
+    "section": "2.3 The Critical Question",
+    "text": "2.3 The Critical Question\nFor new investors evaluating BESS deployment, the question is straightforward but consequential:\n\n\n\n\n\n\n\n🚨 Does the Solar Plant Add Value?\n\n\nFor a new build: Does adding solar PV to the battery project increase risk-adjusted returns, or does it constrain location and reduce flexibility?\n\n\nFor a retrofit: Does adding a battery to an existing solar farm preserve the asset’s value, or would capital be better deployed in a standalone battery elsewhere?\n\n\n\n\n\n2.3.1 The Answer Is Context-Dependent\nThere is no universal answer. The optimal deployment model depends on:\n\n\n\n\n\n\n\n\nFactor\nFavors Standalone\nFavors Co-located\n\n\n\n\nLocation quality\nPoor solar site MLF\nStrong solar site MLF\n\n\nContracting\nMerchant-tolerant\nPPA-dependent\n\n\nExisting assets\nGreenfield\nRetrofit of existing solar\n\n\nReturn targets\nHigh IRR, lower scale\nModerate IRR, larger scale\n\n\nOfftaker requirements\nFlexibility valued\n“Green” credentials required\n\n\nCIS eligibility\nNot critical\nImportant for financing",
+    "crumbs": [
+      "The Investment Context",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>The BESS Integration Thesis</span>"
+    ]
+  },
+  {
+    "objectID": "sections/02_bess_integration.html#framework-for-analysis",
+    "href": "sections/02_bess_integration.html#framework-for-analysis",
+    "title": "2  The BESS Integration Thesis",
+    "section": "2.4 Framework for Analysis",
+    "text": "2.4 Framework for Analysis\nThe remainder of this report provides a systematic framework for making the standalone vs. co-located decision:\n\n\nWhat Follows\n\n\n\nSection 3: Trade-off Analysis — Detailed comparison of advantages and revenue structures\n\n\nSection 4: Technical Constraints — MLF impact, revenue concentration, and location value\n\n\nSection 5: Strategic Framework — Step-by-step decision process and modeling approach\n\n\n\n\n2.4.1 Decision Hierarchy\nThe framework follows a logical sequence:\n\nDefine the benchmark: What return hurdle must the battery achieve? Is this a new build or retrofit?\nQuantify location impact: What is the MLF penalty of co-location? What is the curtailment risk?\nAssess contracting options: Is a “green premium” available? Is CIS eligibility valuable?\nModel the alternatives: Use dispatch optimization to compare scenarios quantitatively\nMake the decision: Compare risk-adjusted returns against the benchmark\n\n\n\n\n\n\n\n\nℹ️ The Retrofit Exception\n\n\nFor investors with existing solar assets approaching PPA expiry, the decision framework is different. The comparison is not “standalone vs. co-located BESS” but rather “co-located BESS vs. uncontracted merchant solar.”\n\n\nIn this context, a lower battery return may be acceptable if it preserves the value of the solar asset that would otherwise face merchant exposure.",
+    "crumbs": [
+      "The Investment Context",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>The BESS Integration Thesis</span>"
+    ]
+  },
+  {
+    "objectID": "sections/02_bess_integration.html#why-this-matters",
+    "href": "sections/02_bess_integration.html#why-this-matters",
+    "title": "2  The BESS Integration Thesis",
+    "section": "2.5 Why This Matters",
+    "text": "2.5 Why This Matters\nThe standalone vs. co-located decision has significant implications for:\n\n2.5.1 Capital Allocation\n\nStandalone: Smaller check size per project, more projects needed\nCo-located: Larger check size, fewer but bigger projects\n\nFor infrastructure funds with deployment targets, this affects portfolio construction.\n\n\n2.5.2 Risk Profile\n\nStandalone: Higher merchant exposure, but location-optimized\nCo-located: More contractable, but location-constrained\n\nThe appropriate choice depends on the investor’s risk tolerance and return requirements.\n\n\n2.5.3 Market Structure\nAs the NEM evolves, the mix of standalone vs. co-located batteries will shape:\n\nGrid stability and congestion patterns\nPrice formation in different regions\nThe value of “green” vs. “brown” electrons\n\nUnderstanding these dynamics is essential for long-term investment success.\n\n\n\nKey Takeaways\n\n\n\nBESS solves solar’s value problem through time-shifting, curtailment protection, and enabling contractability\n\n\nBatteries do NOT need to be co-located with solar to provide grid benefits\n\n\nThe market has bifurcated into two distinct models: standalone (location-optimized) and co-located (integration-optimized)\n\n\nThe optimal choice is context-dependent: location quality, contracting needs, existing assets, return targets\n\n\nRetrofit scenarios have different economics than greenfield development\n\n\nThe following sections provide a systematic framework for making this decision",
+    "crumbs": [
+      "The Investment Context",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>The BESS Integration Thesis</span>"
+    ]
+  },
+  {
+    "objectID": "sections/03_tradeoff_analysis.html",
+    "href": "sections/03_tradeoff_analysis.html",
+    "title": "3  The Trade-Off Analysis",
+    "section": "",
+    "text": "3.1 Standalone vs. Co-located: A Direct Comparison\nBattery energy storage is the obvious technical solution to solar’s intermittency problem. But BESS deployment in the NEM is splitting into two distinct asset classes, each optimizing for different objectives:",
+    "crumbs": [
+      "Analysis",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>The Trade-Off Analysis</span>"
+    ]
+  },
+  {
+    "objectID": "sections/03_tradeoff_analysis.html#standalone-vs.-co-located-a-direct-comparison",
+    "href": "sections/03_tradeoff_analysis.html#standalone-vs.-co-located-a-direct-comparison",
+    "title": "3  The Trade-Off Analysis",
+    "section": "",
+    "text": "🔋\n\n\n\nStandalone BESS\n\n\nIndependent deployment model\n\n\n\n\nOptimize for: Location, grid services, and arbitrage\n\nFree to site in high-MLF, unconstrained locations\nFull grid charging capability (negative pricing revenue)\nIndependent dispatch optimization\nTarget pure energy arbitrage + FCAS revenue\n\n\n\n\n\n\n⚡\n\n\n\nCo-located (Hybrid)\n\n\nIntegrated deployment model\n\n\n\n\nOptimize for: Infrastructure efficiency, firming, and “green” product creation\n\nShared infrastructure with solar (capex synergies)\nConstrained by solar site location/MLF\n“Guaranteed green” product for ESG buyers\nCIS eligibility and structured contracting\n\n\n\n\n\n\n\n\n\n\n💡 The Critical Question\n\n\nDoes the solar PV plant add value to the battery investment, or is it a constraint that reduces returns?",
+    "crumbs": [
+      "Analysis",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>The Trade-Off Analysis</span>"
+    ]
+  },
+  {
+    "objectID": "sections/03_tradeoff_analysis.html#the-case-for-standalone-flexibility-location",
+    "href": "sections/03_tradeoff_analysis.html#the-case-for-standalone-flexibility-location",
+    "title": "3  The Trade-Off Analysis",
+    "section": "3.2 The Case for Standalone: Flexibility & Location",
+    "text": "3.2 The Case for Standalone: Flexibility & Location\nUtility-scale batteries have become a critical component of the NEM, driven by steep cost reductions, modularity, and rapid installation timelines.\n\n3.2.1 BESS Deployment Trajectory\n\n\n\n📈 BESS Capacity Growth Trajectory (2018-2028)\n\nIn Progress\n\n\n\n📊\n\n\nNEM BESS Capacity by Status\n\n\nColumn chart showing BESS MWh by year (2018-2028) stacked by status: operating, committed, anticipated.\n\n\nKey Trend: Rapid growth from ~500 MWh (2019) to 10,000+ MWh (2026-2027 projected). Battery storage has transitioned from niche to mainstream infrastructure.\n\n\n\nData: AEMO NEM Generation Information Script: scripts/section3/s3_bess_capacity_growth.py\n\n\n\n\n3.2.2 The Standalone Model\nCurrent market reality: The majority of batteries in the NEM are deployed as standalone facilities. This is not by accident—it reflects deliberate optimization for multiple revenue streams.\n\n\n\n🗺️ Battery Co-location Patterns Across NEM\n\nIn Progress\n\n\n\n🗺️\n\n\nStandalone vs. Co-located Battery Map\n\n\nInteractive map showing standalone (purple) vs co-located (dark orange) batteries across the NEM. Co-located defined as within 1km of a solar PV facility.\n\n\nKey Insight: Most batteries operate standalone, positioned independently of solar generation for optimal grid value capture.\n\n\n\nData: OpenElectricity API + geospatial analysis Script: scripts/section3/s3_bess_map_colocation.py\n\n\n\n\n3.2.3 Strategic Advantages of Standalone BESS\n\n3.2.3.1 1. Siting Freedom\nStandalone batteries can be located to maximize grid value rather than accommodate solar farm constraints:\n\n\n\n\n\n\n\n\nFactor\nStandalone Advantage\nCo-located Constraint\n\n\n\n\nMLF\nSite in high-MLF regions (0.95-1.05)\nInherit solar farm’s poor MLF (0.80-0.90)\n\n\nCongestion\nCapture localized price premiums\nCompete with solar exports\n\n\nFCAS\nPosition for ancillary services\nLimited by solar site capabilities\n\n\nTransmission\nAvoid curtailment-prone areas\nEnd-of-line locations typical\n\n\n\n\n\n\n\n\n\n\n⚠️ Location Lock-in\n\n\nSolar farms are typically located based on land availability and solar resource. These sites often have poor MLFs and face transmission constraints. Forcing a battery to share this location destroys arbitrage value.\n\n\n\n\n\n\n3.2.3.2 2. Speed to Market\nStandalone BESS projects can be deployed significantly faster:\n\n\n\nProject Type\nTypical Timeline\n\n\n\n\nBESS only\n12-18 months\n\n\nPV + BESS\n24-36 months\n\n\nModular augmentation\n6-12 months\n\n\n\nFor investors targeting near-term deployment to capture current market conditions, standalone provides critical time advantages.\n\n\n3.2.3.3 3. Asset Lifecycle Independence\nBattery and solar have fundamentally different operational lives:\n\nBESS: 15-20 years before major augmentation/replacement needed\nPV: 30-35 years asset life\nMismatch risk: Battery reaches end-of-life while PV continues operating\n\nStandalone deployment avoids the complexity of shared infrastructure replacement decisions and misaligned ownership structures.\n\n\n3.2.3.4 4. Negative Pricing Revenue\n\n\nDouble-dip\n\n\nRevenue from negative pricing: get paid to charge, then paid to discharge\n\n\nWhen wholesale prices go negative (excess solar), standalone batteries get paid to charge and can discharge hours later at positive prices. This revenue stream is largely unavailable to co-located batteries.\n\n\nCo-located batteries can charge during negative prices, but only by curtailing their own solar generation to create grid import capacity. This is rarely economically optimal.\n\n\n\n3.2.4 The “Pure Merchant” Misconception\n\n\n\n\n\n\n\nℹ️ Standalone ≠ Merchant\n\n\nStandalone BESS are not synonymous with pure merchant/volatility exposure. Many operate under:\n\n\n\nTolling agreements: Fixed capacity payments + merchant upside\n\n\nFCAS contracts: Firm grid services revenue\n\n\nCfD structures: Contracted arbitrage with price hedging\n\n\nCIS contracts: Government-backed revenue floor\n\n\n\nThe key distinction is that standalone batteries choose location to maximize these revenue opportunities.",
+    "crumbs": [
+      "Analysis",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>The Trade-Off Analysis</span>"
+    ]
+  },
+  {
+    "objectID": "sections/03_tradeoff_analysis.html#the-case-for-co-located-capital-efficiency-product-definition",
+    "href": "sections/03_tradeoff_analysis.html#the-case-for-co-located-capital-efficiency-product-definition",
+    "title": "3  The Trade-Off Analysis",
+    "section": "3.3 The Case for Co-located: Capital Efficiency & Product Definition",
+    "text": "3.3 The Case for Co-located: Capital Efficiency & Product Definition\nDespite standalone advantages, co-location can be the optimal choice under specific conditions. The decision depends on the investor’s objectives and the specific solar asset situation.\n\n3.3.1 Co-location Configuration Models\n\n\n\n⚡ Co-location Configuration Options\n\nIn Progress\n\n\n\n⚙️\n\n\nAC-coupled, DC-coupled, and Non-hybrid Configurations\n\n\nTechnical schematic showing electrical connections, DUIDs, and grid charging capabilities for each configuration type.\n\n\nKey Trade-offs: Non-hybrid (max flexibility) → AC-coupled (balanced) → DC-coupled (highest capex savings, most constrained).\n\n\n\nReference: Modo Energy configuration analysis Script: scripts/section3/s3_colocation_diagram.py\n\n\n\n\n3.3.2 Configuration Comparison\n\n\n\n\n\n\n\n\n\n\n\nConfiguration\nConnection\nDUIDs\nGrid Charging\nCapex Savings\nDispatch Flexibility\n\n\n\n\nNon-hybrid\nSeparate\nDual\nYes (battery)\nNone\nMaximum\n\n\nAC-coupled\nShared\nDual\nYes (battery)\n$50-100/kW\nHigh\n\n\nDC-coupled\nShared\nSingle\nLimited\n$70-120/kW\nConstrained\n\n\n\n\n\n3.3.3 Strategic Advantages of Co-located BESS\n\n3.3.3.1 1. Capex Synergies\n\n\n$50-100/kW\n\n\nTypical infrastructure savings from co-location\n\n\nShared grid connection, electrical infrastructure, land, and planning approvals. For 100+ MW battery with 200+ MW solar, savings can exceed $10-20M in total capex.\n\n\n\n\n3.3.3.2 2. Capital Deployment Scale\nInfrastructure investors often prefer larger capital deployment per project:\n\nFee structures: Investment management fees scale with AUM\nTransaction costs: Due diligence and legal costs are largely fixed\nPortfolio management: Prefer fewer, larger assets\nReturn on equity: Larger projects = higher absolute return even at lower IRR\n\n\n\n3.3.3.3 3. The “Green Premium”\n\n\n\n🌱\n\n\n\nGuaranteed Renewable Source\n\n\nDC-coupled batteries can only charge from solar\n\n\n\n\n\nAdditionality proof: Storage demonstrably shifts new renewable generation\nTime-stamped GOs: Renewable certificates matched to consumption hour\nESG credibility: Corporate buyers value “pure green” electrons\nPremium value: Typically $5-15/MWh over brown power\n\n\n\n\n\n3.3.3.4 4. CIS Eligibility (Australia-Specific)\nAustralia’s Capacity Investment Scheme provides government-backed contracts. Co-located solar+storage projects are explicitly eligible, providing:\n\nLong-term revenue floor\nReduced financing cost (government credit support)\nCompetitive advantage vs. standalone (which may not qualify)\n\n\n\n3.3.3.5 5. The Retrofit Logic\n\n\n\n\n\n\n\n🚨 Defensive Co-location\n\n\nFor investors with existing PV portfolios approaching PPA expiry, co-location is often a defensive necessity:\n\n\n\nAdd BESS to create firmable capacity\n\n\nStructure new PPA for shaped delivery\n\n\nAccept lower BESS return to preserve overall project IRR\n\n\n\nThe comparison isn’t “co-located vs. standalone”—it’s “co-located BESS vs. uncontracted merchant solar.”",
+    "crumbs": [
+      "Analysis",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>The Trade-Off Analysis</span>"
+    ]
+  },
+  {
+    "objectID": "sections/03_tradeoff_analysis.html#revenue-structure-where-batteries-make-money",
+    "href": "sections/03_tradeoff_analysis.html#revenue-structure-where-batteries-make-money",
+    "title": "3  The Trade-Off Analysis",
+    "section": "3.4 Revenue Structure: Where Batteries Make Money",
+    "text": "3.4 Revenue Structure: Where Batteries Make Money\nUnderstanding how batteries generate revenue is critical to evaluating the co-location decision. Battery returns are highly concentrated in specific price events.\n\n3.4.1 Revenue Concentration by Price Bucket\n\n\n\n💰 Battery Revenue by Price Bucket (NSW 2025)\n\nIn Progress\n\n\n\n📊\n\n\nRevenue Distribution Across Price Ranges\n\n\nColumn chart showing % of revenue by price bucket (&lt;-$1000, -$1000 to -$500, …, &gt;$2000) for NSW batteries.\n\n\nKey Insight: Significant revenue from negative pricing (get paid to charge) and extreme high-price events (&gt;$1000/MWh). Normal prices ($0-300/MWh) contribute minimal revenue.\n\n\n\nData: AEMO dispatch data via NEMOSIS (2025) Script: scripts/section3/s3_battery_revenue_buckets.py\n\n\nCritical observations:\n\nNegative pricing revenue: Standalone batteries earn revenue by charging during negative prices (getting paid to charge). This is unavailable to DC-coupled co-located batteries.\nHigh-price event concentration: Extreme price events (&gt;$1000/MWh) drive substantial revenue. These occur during tight supply-demand conditions.\nBase revenue is minimal: “Normal” market conditions ($0-300/MWh) contribute relatively little. Battery economics depend on price volatility, not average prices.\n\n\n\n3.4.2 Implications for Co-location\n\n\n\n\n\n\n\n\n\nConfiguration\nNegative Pricing\nHigh-Price Events\nOverall Flexibility\n\n\n\n\nStandalone\nFull access\nOptimized dispatch\nMaximum\n\n\nAC-coupled\nPartial (curtail solar)\nGood\nHigh\n\n\nDC-coupled\nNone\nConstrained\nLimited",
+    "crumbs": [
+      "Analysis",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>The Trade-Off Analysis</span>"
+    ]
+  },
+  {
+    "objectID": "sections/03_tradeoff_analysis.html#decision-framework-summary",
+    "href": "sections/03_tradeoff_analysis.html#decision-framework-summary",
+    "title": "3  The Trade-Off Analysis",
+    "section": "3.5 Decision Framework Summary",
+    "text": "3.5 Decision Framework Summary\n\n3.5.1 Configuration Choice Drivers\nChoose Non-hybrid when: - MLF differential is significant between sites - Battery targets different revenue streams (FCAS, different price zone) - Maximum dispatch flexibility required\nChoose AC-coupled when: - Capex savings are material - Independent dispatch still valuable - Common retrofit scenario\nChoose DC-coupled when: - Creating “guaranteed green” product (corporate PPA requirement) - Grid charging explicitly unwanted - Maximum capex savings prioritized\nThe configuration choice is not purely technical—it’s driven by commercial objectives (PPA structure, green premium, financing requirements).\n\n\n\nKey Takeaways\n\n\n\nBESS deployment has grown rapidly: 500 MWh (2019) → 10,000+ MWh (2026-2027 projected)\n\n\nMajority of current batteries are standalone, optimizing for location and flexibility\n\n\nStandalone advantages: siting freedom, speed, lifecycle independence, negative pricing revenue\n\n\nCo-located advantages: capex synergies ($50-100/kW), capital deployment scale, green premium, retrofit logic\n\n\nBattery revenue is highly concentrated in negative pricing and extreme high-price events\n\n\nDC-coupled configurations forfeit grid charging revenue (significant opportunity cost)\n\n\nConfiguration choice is driven by commercial objectives, not purely technical factors\n\n\nDecision is context-dependent: new build vs. retrofit, return targets, contracting options",
+    "crumbs": [
+      "Analysis",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>The Trade-Off Analysis</span>"
+    ]
+  },
+  {
+    "objectID": "sections/04_technical_constraints.html",
+    "href": "sections/04_technical_constraints.html",
+    "title": "4  Technical Constraints & Location Value",
+    "section": "",
+    "text": "4.1 The Revenue Concentration Problem\nBattery revenue in the NEM is not evenly distributed across time. A small fraction of hours drive the majority of returns, making location optimization critical for economic viability.",
+    "crumbs": [
+      "Analysis",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Technical Constraints & Location Value</span>"
+    ]
+  },
+  {
+    "objectID": "sections/04_technical_constraints.html#the-revenue-concentration-problem",
+    "href": "sections/04_technical_constraints.html#the-revenue-concentration-problem",
+    "title": "4  Technical Constraints & Location Value",
+    "section": "",
+    "text": "4.1.1 Revenue Skew: The 80/20 Reality\nThe following analysis examines NSW batteries operational throughout 2025, plotting cumulative revenue against cumulative time (hours sorted by revenue descending):\n\n\n\n📊 Battery Revenue Concentration: NSW 2025\n\nComplete\n\n\n\n\n\n\nData: NSW battery dispatch analysis (2025)  View Analysis Code → \n\n\n\n\n50% in 10%\n\n\nHalf of annual revenue generated in just one-tenth of operating hours\n\n\nBattery economics depend entirely on capturing extreme price events. Missing even a few of these critical hours—due to curtailment, poor MLF, or grid constraints—materially impacts annual returns.\n\n\nCritical implications:\n\nExtreme concentration: 50% of annual revenue is generated in just ~10% of operating hours\nVolatility dependence: Battery economics depend on price extremes, not average prices\nLocation sensitivity: Missing key high-price events (due to curtailment, poor MLF, or grid constraints) materially impacts returns\n\n\n\n\n\n\n\n\n⚠️ Why This Matters for Co-location\n\n\n\nDC-coupled batteries may miss high-price discharge events if solar is generating (constrained by inverter capacity)\n\n\nPoor MLF locations compound revenue loss during critical high-price periods\n\n\nTransmission curtailment disproportionately impacts returns by eliminating top revenue hours\n\n\n\n\n\nThe investment decision hinges on capturing these fat-tail events. Standalone batteries optimize for this by siting in high-MLF locations with minimal curtailment risk.",
+    "crumbs": [
+      "Analysis",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Technical Constraints & Location Value</span>"
+    ]
+  },
+  {
+    "objectID": "sections/04_technical_constraints.html#marginal-loss-factors-the-hidden-tax",
+    "href": "sections/04_technical_constraints.html#marginal-loss-factors-the-hidden-tax",
+    "title": "4  Technical Constraints & Location Value",
+    "section": "4.2 Marginal Loss Factors: The Hidden Tax",
+    "text": "4.2 Marginal Loss Factors: The Hidden Tax\n\n4.2.1 Understanding MLF Impact\nMarginal Loss Factors (MLFs) represent the energy lost when electricity passes through the transmission network. Generators are paid (or pay) based on MLF-adjusted prices:\n\n\n\nMLF Value\nMeaning\nTypical Location\n\n\n\n\n&gt; 1.0\nPremium received\nNear load centers (Sydney, Newcastle)\n\n\n= 1.0\nNeutral (hub reference)\nRegional reference nodes\n\n\n&lt; 1.0\nDiscount applied\nEnd-of-line, high transmission losses\n\n\n\nExample calculation: If wholesale price = $100/MWh and MLF = 0.90:\n\nGenerator receives: $100 × 0.90 = $90/MWh\n10% discount due to transmission losses\n\n\n\n\n\n\n\n\nℹ️ MLF Impact on Battery Arbitrage\n\n\nFor batteries arbitraging price spreads, MLF affects both discharge revenue and charging cost:\n\n\n\nDischarge: Revenue discounted by MLF\n\n\nCharge: Cost discounted by MLF (pay less to charge)\n\n\n\nNet impact depends on price spread and MLF differential between charge/discharge locations.\n\n\n\n\n\n\n4.2.2 MLF Geographic Distribution\nThe following interactive map shows MLF values for generators across NSW, revealing the critical location patterns that impact battery revenue:\n\n\n\n🗺️ NSW Generator MLF Distribution Map\n\nComplete\n\n\n\n\n\n\nData: AEMO generator registration data (2025)  View Analysis Code → \n\n\nUse the layer controls to filter by technology type. Dark green = high MLF (&gt;1.0), red = low MLF (&lt;0.85).\nGeographic patterns revealed:\n\nHigh MLF zones (green, &gt;0.95): Near Sydney, Newcastle, Wollongong (load centers)\nMedium MLF zones (yellow, 0.90-0.95): Regional centers with adequate transmission\nLow MLF zones (red, &lt;0.90): Western NSW and end-of-line locations (typical solar farm areas)\n\n\n\n15-25%\n\n\nRevenue differential between poor (0.85) and excellent (0.98) MLF locations\n\n\nSolar farms typically have poor MLFs (0.80-0.90) due to end-of-line siting. Standalone batteries can access high-MLF locations (0.95-1.05) near load centers, capturing significantly more revenue from the same dispatch strategy.",
+    "crumbs": [
+      "Analysis",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Technical Constraints & Location Value</span>"
+    ]
+  },
+  {
+    "objectID": "sections/04_technical_constraints.html#the-revenue-compounding-effect",
+    "href": "sections/04_technical_constraints.html#the-revenue-compounding-effect",
+    "title": "4  Technical Constraints & Location Value",
+    "section": "4.3 The Revenue Compounding Effect",
+    "text": "4.3 The Revenue Compounding Effect\nDuring high-price events, MLF differences compound dramatically:\n\n\n\n💰\n\n\n\nMLF Impact During $2000/MWh Price Event\n\n\n100MW battery, 2-hour discharge\n\n\n\n\n\n\n\nLocation Type\nMLF\nRevenue per MWh\nEvent Revenue\n\n\n\n\nStandalone (near Sydney)\n0.98\n$1,960\n$392,000\n\n\nCo-located (Western NSW)\n0.88\n$1,760\n$352,000\n\n\nDifference\n—\n$200/MWh\n$40,000 per event\n\n\n\nOver a year with 50 such events, the MLF differential alone accounts for $2M+ in lost revenue for the co-located battery.\n\n\nFor batteries dependent on extreme price events, MLF location is a make-or-break factor.",
+    "crumbs": [
+      "Analysis",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Technical Constraints & Location Value</span>"
+    ]
+  },
+  {
+    "objectID": "sections/04_technical_constraints.html#network-constraints-and-curtailment-risk",
+    "href": "sections/04_technical_constraints.html#network-constraints-and-curtailment-risk",
+    "title": "4  Technical Constraints & Location Value",
+    "section": "4.4 Network Constraints and Curtailment Risk",
+    "text": "4.4 Network Constraints and Curtailment Risk\n\n4.4.1 The Transmission Bottleneck\nEven with favorable MLF, batteries face curtailment risk when transmission networks are constrained. This disproportionately impacts revenue by eliminating top-earning hours.\nCurtailment mechanisms:\n\nSystem security constraints: Generator output restricted to maintain frequency/stability\nNetwork limits: Transmission lines at capacity, exports restricted\nLocal network issues: Voltage or thermal limits in distribution networks\n\n\n\n\n\n\n\n\n🚨 Impact on Revenue Concentration\n\n\nSince 50% of revenue comes from ~10% of hours (typically high-price periods with tight system conditions), curtailment during these events has an outsized impact on annual returns.\n\n\n\n\nCo-location vulnerability:\n\nSolar-heavy regions face more curtailment (midday surplus)\nCo-located batteries may be curtailed when solar is exporting (network constraint)\nBehind-the-meter batteries forced to charge/discharge to match solar, missing optimal arbitrage windows\n\nStandalone advantage:\n\nIndependent dispatch can respond to market signals without solar constraints\nHigh-MLF locations typically have better transmission access\nFCAS services provide alternative revenue during curtailment events",
+    "crumbs": [
+      "Analysis",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Technical Constraints & Location Value</span>"
+    ]
+  },
+  {
+    "objectID": "sections/04_technical_constraints.html#the-location-optimization-framework",
+    "href": "sections/04_technical_constraints.html#the-location-optimization-framework",
+    "title": "4  Technical Constraints & Location Value",
+    "section": "4.5 The Location Optimization Framework",
+    "text": "4.5 The Location Optimization Framework\n\n4.5.1 Site Selection Hierarchy\nFor battery investors, location optimization follows a clear hierarchy:\n\nMLF maximization (primary revenue driver)\nCurtailment risk minimization (protect top-decile revenue hours)\nPrice volatility exposure (ensure sufficient price spread)\nFCAS market access (ancillary services revenue)\nTransmission capacity (ability to export full capacity)\n\n\n\n4.5.2 When Co-location Makes Sense\n\n\n\n⚡\n\n\n\nCo-location Can Be Optimal When:\n\n\nConditions favoring hybrid deployment\n\n\n\n\n\nGrid upgrades planned: Transmission improvements will improve MLF/reduce curtailment\nGreen premium sufficient: ESG buyers pay enough to offset MLF penalty\nRetrofit scenario: Adding battery to existing solar (location constraint already exists)\nCIS eligibility: Government contracts compensate for location disadvantage\n\n\n\n\n\n4.5.3 When Standalone Is Preferred\n\n\n\n🔋\n\n\n\nStandalone Is Preferred When:\n\n\nConditions favoring independent deployment\n\n\n\n\n\nGreenfield development: Free to choose optimal location\nMerchant exposure: Targeting pure arbitrage without PPA protection\nHigh hurdle rates: Need maximum revenue per MW\nFCAS focus: Ancillary services revenue is significant",
+    "crumbs": [
+      "Analysis",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Technical Constraints & Location Value</span>"
+    ]
+  },
+  {
+    "objectID": "sections/04_technical_constraints.html#beyond-revenue-operational-considerations",
+    "href": "sections/04_technical_constraints.html#beyond-revenue-operational-considerations",
+    "title": "4  Technical Constraints & Location Value",
+    "section": "4.6 Beyond Revenue: Operational Considerations",
+    "text": "4.6 Beyond Revenue: Operational Considerations\n\n4.6.1 Battery Duration and MLF Sensitivity\nLonger-duration batteries (4hr+) are less sensitive to MLF than 2hr systems because:\n\nFewer cycles: Lower annual revenue per MW capacity, so MLF impact is diluted\nEnergy arbitrage focus: Capturing day-night spread rather than intraday volatility\nCapacity payments: May be contracted for capacity rather than energy arbitrage\n\nHowever, 2hr batteries (the current market standard) are highly MLF-sensitive because they rely on rapid cycling during price spikes — the exact events where MLF adjusts the absolute revenue.\n\n\n4.6.2 Degradation and Revenue Quality\nHigh-MLF locations often correlate with:\n\nMore cycling: Volatile prices = frequent charge/discharge = faster degradation\nHigher temperatures: Load centers = hotter climate = reduced battery life\n\nInvestors must balance:\n\nHigher revenue (good MLF) vs Higher opex (increased maintenance, shorter replacement cycle)\n\nStandalone batteries in high-MLF locations may face 15-20% higher degradation rates than co-located batteries in milder climates — partially offsetting the revenue advantage.\n\n\n\nKey Takeaways\n\n\n\nBattery revenue is highly concentrated: 50% of revenue from ~10% of hours\n\n\nMLF materially impacts returns: 15-25% revenue difference between poor (0.85) and excellent (0.98) locations\n\n\nSolar farms typically have poor MLFs (0.80-0.90) due to end-of-line siting\n\n\nStandalone batteries can access high-MLF locations (0.95-1.05) near load centers\n\n\nCurtailment risk disproportionately impacts returns by eliminating top revenue hours\n\n\nLocation-driven revenue differential often exceeds capex savings from co-location\n\n\nDuration matters: 2hr batteries more MLF-sensitive than 4hr+ systems\n\n\nOperational factors (degradation, temperature) partially offset high-MLF advantages",
+    "crumbs": [
+      "Analysis",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Technical Constraints & Location Value</span>"
+    ]
+  },
+  {
+    "objectID": "sections/05_strategic_framework.html",
+    "href": "sections/05_strategic_framework.html",
+    "title": "5  The Strategic Framework",
+    "section": "",
+    "text": "5.1 The Decision Framework\nThis section synthesizes the analysis from previous sections into an actionable decision framework. The goal is to provide a systematic approach for evaluating whether BESS should be deployed standalone or co-located with solar PV.",
+    "crumbs": [
+      "Framework",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>The Strategic Framework</span>"
+    ]
+  },
+  {
+    "objectID": "sections/05_strategic_framework.html#the-decision-framework",
+    "href": "sections/05_strategic_framework.html#the-decision-framework",
+    "title": "5  The Strategic Framework",
+    "section": "",
+    "text": "💡 Framework Purpose\n\n\nThis framework helps investors answer: Given my specific circumstances, which deployment model maximizes risk-adjusted returns?",
+    "crumbs": [
+      "Framework",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>The Strategic Framework</span>"
+    ]
+  },
+  {
+    "objectID": "sections/05_strategic_framework.html#step-1-define-the-investment-scenario",
+    "href": "sections/05_strategic_framework.html#step-1-define-the-investment-scenario",
+    "title": "5  The Strategic Framework",
+    "section": "5.2 Step 1: Define the Investment Scenario",
+    "text": "5.2 Step 1: Define the Investment Scenario\nThe first step is to clearly define what you’re evaluating. The decision framework differs significantly between scenarios.\n\n5.2.1 Scenario Classification\n\n\n\n📋 Investment Decision Tree\n\nIn Progress\n\n\n\n🌳\n\n\nStandalone vs. Co-located Decision Framework\n\n\nInteractive decision tree guiding investors through the key decision points: scenario type, location quality, contracting requirements, and return benchmarks.\n\n\nKey Decision Points: New build vs. retrofit, MLF quality, green premium availability, CIS eligibility, return hurdle requirements.\n\n\n\nFramework: Beyond the Solar Curve analysis Script: scripts/section5/s5_decision_tree.py\n\n\n\n\n5.2.2 Scenario A: Greenfield Development\n\n\n\n🏗️\n\n\n\nNew Build Assessment\n\n\nEvaluating a new battery investment from scratch\n\n\n\n\nKey questions: - Do I have a specific solar site in mind, or am I location-flexible? - What are my return hurdles (levered IRR target)? - Do I need contracted revenue, or can I accept merchant exposure? - Is CIS eligibility important for my financing?\nComparison basis: Standalone BESS at optimal location vs. Co-located BESS at solar site\nDecision driver: Which option provides higher risk-adjusted returns?\n\n\n\n\n5.2.3 Scenario B: Solar Retrofit\n\n\n\n🔧\n\n\n\nExisting Solar Assessment\n\n\nAdding battery to an existing solar asset\n\n\n\n\nKey questions: - When does my current PPA expire? - What is the merchant value of my solar asset without battery? - Can I re-contract with battery addition? - What battery return is acceptable to preserve overall project value?\nComparison basis: Co-located BESS vs. Merchant solar exposure (do nothing)\nDecision driver: Does battery addition preserve/enhance solar asset value?\n\n\n\n\n\n\n\n\n\n⚠️ Retrofit ≠ Greenfield Economics\n\n\nIn retrofit scenarios, the battery doesn’t need to compete with standalone returns. It needs to be accretive to the combined asset. A 10% battery IRR may be acceptable if it preserves a solar asset that would otherwise face 5% merchant returns.",
+    "crumbs": [
+      "Framework",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>The Strategic Framework</span>"
+    ]
+  },
+  {
+    "objectID": "sections/05_strategic_framework.html#step-2-establish-the-benchmark",
+    "href": "sections/05_strategic_framework.html#step-2-establish-the-benchmark",
+    "title": "5  The Strategic Framework",
+    "section": "5.3 Step 2: Establish the Benchmark",
+    "text": "5.3 Step 2: Establish the Benchmark\nBefore evaluating options, establish clear return benchmarks.\n\n5.3.1 Return Hurdle Framework\n\n\n\n\n\n\n\n\n\nInvestor Type\nTypical Levered IRR\nRisk Profile\nContracting Preference\n\n\n\n\nInfrastructure Fund\n8-12%\nLow\n70%+ contracted\n\n\nYield Vehicle\n6-9%\nVery Low\n90%+ contracted\n\n\nMerchant Investor\n15-20%\nHigh\n&lt;50% contracted acceptable\n\n\nDeveloper\n12-18%\nMedium-High\nFlexible\n\n\n\n\n\n5.3.2 Setting Your Benchmark\n\n\nStep 2.1\n\n\nDefine your minimum acceptable return\n\n\nWhat levered IRR must the battery investment achieve? This becomes the hurdle rate against which all options are evaluated.\n\n\nFor greenfield: Benchmark is typically a standalone BESS at an optimal location. The question becomes: does co-location beat this benchmark?\nFor retrofit: Benchmark is often the “do nothing” case—what happens to the solar asset without battery addition?",
+    "crumbs": [
+      "Framework",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>The Strategic Framework</span>"
+    ]
+  },
+  {
+    "objectID": "sections/05_strategic_framework.html#step-3-quantify-location-value",
+    "href": "sections/05_strategic_framework.html#step-3-quantify-location-value",
+    "title": "5  The Strategic Framework",
+    "section": "5.4 Step 3: Quantify Location Value",
+    "text": "5.4 Step 3: Quantify Location Value\nLocation is the primary driver of battery revenue. Quantify the impact before proceeding.\n\n5.4.1 MLF Assessment\n\n\n\n📍\n\n\n\nLocation Quality Checklist\n\n\nAssessing the co-location site vs. standalone alternatives\n\n\n\n\n\n\n\nFactor\nCo-located Site\nBest Standalone Alternative\nDifference\n\n\n\n\nMLF\n_____\n_____\n_____\n\n\nCurtailment risk\n_____ %\n_____ %\n_____ %\n\n\nFCAS market access\nYes / No\nYes / No\n—\n\n\nTransmission capacity\n_____ MW\n_____ MW\n_____ MW\n\n\n\n\n\n\n\n5.4.2 Revenue Impact Calculation\nFrom Section 4, we know that MLF differences compound during high-price events:\n\n\n15-25%\n\n\nTypical annual revenue difference between poor (0.85) and excellent (0.98) MLF\n\n\nCalculate the annual revenue impact: (MLF_standalone - MLF_colocated) × Expected_Annual_Revenue\n\n\nExample calculation:\n\nExpected annual revenue at MLF 1.0: $15M\nStandalone site MLF: 0.98 → Revenue = $14.7M\nCo-located site MLF: 0.88 → Revenue = $13.2M\nAnnual revenue penalty: $1.5M (10% reduction)\n\nOver a 15-year asset life, this compounds to significant value destruction.",
+    "crumbs": [
+      "Framework",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>The Strategic Framework</span>"
+    ]
+  },
+  {
+    "objectID": "sections/05_strategic_framework.html#step-4-quantify-infrastructure-synergies",
+    "href": "sections/05_strategic_framework.html#step-4-quantify-infrastructure-synergies",
+    "title": "5  The Strategic Framework",
+    "section": "5.5 Step 4: Quantify Infrastructure Synergies",
+    "text": "5.5 Step 4: Quantify Infrastructure Synergies\nCo-location provides genuine cost savings. Quantify these to offset location penalties.\n\n5.5.1 Capex Synergies\n\n\n\n💰\n\n\n\nInfrastructure Savings Assessment\n\n\nQuantifying co-location capex benefits\n\n\n\n\n\n\n\nComponent\nStandalone Cost\nCo-located Cost\nSaving\n\n\n\n\nGrid connection\n$___/kW\n$___/kW\n$___/kW\n\n\nElectrical infrastructure\n$___/kW\n$___/kW\n$___/kW\n\n\nLand/site costs\n$___/kW\n$___/kW\n$___/kW\n\n\nPlanning/approvals\n$___/kW\n$___/kW\n$___/kW\n\n\nBalance of plant\n$___/kW\n$___/kW\n$___/kW\n\n\nTOTAL\n$___/kW\n\\(___/kW | **\\)___/kW**\n\n\n\n\n\n\n\n\n5.5.2 Typical Synergy Ranges\n\n\n\nConfiguration\nTypical Capex Saving\nNotes\n\n\n\n\nNon-hybrid\n$0/kW\nSeparate connections\n\n\nAC-coupled\n$50-100/kW\nShared connection, dual DUID\n\n\nDC-coupled\n$70-120/kW\nBehind-the-meter, single DUID\n\n\n\n\n\n5.5.3 Opex Synergies\nCo-location also provides ongoing operational savings:\n\nO&M: Single site contract (2-5% saving)\nInsurance: Combined policy (5-10% saving)\nLand lease: Marginal cost vs. new site\nNetwork charges: Potential TUOS/DUOS savings",
+    "crumbs": [
+      "Framework",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>The Strategic Framework</span>"
+    ]
+  },
+  {
+    "objectID": "sections/05_strategic_framework.html#step-5-assess-contracting-options",
+    "href": "sections/05_strategic_framework.html#step-5-assess-contracting-options",
+    "title": "5  The Strategic Framework",
+    "section": "5.6 Step 5: Assess Contracting Options",
+    "text": "5.6 Step 5: Assess Contracting Options\nThe value of co-location often depends on contracting requirements.\n\n5.6.1 Green Premium Assessment\n\n\n\n\n\n\n\nℹ️ Is a Green Premium Available?\n\n\nDC-coupled batteries can only charge from solar, creating a “guaranteed green” product. This may command a premium from ESG-focused offtakers.\n\n\n\nIf premium available: Add $5-15/MWh to co-located revenue assumptions\n\n\nIf no premium: No adjustment needed\n\n\n\n\n\n\n\n5.6.2 CIS Eligibility\nFor Australian projects, Capacity Investment Scheme eligibility can be decisive:\n\n\n\nProject Type\nCIS Eligible?\nRevenue Impact\n\n\n\n\nStandalone BESS\nSometimes\nDepends on tender\n\n\nCo-located solar+storage\nYes\nLong-term floor price\n\n\n\n\n\nCIS Value\n\n\nGovernment-backed revenue floor reduces financing cost by 50-100bps\n\n\nIf CIS eligibility is critical for your financing structure, this may override location considerations.\n\n\n\n\n5.6.3 PPA Structuring\n\n\n\nStructure\nStandalone Compatibility\nCo-located Compatibility\n\n\n\n\nTolling agreement\nExcellent\nGood\n\n\nShaped PPA\nLimited\nExcellent\n\n\nGreen PPA\nPoor\nExcellent\n\n\nMerchant\nExcellent\nGood",
+    "crumbs": [
+      "Framework",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>The Strategic Framework</span>"
+    ]
+  },
+  {
+    "objectID": "sections/05_strategic_framework.html#step-6-decision-matrix",
+    "href": "sections/05_strategic_framework.html#step-6-decision-matrix",
+    "title": "5  The Strategic Framework",
+    "section": "5.7 Step 6: Decision Matrix",
+    "text": "5.7 Step 6: Decision Matrix\nSynthesize the analysis into a decision matrix.\n\n5.7.1 Quantitative Comparison\n\n\n\n📊\n\n\n\nScenario Comparison Template\n\n\nFill in with project-specific values\n\n\n\n\n\n\n\nMetric\nStandalone\nCo-located\nDifference\n\n\n\n\nCapex ($/kW)\n$___\n$___\n\\(___ |\n| **Annual revenue (\\)M)**\n\n\nContracted %\n___%\n___%\n___%\n\n\nLevered IRR\n___%\n___%\n___%\n\n\nEquity multiple\n___x\n___x\n___x\n\n\n\n\n\n\n\n5.7.2 Decision Rules\nBased on the analysis framework:\n\n\nChoose Standalone When:\n\n\nLocation value exceeds infrastructure synergies\n\n\nMLF revenue gain &gt; Capex synergy saving, AND you can accept higher merchant exposure, AND CIS eligibility is not critical.\n\n\n\n\nChoose Co-located When:\n\n\nInfrastructure synergies and contracting value exceed location penalty\n\n\nCapex synergy + Green premium + CIS value &gt; MLF penalty, OR this is a retrofit scenario where battery preserves solar asset value.",
+    "crumbs": [
+      "Framework",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>The Strategic Framework</span>"
+    ]
+  },
+  {
+    "objectID": "sections/05_strategic_framework.html#step-7-model-and-validate",
+    "href": "sections/05_strategic_framework.html#step-7-model-and-validate",
+    "title": "5  The Strategic Framework",
+    "section": "5.8 Step 7: Model and Validate",
+    "text": "5.8 Step 7: Model and Validate\nBefore final decision, validate assumptions with dispatch modeling.\n\n5.8.1 Modeling Approach\n\n\n\n⚙️ PyPSA Dispatch Optimization Results\n\nIn Progress\n\n\n\n📈\n\n\nScenario Comparison: Dispatch & Revenue\n\n\nComparative analysis showing annual dispatch patterns, revenue by source, and financial metrics for standalone vs. co-located configurations.\n\n\nModeling Outputs: Optimal dispatch schedule, annual revenue breakdown, cycling degradation, IRR sensitivity analysis.\n\n\n\nModel: PyPSA optimization framework Script: scripts/section5/pypsa_model/run_scenarios.py\n\n\n\n\n5.8.2 Key Modeling Inputs\n\n\n\nParameter\nStandalone Scenario\nCo-located Scenario\n\n\n\n\nBattery capacity\n___ MW / ___ MWh\n___ MW / ___ MWh\n\n\nSolar capacity\nN/A\n___ MW\n\n\nMLF\n___\n___\n\n\nPrice timeseries\nHistorical 2024-25\nHistorical 2024-25\n\n\nFCAS availability\nYes\nLimited\n\n\nGrid charging\nFull\nConfiguration-dependent\n\n\n\n\n\n5.8.3 Sensitivity Analysis\nTest key assumptions to understand risk:\n\nPrice volatility: +/- 20% from base case\nMLF changes: What if MLF improves/deteriorates?\nCurtailment risk: 0%, 5%, 10% scenarios\nCapex variance: +/- 15% from estimate\nGreen premium: $0, $5, $10, $15/MWh scenarios",
+    "crumbs": [
+      "Framework",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>The Strategic Framework</span>"
+    ]
+  },
+  {
+    "objectID": "sections/05_strategic_framework.html#decision-summary",
+    "href": "sections/05_strategic_framework.html#decision-summary",
+    "title": "5  The Strategic Framework",
+    "section": "5.9 Decision Summary",
+    "text": "5.9 Decision Summary\n\n5.9.1 Framework Checklist\n\n\nBefore Making Your Decision\n\n\n\n☐ Classified scenario (greenfield vs. retrofit)\n\n\n☐ Established return benchmark\n\n\n☐ Quantified MLF impact at co-located site\n\n\n☐ Calculated infrastructure synergies\n\n\n☐ Assessed green premium and CIS eligibility\n\n\n☐ Completed decision matrix comparison\n\n\n☐ Validated with dispatch modeling\n\n\n☐ Tested key sensitivities\n\n\n\n\n\n5.9.2 Final Decision Framework\n\n\n\n✅\n\n\n\nDecision Summary\n\n\nSynthesizing the analysis\n\n\n\n\nIf greenfield and location-flexible: - Default to standalone unless co-location provides clear IRR advantage - Location value typically exceeds infrastructure synergies\nIf greenfield but CIS-dependent: - Co-location likely preferred for eligibility - Accept some location penalty for financing benefit\nIf retrofit with expiring PPA: - Co-location typically preferred - Battery protects solar asset value - Lower battery IRR acceptable if combined returns meet hurdle\nIf retrofit but solar has strong MLF: - Evaluate standalone at same site (AC-coupled, separate DUID) - May capture both location value and synergies\n\n\n\n\n\n\n\n\n\n\n🚨 Remember\n\n\nThis framework provides structure, but every project is unique. The quantitative analysis should inform—not replace—commercial judgment. Engage technical and financial advisors to validate assumptions before committing capital.\n\n\n\n\n\n\n\nKey Takeaways\n\n\n\nFirst classify your scenario: greenfield vs. retrofit changes the decision framework\n\n\nEstablish a clear return benchmark before evaluating options\n\n\nQuantify location value (MLF impact) and infrastructure synergies separately\n\n\nConsider contracting requirements: green premium, CIS eligibility, PPA structure\n\n\nUse dispatch modeling to validate assumptions and test sensitivities\n\n\nFor greenfield: standalone typically wins unless specific co-location benefits apply\n\n\nFor retrofit: co-location typically wins as it protects existing solar value\n\n\nEvery project is unique—use this framework as a guide, not a prescription",
+    "crumbs": [
+      "Framework",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>The Strategic Framework</span>"
+    ]
+  }
+]
