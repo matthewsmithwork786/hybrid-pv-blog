@@ -1,63 +1,76 @@
 /*-- scss:defaults --*/
 /*
- * Beyond the Solar Curve - Design System
- * Professional styling for NEM BESS investment analysis report
- * Version 2.0
+ * Beyond the Solar Curve - Financial Times Style
+ * Sophisticated design with dark navy primary, inspired by the FT
+ * Version 3.0 - FT Navy Edition
  */
 
 /* ========================================
    1. FONTS & TYPOGRAPHY
    ======================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Source+Code+Pro:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Source+Sans+3:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
 
 /* ========================================
    2. CSS CUSTOM PROPERTIES (Variables)
    ======================================== */
 
 :root {
-  /* Primary Colors - Energy Types */
-  --color-pv: #FFD700;
-  --color-pv-light: #FFF3B0;
-  --color-pv-dark: #C7A600;
+  /* FT-Inspired Colors with Dark Navy Primary */
+  --color-primary: #0D1B2A;        /* Dark Navy (primary) */
+  --color-primary-light: #1B3A57;
+  --color-primary-lighter: #2E5077;
 
-  --color-wind: #2E7D32;
-  --color-wind-light: #81C784;
-  --color-wind-dark: #1B5E20;
+  --color-secondary: #FFC8A2;      /* FT Salmon/Peach */
+  --color-secondary-dark: #E5A882;
+  --color-secondary-light: #FFE4D1;
 
-  --color-battery: #7B1FA2;
-  --color-battery-light: #BA68C8;
-  --color-battery-dark: #4A148C;
+  --color-warm: #C9A66B;           /* Gold accent */
+  --color-warm-light: #E5D4B3;
+  --color-warm-dark: #A68B4D;
 
-  --color-battery-colocated: #FF6F00;
-  --color-battery-colocated-light: #FFB74D;
-  --color-battery-colocated-dark: #E65100;
+  /* Data Visualization Colors - Adapted for FT palette */
+  --color-pv: #E5A882;             /* Warm salmon (solar PV) */
+  --color-pv-light: #FFD4BE;
+  --color-pv-dark: #C78B66;
+
+  --color-wind: #4A7C59;           /* Muted green (wind) */
+  --color-wind-light: #6B9B7A;
+  --color-wind-dark: #355A42;
+
+  --color-battery: #5C4B8A;        /* Muted purple (battery standalone) */
+  --color-battery-light: #8677AB;
+  --color-battery-dark: #3D3260;
+
+  --color-battery-colocated: #C9A66B;  /* Gold (battery co-located) */
+  --color-battery-colocated-light: #E5D4B3;
+  --color-battery-colocated-dark: #A68B4D;
 
   /* Accent & UI Colors */
-  --color-accent: #00ACC1;
-  --color-accent-light: #4DD0E1;
-  --color-accent-dark: #00838F;
+  --color-accent: #1B3A57;
+  --color-accent-light: #2E5077;
+  --color-accent-dark: #0D1B2A;
 
   /* Status Colors */
-  --color-positive: #388E3C;
-  --color-negative: #D32F2F;
-  --color-warning: #F57C00;
-  --color-info: #1976D2;
+  --color-positive: #4A7C59;
+  --color-negative: #A63D40;
+  --color-warning: #C9A66B;
+  --color-info: #2E5077;
 
-  /* Neutral Colors */
-  --color-text: #2C3E50;
-  --color-text-light: #5D6D7E;
-  --color-text-muted: #95A5A6;
-  --color-background: #FFFFFF;
-  --color-background-alt: #F8F9FA;
-  --color-background-dark: #ECEFF1;
-  --color-border: #E0E0E0;
-  --color-border-light: #F0F0F0;
+  /* Neutral Colors - FT-inspired warm palette */
+  --color-text: #33302E;
+  --color-text-light: #5C5856;
+  --color-text-muted: #8A8683;
+  --color-background: #FFF9F5;     /* Warm off-white, FT-inspired */
+  --color-background-alt: #FFF1E5; /* FT Salmon tint */
+  --color-background-dark: #F2E6DA;
+  --color-border: #E5D9CD;
+  --color-border-light: #F2E6DA;
 
-  /* Shadows */
-  --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
-  --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
-  --shadow-lg: 0 10px 25px rgba(0,0,0,0.15);
+  /* Shadows - Warm toned */
+  --shadow-sm: 0 1px 3px rgba(13, 27, 42, 0.06);
+  --shadow-md: 0 4px 8px rgba(13, 27, 42, 0.08);
+  --shadow-lg: 0 8px 24px rgba(13, 27, 42, 0.12);
 
   /* Spacing */
   --spacing-xs: 0.25rem;
@@ -67,11 +80,11 @@
   --spacing-xl: 2rem;
   --spacing-2xl: 3rem;
 
-  /* Border Radius */
-  --radius-sm: 4px;
-  --radius-md: 8px;
-  --radius-lg: 12px;
-  --radius-xl: 16px;
+  /* Border Radius - Subtle */
+  --radius-sm: 3px;
+  --radius-md: 6px;
+  --radius-lg: 10px;
+  --radius-xl: 14px;
 
   /* Transitions */
   --transition-fast: 150ms ease;
@@ -84,29 +97,29 @@
    ======================================== */
 
 body {
-  font-family: 'Lato', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  font-size: 16px;
-  line-height: 1.7;
+  font-family: 'Source Sans 3', Georgia, 'Times New Roman', serif;
+  font-size: 17px;
+  line-height: 1.75;
   color: var(--color-text);
   background-color: var(--color-background);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Typography */
+/* Typography - FT Style: Elegant serifs for headers */
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Lato', sans-serif;
-  font-weight: 700;
-  color: var(--color-text);
-  line-height: 1.3;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 600;
+  color: var(--color-primary);
+  line-height: 1.25;
   margin-top: 0;
 }
 
 h1 {
   font-size: 2.75rem;
-  font-weight: 900;
+  font-weight: 700;
   margin-bottom: var(--spacing-lg);
-  letter-spacing: -0.02em;
+  letter-spacing: -0.01em;
 }
 
 h2 {
@@ -114,7 +127,7 @@ h2 {
   margin-top: var(--spacing-2xl);
   margin-bottom: var(--spacing-md);
   padding-bottom: var(--spacing-sm);
-  border-bottom: 3px solid var(--color-accent);
+  border-bottom: 2px solid var(--color-secondary);
   position: relative;
 }
 
@@ -122,17 +135,17 @@ h2::after {
   content: '';
   position: absolute;
   left: 0;
-  bottom: -3px;
-  width: 60px;
-  height: 3px;
-  background: var(--color-battery);
+  bottom: -2px;
+  width: 80px;
+  height: 2px;
+  background: var(--color-primary);
 }
 
 h3 {
   font-size: 1.5rem;
   margin-top: var(--spacing-xl);
   margin-bottom: var(--spacing-sm);
-  color: var(--color-text);
+  color: var(--color-primary);
 }
 
 h4 {
@@ -140,28 +153,29 @@ h4 {
   margin-top: var(--spacing-lg);
   margin-bottom: var(--spacing-sm);
   color: var(--color-text-light);
+  font-weight: 500;
 }
 
 p {
   margin-bottom: var(--spacing-md);
 }
 
-/* Links */
+/* Links - FT style */
 a {
-  color: var(--color-accent-dark);
+  color: var(--color-primary);
   text-decoration: none;
-  border-bottom: 1px solid transparent;
+  border-bottom: 1px solid var(--color-secondary);
   transition: all var(--transition-fast);
 }
 
 a:hover {
-  color: var(--color-accent);
-  border-bottom-color: var(--color-accent);
+  color: var(--color-primary-light);
+  border-bottom-color: var(--color-primary);
 }
 
-/* Strong/Bold with accent */
+/* Strong/Bold */
 strong {
-  font-weight: 700;
+  font-weight: 600;
   color: var(--color-text);
 }
 
@@ -170,8 +184,8 @@ strong {
    ======================================== */
 
 code {
-  font-family: 'Source Code Pro', 'Consolas', 'Monaco', monospace;
-  font-size: 0.875em;
+  font-family: 'JetBrains Mono', 'Consolas', 'Monaco', monospace;
+  font-size: 0.85em;
   background-color: var(--color-background-alt);
   padding: 0.2em 0.4em;
   border-radius: var(--radius-sm);
@@ -179,9 +193,8 @@ code {
 }
 
 pre {
-  background-color: var(--color-background-alt);
-  border: 1px solid var(--color-border);
-  border-left: 4px solid var(--color-accent);
+  background-color: var(--color-primary);
+  border: none;
   padding: var(--spacing-lg);
   border-radius: var(--radius-md);
   overflow-x: auto;
@@ -192,11 +205,11 @@ pre code {
   background: none;
   padding: 0;
   font-size: 0.9em;
-  color: var(--color-text);
+  color: var(--color-secondary-light);
 }
 
 /* ========================================
-   5. TABLES
+   5. TABLES - FT Style elegant tables
    ======================================== */
 
 table {
@@ -204,28 +217,26 @@ table {
   border-collapse: collapse;
   margin: var(--spacing-lg) 0;
   font-size: 0.95rem;
-  box-shadow: var(--shadow-sm);
-  border-radius: var(--radius-md);
-  overflow: hidden;
+  background: var(--color-background);
 }
 
 thead {
-  background: linear-gradient(135deg, var(--color-accent-dark) 0%, var(--color-accent) 100%);
+  background: var(--color-primary);
 }
 
 th {
-  color: white;
-  font-weight: 700;
+  color: var(--color-secondary-light);
+  font-family: 'Source Sans 3', sans-serif;
+  font-weight: 600;
   padding: var(--spacing-md) var(--spacing-lg);
   text-align: left;
-  text-transform: uppercase;
-  font-size: 0.8rem;
-  letter-spacing: 0.05em;
+  font-size: 0.85rem;
+  letter-spacing: 0.03em;
 }
 
 td {
   padding: var(--spacing-md) var(--spacing-lg);
-  border-bottom: 1px solid var(--color-border-light);
+  border-bottom: 1px solid var(--color-border);
   vertical-align: top;
 }
 
@@ -238,20 +249,22 @@ tbody tr:hover {
 }
 
 tbody tr:last-child td {
-  border-bottom: none;
+  border-bottom: 2px solid var(--color-primary);
 }
 
 /* ========================================
-   6. BLOCKQUOTES
+   6. BLOCKQUOTES - FT Style
    ======================================== */
 
 blockquote {
-  border-left: 4px solid var(--color-accent);
-  background: linear-gradient(90deg, var(--color-background-alt) 0%, var(--color-background) 100%);
+  border-left: 4px solid var(--color-warm);
+  background: var(--color-background-alt);
   padding: var(--spacing-lg) var(--spacing-xl);
   margin: var(--spacing-xl) 0;
   border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  font-family: 'Playfair Display', Georgia, serif;
   font-style: italic;
+  font-size: 1.15rem;
   color: var(--color-text-light);
 }
 
@@ -260,14 +273,14 @@ blockquote p:last-child {
 }
 
 blockquote strong {
-  color: var(--color-text);
+  color: var(--color-primary);
+  font-style: normal;
 }
 
 /* ========================================
    7. CHART CONTAINERS
    ======================================== */
 
-/* Main chart container */
 .chart-container {
   background: var(--color-background);
   border: 1px solid var(--color-border);
@@ -282,20 +295,20 @@ blockquote strong {
   box-shadow: var(--shadow-lg);
 }
 
-/* Chart header */
 .chart-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: var(--spacing-md) var(--spacing-lg);
-  background: var(--color-background-alt);
-  border-bottom: 1px solid var(--color-border-light);
+  background: var(--color-primary);
+  border-bottom: none;
 }
 
 .chart-title {
+  font-family: 'Playfair Display', Georgia, serif;
   font-size: 1.1rem;
-  font-weight: 700;
-  color: var(--color-text);
+  font-weight: 600;
+  color: var(--color-secondary-light);
   margin: 0;
   display: flex;
   align-items: center;
@@ -304,6 +317,7 @@ blockquote strong {
 
 .chart-title-icon {
   font-size: 1.25rem;
+  color: var(--color-warm);
 }
 
 /* Status badges */
@@ -311,25 +325,25 @@ blockquote strong {
   display: inline-flex;
   align-items: center;
   padding: var(--spacing-xs) var(--spacing-md);
-  border-radius: 20px;
-  font-size: 0.75rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.7rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
 
 .chart-status--complete {
-  background: rgba(56, 142, 60, 0.15);
+  background: rgba(74, 124, 89, 0.2);
   color: var(--color-positive);
 }
 
 .chart-status--pending {
-  background: rgba(255, 152, 0, 0.15);
+  background: rgba(201, 166, 107, 0.2);
   color: var(--color-warning);
 }
 
 .chart-status--error {
-  background: rgba(211, 47, 47, 0.15);
+  background: rgba(166, 61, 64, 0.2);
   color: var(--color-negative);
 }
 
@@ -368,18 +382,19 @@ blockquote strong {
 
 .chart-source {
   color: var(--color-text-muted);
+  font-style: italic;
 }
 
 .chart-code-link {
   display: inline-flex;
   align-items: center;
   gap: var(--spacing-xs);
-  color: var(--color-accent-dark);
+  color: var(--color-primary);
   font-weight: 500;
 }
 
 .chart-code-link:hover {
-  color: var(--color-accent);
+  color: var(--color-primary-light);
 }
 
 /* ========================================
@@ -393,7 +408,7 @@ blockquote strong {
   justify-content: center;
   min-height: 400px;
   padding: var(--spacing-2xl);
-  background: linear-gradient(135deg, var(--color-background-alt) 0%, var(--color-background-dark) 100%);
+  background: var(--color-background-alt);
   text-align: center;
 }
 
@@ -401,12 +416,14 @@ blockquote strong {
   font-size: 3rem;
   margin-bottom: var(--spacing-md);
   opacity: 0.5;
+  color: var(--color-primary-light);
 }
 
 .chart-placeholder-title {
+  font-family: 'Playfair Display', Georgia, serif;
   font-size: 1.25rem;
-  font-weight: 700;
-  color: var(--color-text);
+  font-weight: 600;
+  color: var(--color-primary);
   margin-bottom: var(--spacing-sm);
 }
 
@@ -420,13 +437,13 @@ blockquote strong {
   background: var(--color-background);
   padding: var(--spacing-md) var(--spacing-lg);
   border-radius: var(--radius-md);
-  border-left: 3px solid var(--color-accent);
+  border-left: 4px solid var(--color-warm);
   text-align: left;
   max-width: 500px;
 }
 
 .chart-placeholder-insight strong {
-  color: var(--color-accent-dark);
+  color: var(--color-primary);
 }
 
 /* Technology-specific placeholder borders */
@@ -443,10 +460,9 @@ blockquote strong {
 }
 
 /* ========================================
-   9. CALLOUT BOXES (Enhanced)
+   9. CALLOUT BOXES
    ======================================== */
 
-/* Base callout */
 .callout {
   position: relative;
   padding: var(--spacing-lg) var(--spacing-xl);
@@ -458,22 +474,23 @@ blockquote strong {
 }
 
 .callout-title {
+  font-family: 'Source Sans 3', sans-serif;
   display: flex;
   align-items: center;
   gap: var(--spacing-sm);
-  font-weight: 700;
-  font-size: 1rem;
+  font-weight: 600;
+  font-size: 0.95rem;
   margin-bottom: var(--spacing-sm);
 }
 
 .callout-icon {
-  font-size: 1.25rem;
+  font-size: 1.1rem;
 }
 
 /* Callout variants */
 .callout-note {
   border-left-color: var(--color-info);
-  background: linear-gradient(90deg, rgba(25, 118, 210, 0.08) 0%, var(--color-background) 100%);
+  background: linear-gradient(90deg, rgba(46, 80, 119, 0.06) 0%, var(--color-background) 100%);
 }
 
 .callout-note .callout-title {
@@ -482,7 +499,7 @@ blockquote strong {
 
 .callout-warning {
   border-left-color: var(--color-warning);
-  background: linear-gradient(90deg, rgba(245, 124, 0, 0.08) 0%, var(--color-background) 100%);
+  background: linear-gradient(90deg, rgba(201, 166, 107, 0.1) 0%, var(--color-background) 100%);
 }
 
 .callout-warning .callout-title {
@@ -491,7 +508,7 @@ blockquote strong {
 
 .callout-important {
   border-left-color: var(--color-negative);
-  background: linear-gradient(90deg, rgba(211, 47, 47, 0.08) 0%, var(--color-background) 100%);
+  background: linear-gradient(90deg, rgba(166, 61, 64, 0.06) 0%, var(--color-background) 100%);
 }
 
 .callout-important .callout-title {
@@ -500,7 +517,7 @@ blockquote strong {
 
 .callout-tip {
   border-left-color: var(--color-positive);
-  background: linear-gradient(90deg, rgba(56, 142, 60, 0.08) 0%, var(--color-background) 100%);
+  background: linear-gradient(90deg, rgba(74, 124, 89, 0.06) 0%, var(--color-background) 100%);
 }
 
 .callout-tip .callout-title {
@@ -508,55 +525,58 @@ blockquote strong {
 }
 
 /* ========================================
-   10. KEY FINDINGS BOXES
+   10. KEY FINDINGS BOXES - FT Style
    ======================================== */
 
 .key-finding {
   position: relative;
-  background: var(--color-background);
-  border: 2px solid var(--color-accent);
+  background: var(--color-primary);
+  border: none;
   border-radius: var(--radius-lg);
   padding: var(--spacing-xl);
   margin: var(--spacing-xl) 0;
   box-shadow: var(--shadow-md);
+  color: var(--color-secondary-light);
 }
 
 .key-finding::before {
   content: 'KEY FINDING';
   position: absolute;
-  top: -12px;
-  left: var(--spacing-lg);
-  background: var(--color-accent);
-  color: white;
+  top: var(--spacing-md);
+  right: var(--spacing-md);
+  background: var(--color-warm);
+  color: var(--color-primary);
   padding: var(--spacing-xs) var(--spacing-md);
   border-radius: var(--radius-sm);
-  font-size: 0.7rem;
+  font-family: 'Source Sans 3', sans-serif;
+  font-size: 0.65rem;
   font-weight: 700;
   letter-spacing: 0.1em;
 }
 
 .key-finding-stat {
-  font-size: 2.5rem;
-  font-weight: 900;
-  color: var(--color-battery);
-  line-height: 1.1;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: var(--color-warm);
+  line-height: 1;
   margin-bottom: var(--spacing-sm);
 }
 
 .key-finding-label {
   font-size: 1.1rem;
-  color: var(--color-text-light);
+  color: var(--color-secondary);
   margin-bottom: var(--spacing-md);
 }
 
 .key-finding-description {
-  color: var(--color-text);
+  color: var(--color-secondary-light);
   font-size: 0.95rem;
 }
 
 /* Technology-themed key findings */
 .key-finding--pv {
-  border-color: var(--color-pv);
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
 }
 
 .key-finding--pv::before {
@@ -565,19 +585,19 @@ blockquote strong {
 }
 
 .key-finding--pv .key-finding-stat {
-  color: var(--color-pv-dark);
+  color: var(--color-pv);
 }
 
 .key-finding--battery {
-  border-color: var(--color-battery);
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
 }
 
 .key-finding--battery::before {
-  background: var(--color-battery);
+  background: var(--color-battery-light);
 }
 
 .key-finding--battery .key-finding-stat {
-  color: var(--color-battery);
+  color: var(--color-battery-light);
 }
 
 /* ========================================
@@ -598,8 +618,8 @@ blockquote strong {
   align-items: center;
   gap: var(--spacing-md);
   padding: var(--spacing-md) var(--spacing-lg);
-  background: var(--color-background-alt);
-  border-bottom: 1px solid var(--color-border-light);
+  background: var(--color-primary);
+  border-bottom: none;
 }
 
 .analysis-box-icon {
@@ -613,29 +633,30 @@ blockquote strong {
 }
 
 .analysis-box--pv .analysis-box-icon {
-  background: var(--color-pv-light);
-  color: var(--color-pv-dark);
+  background: var(--color-pv);
+  color: var(--color-text);
 }
 
 .analysis-box--battery .analysis-box-icon {
   background: var(--color-battery-light);
-  color: var(--color-battery-dark);
+  color: var(--color-background);
 }
 
 .analysis-box--hybrid .analysis-box-icon {
-  background: var(--color-battery-colocated-light);
-  color: var(--color-battery-colocated-dark);
+  background: var(--color-battery-colocated);
+  color: var(--color-text);
 }
 
 .analysis-box-title {
-  font-weight: 700;
-  color: var(--color-text);
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 600;
+  color: var(--color-secondary-light);
   margin: 0;
 }
 
 .analysis-box-subtitle {
   font-size: 0.85rem;
-  color: var(--color-text-muted);
+  color: var(--color-secondary);
   margin: 0;
 }
 
@@ -648,19 +669,22 @@ blockquote strong {
    ======================================== */
 
 .section-summary {
-  background: linear-gradient(135deg, var(--color-background-alt) 0%, var(--color-background) 100%);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
-  padding: var(--spacing-xl);
+  background: var(--color-background-alt);
+  border: none;
+  border-left: 4px solid var(--color-primary);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  padding: var(--spacing-lg) var(--spacing-xl);
   margin-bottom: var(--spacing-2xl);
 }
 
 .section-summary-title {
-  font-size: 0.85rem;
+  font-family: 'Source Sans 3', sans-serif;
+  font-size: 0.8rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: var(--color-text-muted);
+  color: var(--color-primary);
   margin-bottom: var(--spacing-md);
+  font-weight: 600;
 }
 
 .section-summary-list {
@@ -677,11 +701,12 @@ blockquote strong {
 }
 
 .section-summary-list li::before {
-  content: '→';
+  content: '>';
   position: absolute;
   left: 0;
-  color: var(--color-accent);
+  color: var(--color-warm);
   font-weight: 700;
+  font-family: 'JetBrains Mono', monospace;
 }
 
 /* ========================================
@@ -689,20 +714,22 @@ blockquote strong {
    ======================================== */
 
 .key-takeaways {
-  background: linear-gradient(135deg, rgba(0, 172, 193, 0.08) 0%, var(--color-background) 100%);
-  border: 1px solid var(--color-accent);
+  background: var(--color-primary);
+  border: none;
   border-radius: var(--radius-lg);
   padding: var(--spacing-xl);
   margin-top: var(--spacing-2xl);
+  color: var(--color-secondary-light);
 }
 
 .key-takeaways-title {
+  font-family: 'Playfair Display', Georgia, serif;
   display: flex;
   align-items: center;
   gap: var(--spacing-sm);
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: var(--color-accent-dark);
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--color-warm);
   margin-bottom: var(--spacing-md);
 }
 
@@ -716,15 +743,17 @@ blockquote strong {
   position: relative;
   padding-left: var(--spacing-xl);
   margin-bottom: var(--spacing-sm);
-  color: var(--color-text);
+  color: var(--color-secondary-light);
 }
 
 .key-takeaways-list li::before {
-  content: '✓';
+  content: '+';
   position: absolute;
   left: 0;
-  color: var(--color-positive);
+  color: var(--color-warm);
   font-weight: 700;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.2rem;
 }
 
 /* ========================================
@@ -732,7 +761,7 @@ blockquote strong {
    ======================================== */
 
 .highlight-pv {
-  background: linear-gradient(135deg, var(--color-pv-light) 0%, var(--color-pv) 100%);
+  background: var(--color-pv);
   color: var(--color-text);
   padding: 0.15em 0.5em;
   border-radius: var(--radius-sm);
@@ -740,7 +769,7 @@ blockquote strong {
 }
 
 .highlight-wind {
-  background: linear-gradient(135deg, var(--color-wind-light) 0%, var(--color-wind) 100%);
+  background: var(--color-wind);
   color: white;
   padding: 0.15em 0.5em;
   border-radius: var(--radius-sm);
@@ -748,7 +777,7 @@ blockquote strong {
 }
 
 .highlight-battery {
-  background: linear-gradient(135deg, var(--color-battery-light) 0%, var(--color-battery) 100%);
+  background: var(--color-battery);
   color: white;
   padding: 0.15em 0.5em;
   border-radius: var(--radius-sm);
@@ -756,56 +785,60 @@ blockquote strong {
 }
 
 .highlight-hybrid {
-  background: linear-gradient(135deg, var(--color-battery-colocated-light) 0%, var(--color-battery-colocated) 100%);
-  color: white;
+  background: var(--color-battery-colocated);
+  color: var(--color-text);
   padding: 0.15em 0.5em;
   border-radius: var(--radius-sm);
   font-weight: 600;
 }
 
 /* ========================================
-   15. COMPARISON TABLE (Styled)
+   15. COMPARISON TABLE
    ======================================== */
 
 .comparison-table {
   border: none;
   box-shadow: var(--shadow-md);
+  border-radius: var(--radius-md);
+  overflow: hidden;
 }
 
 .comparison-table thead {
-  background: linear-gradient(135deg, var(--color-text) 0%, var(--color-text-light) 100%);
+  background: var(--color-primary);
 }
 
 .comparison-table .col-standalone {
-  background: rgba(123, 31, 162, 0.05);
+  background: rgba(92, 75, 138, 0.06);
 }
 
 .comparison-table .col-colocated {
-  background: rgba(255, 111, 0, 0.05);
+  background: rgba(201, 166, 107, 0.08);
 }
 
 .comparison-table .row-advantage {
-  background: rgba(56, 142, 60, 0.1);
+  background: rgba(74, 124, 89, 0.1);
 }
 
 .comparison-table .row-disadvantage {
-  background: rgba(211, 47, 47, 0.1);
+  background: rgba(166, 61, 64, 0.08);
 }
 
 /* ========================================
-   16. NAVIGATION IMPROVEMENTS
+   16. NAVIGATION - FT Style
    ======================================== */
 
 /*-- scss:rules --*/
 
 /* Sidebar styling */
 .sidebar-navigation {
-  font-family: 'Lato', sans-serif;
+  font-family: 'Source Sans 3', sans-serif;
+  background: var(--color-background);
 }
 
 .sidebar-title {
-  font-weight: 700;
-  color: var(--color-text);
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 600;
+  color: var(--color-primary);
 }
 
 .sidebar-item {
@@ -817,8 +850,8 @@ blockquote strong {
 }
 
 .sidebar-item.active {
-  border-left: 3px solid var(--color-accent);
-  background: rgba(0, 172, 193, 0.08);
+  border-left: 3px solid var(--color-warm);
+  background: var(--color-background-alt);
 }
 
 /* TOC styling */
@@ -836,11 +869,11 @@ nav[role="doc-toc"] a {
 }
 
 nav[role="doc-toc"] a:hover {
-  color: var(--color-accent);
+  color: var(--color-primary);
 }
 
 nav[role="doc-toc"] a.active {
-  color: var(--color-accent-dark);
+  color: var(--color-primary);
   font-weight: 600;
 }
 
@@ -851,15 +884,15 @@ nav[role="doc-toc"] a.active {
 .progress-bar {
   height: 4px;
   background: var(--color-border);
-  border-radius: 2px;
+  border-radius: var(--radius-sm);
   overflow: hidden;
   margin: var(--spacing-md) 0;
 }
 
 .progress-bar-fill {
   height: 100%;
-  background: linear-gradient(90deg, var(--color-accent) 0%, var(--color-battery) 100%);
-  border-radius: 2px;
+  background: linear-gradient(90deg, var(--color-primary) 0%, var(--color-warm) 100%);
+  border-radius: var(--radius-sm);
   transition: width var(--transition-slow);
 }
 
@@ -868,6 +901,7 @@ nav[role="doc-toc"] a.active {
    ======================================== */
 
 figcaption {
+  font-family: 'Source Sans 3', sans-serif;
   font-size: 0.9rem;
   color: var(--color-text-muted);
   font-style: italic;
@@ -896,7 +930,7 @@ figcaption {
   }
 
   .key-finding-stat {
-    font-size: 2rem;
+    font-size: 2.5rem;
   }
 
   .chart-header {
@@ -918,14 +952,24 @@ figcaption {
 
 @media print {
   body {
-    font-size: 12pt;
+    font-size: 11pt;
     color: black;
+    background: white;
   }
 
   .chart-container {
     break-inside: avoid;
     box-shadow: none;
     border: 1px solid #ccc;
+  }
+
+  .key-finding {
+    background: #f5f5f5;
+    color: black;
+  }
+
+  .key-finding-stat {
+    color: #333;
   }
 
   .callout, .key-finding, .analysis-box {
@@ -939,35 +983,5 @@ figcaption {
 
   .sidebar-navigation, nav[role="doc-toc"] {
     display: none;
-  }
-}
-
-/* ========================================
-   21. DARK MODE SUPPORT (Optional)
-   ======================================== */
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-text: #E8E8E8;
-    --color-text-light: #B0B0B0;
-    --color-text-muted: #808080;
-    --color-background: #1A1A2E;
-    --color-background-alt: #16213E;
-    --color-background-dark: #0F0F23;
-    --color-border: #333355;
-    --color-border-light: #252545;
-  }
-
-  /* Dark mode adjustments */
-  .chart-container, .callout, .key-finding, .analysis-box {
-    background: var(--color-background-alt);
-  }
-
-  table {
-    background: var(--color-background-alt);
-  }
-
-  code {
-    background: var(--color-background-dark);
   }
 }

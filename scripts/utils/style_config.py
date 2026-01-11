@@ -1,45 +1,47 @@
 """
 Style configuration for Beyond the Solar Curve report.
-Provides consistent Plotly themes, color palettes, and formatting.
+Financial Times Style - Sophisticated dark navy with salmon accents.
 """
 
 import plotly.io as pio
 import plotly.graph_objects as go
 
-# Color palette
+# Color palette - FT Navy Style
 COLORS = {
-    'pv': '#FFD700',           # Yellow (solar PV)
-    'wind': '#2E7D32',         # Green (wind)
-    'battery': '#7B1FA2',      # Purple (battery standalone)
-    'battery_colocated': '#FF6F00',  # Dark orange (battery co-located)
-    'accent': '#00ACC1',       # Teal (accent color)
-    'text': '#2C3E50',         # Dark blue-grey (text)
-    'background': '#FFFFFF',   # White (background)
-    'grid': '#E5E5E5',         # Light grey (gridlines)
-    'negative': '#D32F2F',     # Red (negative values, curtailment)
-    'positive': '#388E3C',     # Dark green (positive values)
+    'pv': '#E5A882',           # Warm salmon (solar PV)
+    'wind': '#4A7C59',         # Muted green (wind)
+    'battery': '#5C4B8A',      # Muted purple (battery standalone)
+    'battery_colocated': '#C9A66B',  # Gold (battery co-located)
+    'accent': '#1B3A57',       # Navy blue (accent color)
+    'primary': '#0D1B2A',      # Dark navy (primary)
+    'warm': '#C9A66B',         # Gold accent
+    'text': '#33302E',         # Dark brown-grey (text)
+    'background': '#FFF9F5',   # Warm off-white (background)
+    'grid': '#E5D9CD',         # Warm grey (gridlines)
+    'negative': '#A63D40',     # Muted red (negative values)
+    'positive': '#4A7C59',     # Muted green (positive values)
 }
 
-# Lato font configuration
+# Playfair Display / Source Sans 3 font configuration
 FONT_CONFIG = dict(
-    family="Lato, sans-serif",
+    family="Source Sans 3, Georgia, serif",
     size=14,
     color=COLORS['text']
 )
 
 FONT_TITLE = dict(
-    family="Lato, sans-serif",
-    size=20,
-    color=COLORS['text']
+    family="Playfair Display, Georgia, serif",
+    size=18,
+    color=COLORS['primary']
 )
 
 FONT_AXIS = dict(
-    family="Lato, sans-serif",
+    family="Source Sans 3, Georgia, serif",
     size=12,
     color=COLORS['text']
 )
 
-# Default Plotly template for NEM report
+# Default Plotly template - FT Navy Style
 TEMPLATE = go.layout.Template(
     layout=go.Layout(
         font=FONT_CONFIG,
@@ -53,7 +55,7 @@ TEMPLATE = go.layout.Template(
             zerolinewidth=1,
             showline=True,
             linewidth=1,
-            linecolor=COLORS['grid'],
+            linecolor=COLORS['primary'],
             tickfont=FONT_AXIS,
             title=dict(font=FONT_AXIS)
         ),
@@ -62,19 +64,21 @@ TEMPLATE = go.layout.Template(
             gridcolor=COLORS['grid'],
             gridwidth=1,
             zeroline=True,
-            zerolinecolor=COLORS['grid'],
+            zerolinecolor=COLORS['primary'],
             zerolinewidth=1,
             showline=True,
             linewidth=1,
-            linecolor=COLORS['grid'],
+            linecolor=COLORS['primary'],
             tickfont=FONT_AXIS,
             title=dict(font=FONT_AXIS)
         ),
         hovermode='x unified',
         hoverlabel=dict(
-            bgcolor='white',
+            bgcolor=COLORS['primary'],
             font_size=12,
-            font_family='Lato, sans-serif'
+            font_family='Source Sans 3, sans-serif',
+            font_color='#FFE4D1',
+            bordercolor=COLORS['warm']
         ),
         legend=dict(
             orientation="h",
@@ -83,11 +87,19 @@ TEMPLATE = go.layout.Template(
             xanchor="right",
             x=1,
             font=FONT_CONFIG,
-            bgcolor='rgba(255, 255, 255, 0.8)',
+            bgcolor='rgba(255, 249, 245, 0.95)',
             bordercolor=COLORS['grid'],
             borderwidth=1
         ),
-        margin=dict(l=60, r=40, t=80, b=60)
+        margin=dict(l=60, r=40, t=80, b=60),
+        colorway=[
+            COLORS['primary'],    # Dark navy
+            COLORS['warm'],       # Gold
+            COLORS['pv'],         # Salmon
+            COLORS['battery'],    # Purple
+            COLORS['positive'],   # Green
+            COLORS['battery_colocated'],  # Gold
+        ]
     )
 )
 
@@ -221,19 +233,19 @@ STATUS_COLORS = {
     'operating': COLORS['positive'],
     'in service': COLORS['positive'],
     'committed': COLORS['accent'],
-    'commissioning': '#FFA726',  # Orange
-    'in commissioning': '#FFA726',
-    'anticipated': '#9E9E9E'  # Grey
+    'commissioning': COLORS['warm'],
+    'in commissioning': COLORS['warm'],
+    'anticipated': '#8A8683'  # Muted grey
 }
 
 
-# MLF color scale (for maps)
+# MLF color scale (for maps) - FT palette
 MLF_COLORSCALE = [
-    [0.0, '#D32F2F'],    # Red (low MLF <0.85)
-    [0.25, '#FF9800'],   # Orange (0.85-0.90)
-    [0.5, '#FFD700'],    # Yellow (0.90-0.95)
-    [0.75, '#66BB6A'],   # Light green (0.95-1.00)
-    [1.0, '#2E7D32']     # Dark green (>1.00)
+    [0.0, '#A63D40'],    # Muted red (low MLF <0.85)
+    [0.25, '#C9A66B'],   # Gold (0.85-0.90)
+    [0.5, '#E5A882'],    # Salmon (0.90-0.95)
+    [0.75, '#6B9B7A'],   # Light green (0.95-1.00)
+    [1.0, '#4A7C59']     # Muted green (>1.00)
 ]
 
 
@@ -251,12 +263,12 @@ def get_mlf_color(mlf_value):
     str : Hex color code
     """
     if mlf_value < 0.85:
-        return '#D32F2F'  # Red
+        return '#A63D40'  # Red
     elif mlf_value < 0.90:
-        return '#FF9800'  # Orange
+        return '#C9A66B'  # Gold
     elif mlf_value < 0.95:
-        return '#FFD700'  # Yellow
+        return '#E5A882'  # Salmon
     elif mlf_value < 1.00:
-        return '#66BB6A'  # Light green
+        return '#6B9B7A'  # Light green
     else:
-        return '#2E7D32'  # Dark green
+        return '#4A7C59'  # Green

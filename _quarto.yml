@@ -58,9 +58,9 @@ format:
       - cosmo
       - assets/styles/custom.css
 
-    # Typography
-    mainfont: "Lato"
-    monofont: "Source Code Pro"
+    # Typography - FT Navy Style
+    mainfont: "Source Sans 3"
+    monofont: "JetBrains Mono"
 
     # Layout
     toc: true
