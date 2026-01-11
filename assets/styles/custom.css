@@ -1,63 +1,72 @@
 /*-- scss:defaults --*/
 /*
- * Beyond the Solar Curve - Design System
- * Professional styling for NEM BESS investment analysis report
- * Version 2.0
+ * Beyond the Solar Curve - The Economist Style
+ * Clean, authoritative design inspired by The Economist
+ * Version 3.0 - Economist Edition
  */
 
 /* ========================================
    1. FONTS & TYPOGRAPHY
    ======================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Source+Code+Pro:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700;800&family=Merriweather:wght@400;700&family=IBM+Plex+Mono:wght@400;500&display=swap');
 
 /* ========================================
    2. CSS CUSTOM PROPERTIES (Variables)
    ======================================== */
 
 :root {
-  /* Primary Colors - Energy Types */
-  --color-pv: #FFD700;
-  --color-pv-light: #FFF3B0;
-  --color-pv-dark: #C7A600;
+  /* Economist Brand Colors */
+  --color-primary: #E3120B;        /* Economist Red */
+  --color-primary-dark: #B30E09;
+  --color-primary-light: #FF4136;
 
-  --color-wind: #2E7D32;
-  --color-wind-light: #81C784;
-  --color-wind-dark: #1B5E20;
+  --color-secondary: #006BA2;      /* Economist Blue */
+  --color-secondary-dark: #004B70;
+  --color-secondary-light: #2196F3;
 
-  --color-battery: #7B1FA2;
+  /* Data Visualization Colors */
+  --color-pv: #F4B400;             /* Golden yellow */
+  --color-pv-light: #FFD54F;
+  --color-pv-dark: #C79100;
+
+  --color-wind: #0F9D58;           /* Green */
+  --color-wind-light: #4CAF50;
+  --color-wind-dark: #0B7A43;
+
+  --color-battery: #7B1FA2;        /* Purple */
   --color-battery-light: #BA68C8;
   --color-battery-dark: #4A148C;
 
-  --color-battery-colocated: #FF6F00;
-  --color-battery-colocated-light: #FFB74D;
-  --color-battery-colocated-dark: #E65100;
+  --color-battery-colocated: #E65100;  /* Deep orange */
+  --color-battery-colocated-light: #FF8A65;
+  --color-battery-colocated-dark: #BF360C;
 
   /* Accent & UI Colors */
-  --color-accent: #00ACC1;
-  --color-accent-light: #4DD0E1;
-  --color-accent-dark: #00838F;
+  --color-accent: #006BA2;
+  --color-accent-light: #4FC3F7;
+  --color-accent-dark: #004B70;
 
   /* Status Colors */
-  --color-positive: #388E3C;
-  --color-negative: #D32F2F;
-  --color-warning: #F57C00;
-  --color-info: #1976D2;
+  --color-positive: #0F9D58;
+  --color-negative: #E3120B;
+  --color-warning: #F4B400;
+  --color-info: #006BA2;
 
-  /* Neutral Colors */
-  --color-text: #2C3E50;
-  --color-text-light: #5D6D7E;
-  --color-text-muted: #95A5A6;
+  /* Neutral Colors - Clean greys */
+  --color-text: #1D1D1D;
+  --color-text-light: #4A4A4A;
+  --color-text-muted: #757575;
   --color-background: #FFFFFF;
-  --color-background-alt: #F8F9FA;
-  --color-background-dark: #ECEFF1;
-  --color-border: #E0E0E0;
-  --color-border-light: #F0F0F0;
+  --color-background-alt: #F7F7F7;
+  --color-background-dark: #EBEBEB;
+  --color-border: #DBDBDB;
+  --color-border-light: #EBEBEB;
 
-  /* Shadows */
-  --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
-  --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
-  --shadow-lg: 0 10px 25px rgba(0,0,0,0.15);
+  /* Shadows - Subtle */
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+  --shadow-md: 0 2px 4px rgba(0,0,0,0.08);
+  --shadow-lg: 0 4px 12px rgba(0,0,0,0.1);
 
   /* Spacing */
   --spacing-xs: 0.25rem;
@@ -67,11 +76,11 @@
   --spacing-xl: 2rem;
   --spacing-2xl: 3rem;
 
-  /* Border Radius */
-  --radius-sm: 4px;
-  --radius-md: 8px;
-  --radius-lg: 12px;
-  --radius-xl: 16px;
+  /* Border Radius - Minimal */
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --radius-lg: 6px;
+  --radius-xl: 8px;
 
   /* Transitions */
   --transition-fast: 150ms ease;
@@ -84,82 +93,89 @@
    ======================================== */
 
 body {
-  font-family: 'Lato', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-family: 'Libre Franklin', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   font-size: 16px;
-  line-height: 1.7;
+  line-height: 1.65;
   color: var(--color-text);
   background-color: var(--color-background);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Typography */
+/* Typography - Economist style: Clean, authoritative */
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Lato', sans-serif;
+  font-family: 'Libre Franklin', sans-serif;
   font-weight: 700;
   color: var(--color-text);
-  line-height: 1.3;
+  line-height: 1.2;
   margin-top: 0;
+  letter-spacing: -0.01em;
 }
 
 h1 {
-  font-size: 2.75rem;
-  font-weight: 900;
+  font-size: 2.5rem;
+  font-weight: 800;
   margin-bottom: var(--spacing-lg);
-  letter-spacing: -0.02em;
+  border-bottom: 4px solid var(--color-primary);
+  padding-bottom: var(--spacing-md);
 }
 
 h2 {
-  font-size: 2rem;
+  font-size: 1.75rem;
   margin-top: var(--spacing-2xl);
   margin-bottom: var(--spacing-md);
-  padding-bottom: var(--spacing-sm);
-  border-bottom: 3px solid var(--color-accent);
+  color: var(--color-primary);
+  border-bottom: none;
   position: relative;
 }
 
-h2::after {
+h2::before {
   content: '';
   position: absolute;
-  left: 0;
-  bottom: -3px;
-  width: 60px;
-  height: 3px;
-  background: var(--color-battery);
+  left: -1rem;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: var(--color-primary);
+}
+
+h2::after {
+  display: none;
 }
 
 h3 {
-  font-size: 1.5rem;
+  font-size: 1.35rem;
   margin-top: var(--spacing-xl);
   margin-bottom: var(--spacing-sm);
   color: var(--color-text);
 }
 
 h4 {
-  font-size: 1.25rem;
+  font-size: 1.15rem;
   margin-top: var(--spacing-lg);
   margin-bottom: var(--spacing-sm);
   color: var(--color-text-light);
+  font-weight: 600;
 }
 
 p {
   margin-bottom: var(--spacing-md);
 }
 
-/* Links */
+/* Links - Economist style */
 a {
-  color: var(--color-accent-dark);
+  color: var(--color-secondary);
   text-decoration: none;
   border-bottom: 1px solid transparent;
   transition: all var(--transition-fast);
 }
 
 a:hover {
-  color: var(--color-accent);
-  border-bottom-color: var(--color-accent);
+  color: var(--color-primary);
+  border-bottom-color: var(--color-primary);
 }
 
-/* Strong/Bold with accent */
+/* Strong/Bold */
 strong {
   font-weight: 700;
   color: var(--color-text);
@@ -170,18 +186,18 @@ strong {
    ======================================== */
 
 code {
-  font-family: 'Source Code Pro', 'Consolas', 'Monaco', monospace;
+  font-family: 'IBM Plex Mono', 'Consolas', 'Monaco', monospace;
   font-size: 0.875em;
   background-color: var(--color-background-alt);
   padding: 0.2em 0.4em;
   border-radius: var(--radius-sm);
-  color: var(--color-battery-dark);
+  color: var(--color-secondary-dark);
 }
 
 pre {
   background-color: var(--color-background-alt);
   border: 1px solid var(--color-border);
-  border-left: 4px solid var(--color-accent);
+  border-left: 4px solid var(--color-primary);
   padding: var(--spacing-lg);
   border-radius: var(--radius-md);
   overflow-x: auto;
@@ -196,35 +212,34 @@ pre code {
 }
 
 /* ========================================
-   5. TABLES
+   5. TABLES - Economist style clean tables
    ======================================== */
 
 table {
   width: 100%;
   border-collapse: collapse;
   margin: var(--spacing-lg) 0;
-  font-size: 0.95rem;
-  box-shadow: var(--shadow-sm);
-  border-radius: var(--radius-md);
-  overflow: hidden;
+  font-size: 0.9rem;
+  border: none;
 }
 
 thead {
-  background: linear-gradient(135deg, var(--color-accent-dark) 0%, var(--color-accent) 100%);
+  background: none;
+  border-bottom: 2px solid var(--color-text);
 }
 
 th {
-  color: white;
+  color: var(--color-text);
   font-weight: 700;
-  padding: var(--spacing-md) var(--spacing-lg);
+  padding: var(--spacing-sm) var(--spacing-md);
   text-align: left;
   text-transform: uppercase;
-  font-size: 0.8rem;
-  letter-spacing: 0.05em;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
 }
 
 td {
-  padding: var(--spacing-md) var(--spacing-lg);
+  padding: var(--spacing-sm) var(--spacing-md);
   border-bottom: 1px solid var(--color-border-light);
   vertical-align: top;
 }
@@ -238,20 +253,22 @@ tbody tr:hover {
 }
 
 tbody tr:last-child td {
-  border-bottom: none;
+  border-bottom: 2px solid var(--color-text);
 }
 
 /* ========================================
-   6. BLOCKQUOTES
+   6. BLOCKQUOTES - Economist style
    ======================================== */
 
 blockquote {
-  border-left: 4px solid var(--color-accent);
-  background: linear-gradient(90deg, var(--color-background-alt) 0%, var(--color-background) 100%);
-  padding: var(--spacing-lg) var(--spacing-xl);
+  border-left: 4px solid var(--color-primary);
+  background: none;
+  padding: var(--spacing-md) var(--spacing-xl);
   margin: var(--spacing-xl) 0;
-  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  border-radius: 0;
+  font-family: 'Merriweather', Georgia, serif;
   font-style: italic;
+  font-size: 1.1rem;
   color: var(--color-text-light);
 }
 
@@ -267,33 +284,31 @@ blockquote strong {
    7. CHART CONTAINERS
    ======================================== */
 
-/* Main chart container */
 .chart-container {
   background: var(--color-background);
   border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
+  border-top: 4px solid var(--color-primary);
   margin: var(--spacing-xl) 0;
   overflow: hidden;
-  box-shadow: var(--shadow-md);
+  box-shadow: none;
   transition: box-shadow var(--transition-normal);
 }
 
 .chart-container:hover {
-  box-shadow: var(--shadow-lg);
+  box-shadow: var(--shadow-md);
 }
 
-/* Chart header */
 .chart-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: var(--spacing-md) var(--spacing-lg);
-  background: var(--color-background-alt);
+  background: var(--color-background);
   border-bottom: 1px solid var(--color-border-light);
 }
 
 .chart-title {
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 700;
   color: var(--color-text);
   margin: 0;
@@ -304,6 +319,7 @@ blockquote strong {
 
 .chart-title-icon {
   font-size: 1.25rem;
+  color: var(--color-primary);
 }
 
 /* Status badges */
@@ -311,25 +327,25 @@ blockquote strong {
   display: inline-flex;
   align-items: center;
   padding: var(--spacing-xs) var(--spacing-md);
-  border-radius: 20px;
-  font-size: 0.75rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.7rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
 
 .chart-status--complete {
-  background: rgba(56, 142, 60, 0.15);
+  background: rgba(15, 157, 88, 0.1);
   color: var(--color-positive);
 }
 
 .chart-status--pending {
-  background: rgba(255, 152, 0, 0.15);
+  background: rgba(244, 180, 0, 0.1);
   color: var(--color-warning);
 }
 
 .chart-status--error {
-  background: rgba(211, 47, 47, 0.15);
+  background: rgba(227, 18, 11, 0.1);
   color: var(--color-negative);
 }
 
@@ -363,23 +379,24 @@ blockquote strong {
   padding: var(--spacing-sm) var(--spacing-lg);
   background: var(--color-background-alt);
   border-top: 1px solid var(--color-border-light);
-  font-size: 0.85rem;
+  font-size: 0.8rem;
 }
 
 .chart-source {
   color: var(--color-text-muted);
+  font-style: italic;
 }
 
 .chart-code-link {
   display: inline-flex;
   align-items: center;
   gap: var(--spacing-xs);
-  color: var(--color-accent-dark);
+  color: var(--color-secondary);
   font-weight: 500;
 }
 
 .chart-code-link:hover {
-  color: var(--color-accent);
+  color: var(--color-primary);
 }
 
 /* ========================================
@@ -393,18 +410,19 @@ blockquote strong {
   justify-content: center;
   min-height: 400px;
   padding: var(--spacing-2xl);
-  background: linear-gradient(135deg, var(--color-background-alt) 0%, var(--color-background-dark) 100%);
+  background: var(--color-background-alt);
   text-align: center;
 }
 
 .chart-placeholder-icon {
   font-size: 3rem;
   margin-bottom: var(--spacing-md);
-  opacity: 0.5;
+  opacity: 0.4;
+  color: var(--color-text-muted);
 }
 
 .chart-placeholder-title {
-  font-size: 1.25rem;
+  font-size: 1.15rem;
   font-weight: 700;
   color: var(--color-text);
   margin-bottom: var(--spacing-sm);
@@ -420,13 +438,13 @@ blockquote strong {
   background: var(--color-background);
   padding: var(--spacing-md) var(--spacing-lg);
   border-radius: var(--radius-md);
-  border-left: 3px solid var(--color-accent);
+  border-left: 3px solid var(--color-primary);
   text-align: left;
   max-width: 500px;
 }
 
 .chart-placeholder-insight strong {
-  color: var(--color-accent-dark);
+  color: var(--color-primary);
 }
 
 /* Technology-specific placeholder borders */
@@ -443,18 +461,17 @@ blockquote strong {
 }
 
 /* ========================================
-   9. CALLOUT BOXES (Enhanced)
+   9. CALLOUT BOXES
    ======================================== */
 
-/* Base callout */
 .callout {
   position: relative;
   padding: var(--spacing-lg) var(--spacing-xl);
   margin: var(--spacing-xl) 0;
-  border-radius: var(--radius-md);
+  border-radius: 0;
   border-left: 4px solid;
-  background: var(--color-background);
-  box-shadow: var(--shadow-sm);
+  background: var(--color-background-alt);
+  box-shadow: none;
 }
 
 .callout-title {
@@ -462,27 +479,27 @@ blockquote strong {
   align-items: center;
   gap: var(--spacing-sm);
   font-weight: 700;
-  font-size: 1rem;
+  font-size: 0.9rem;
   margin-bottom: var(--spacing-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 .callout-icon {
-  font-size: 1.25rem;
+  font-size: 1rem;
 }
 
 /* Callout variants */
 .callout-note {
-  border-left-color: var(--color-info);
-  background: linear-gradient(90deg, rgba(25, 118, 210, 0.08) 0%, var(--color-background) 100%);
+  border-left-color: var(--color-secondary);
 }
 
 .callout-note .callout-title {
-  color: var(--color-info);
+  color: var(--color-secondary);
 }
 
 .callout-warning {
   border-left-color: var(--color-warning);
-  background: linear-gradient(90deg, rgba(245, 124, 0, 0.08) 0%, var(--color-background) 100%);
 }
 
 .callout-warning .callout-title {
@@ -490,17 +507,15 @@ blockquote strong {
 }
 
 .callout-important {
-  border-left-color: var(--color-negative);
-  background: linear-gradient(90deg, rgba(211, 47, 47, 0.08) 0%, var(--color-background) 100%);
+  border-left-color: var(--color-primary);
 }
 
 .callout-important .callout-title {
-  color: var(--color-negative);
+  color: var(--color-primary);
 }
 
 .callout-tip {
   border-left-color: var(--color-positive);
-  background: linear-gradient(90deg, rgba(56, 142, 60, 0.08) 0%, var(--color-background) 100%);
 }
 
 .callout-tip .callout-title {
@@ -508,55 +523,57 @@ blockquote strong {
 }
 
 /* ========================================
-   10. KEY FINDINGS BOXES
+   10. KEY FINDINGS BOXES - Economist style
    ======================================== */
 
 .key-finding {
   position: relative;
   background: var(--color-background);
-  border: 2px solid var(--color-accent);
-  border-radius: var(--radius-lg);
+  border: none;
+  border-top: 4px solid var(--color-primary);
+  border-radius: 0;
   padding: var(--spacing-xl);
   margin: var(--spacing-xl) 0;
-  box-shadow: var(--shadow-md);
+  box-shadow: var(--shadow-sm);
 }
 
 .key-finding::before {
   content: 'KEY FINDING';
   position: absolute;
-  top: -12px;
-  left: var(--spacing-lg);
-  background: var(--color-accent);
+  top: var(--spacing-md);
+  right: var(--spacing-md);
+  background: var(--color-primary);
   color: white;
-  padding: var(--spacing-xs) var(--spacing-md);
+  padding: var(--spacing-xs) var(--spacing-sm);
   border-radius: var(--radius-sm);
-  font-size: 0.7rem;
+  font-size: 0.65rem;
   font-weight: 700;
   letter-spacing: 0.1em;
 }
 
 .key-finding-stat {
-  font-size: 2.5rem;
-  font-weight: 900;
-  color: var(--color-battery);
-  line-height: 1.1;
+  font-size: 3rem;
+  font-weight: 800;
+  color: var(--color-primary);
+  line-height: 1;
   margin-bottom: var(--spacing-sm);
 }
 
 .key-finding-label {
-  font-size: 1.1rem;
+  font-size: 1rem;
   color: var(--color-text-light);
   margin-bottom: var(--spacing-md);
+  font-weight: 500;
 }
 
 .key-finding-description {
   color: var(--color-text);
-  font-size: 0.95rem;
+  font-size: 0.9rem;
 }
 
 /* Technology-themed key findings */
 .key-finding--pv {
-  border-color: var(--color-pv);
+  border-top-color: var(--color-pv);
 }
 
 .key-finding--pv::before {
@@ -569,7 +586,7 @@ blockquote strong {
 }
 
 .key-finding--battery {
-  border-color: var(--color-battery);
+  border-top-color: var(--color-battery);
 }
 
 .key-finding--battery::before {
@@ -587,10 +604,10 @@ blockquote strong {
 .analysis-box {
   background: var(--color-background);
   border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
+  border-radius: 0;
   margin: var(--spacing-xl) 0;
   overflow: hidden;
-  box-shadow: var(--shadow-sm);
+  box-shadow: none;
 }
 
 .analysis-box-header {
@@ -603,13 +620,13 @@ blockquote strong {
 }
 
 .analysis-box-icon {
-  width: 40px;
-  height: 40px;
-  border-radius: var(--radius-md);
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-sm);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.25rem;
+  font-size: 1.1rem;
 }
 
 .analysis-box--pv .analysis-box-icon {
@@ -631,10 +648,11 @@ blockquote strong {
   font-weight: 700;
   color: var(--color-text);
   margin: 0;
+  font-size: 0.95rem;
 }
 
 .analysis-box-subtitle {
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   color: var(--color-text-muted);
   margin: 0;
 }
@@ -648,19 +666,21 @@ blockquote strong {
    ======================================== */
 
 .section-summary {
-  background: linear-gradient(135deg, var(--color-background-alt) 0%, var(--color-background) 100%);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
-  padding: var(--spacing-xl);
+  background: var(--color-background-alt);
+  border: none;
+  border-left: 4px solid var(--color-secondary);
+  border-radius: 0;
+  padding: var(--spacing-lg) var(--spacing-xl);
   margin-bottom: var(--spacing-2xl);
 }
 
 .section-summary-title {
-  font-size: 0.85rem;
+  font-size: 0.75rem;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--color-text-muted);
+  letter-spacing: 0.12em;
+  color: var(--color-secondary);
   margin-bottom: var(--spacing-md);
+  font-weight: 700;
 }
 
 .section-summary-list {
@@ -677,11 +697,12 @@ blockquote strong {
 }
 
 .section-summary-list li::before {
-  content: '→';
+  content: '>';
   position: absolute;
   left: 0;
-  color: var(--color-accent);
+  color: var(--color-primary);
   font-weight: 700;
+  font-family: 'IBM Plex Mono', monospace;
 }
 
 /* ========================================
@@ -689,9 +710,9 @@ blockquote strong {
    ======================================== */
 
 .key-takeaways {
-  background: linear-gradient(135deg, rgba(0, 172, 193, 0.08) 0%, var(--color-background) 100%);
-  border: 1px solid var(--color-accent);
-  border-radius: var(--radius-lg);
+  background: var(--color-background);
+  border: 2px solid var(--color-secondary);
+  border-radius: 0;
   padding: var(--spacing-xl);
   margin-top: var(--spacing-2xl);
 }
@@ -700,10 +721,12 @@ blockquote strong {
   display: flex;
   align-items: center;
   gap: var(--spacing-sm);
-  font-size: 1.1rem;
+  font-size: 0.9rem;
   font-weight: 700;
-  color: var(--color-accent-dark);
+  color: var(--color-secondary);
   margin-bottom: var(--spacing-md);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
 }
 
 .key-takeaways-list {
@@ -720,11 +743,13 @@ blockquote strong {
 }
 
 .key-takeaways-list li::before {
-  content: '✓';
+  content: '+';
   position: absolute;
   left: 0;
   color: var(--color-positive);
   font-weight: 700;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 1.1rem;
 }
 
 /* ========================================
@@ -732,80 +757,84 @@ blockquote strong {
    ======================================== */
 
 .highlight-pv {
-  background: linear-gradient(135deg, var(--color-pv-light) 0%, var(--color-pv) 100%);
+  background: var(--color-pv);
   color: var(--color-text);
-  padding: 0.15em 0.5em;
+  padding: 0.1em 0.4em;
   border-radius: var(--radius-sm);
   font-weight: 600;
 }
 
 .highlight-wind {
-  background: linear-gradient(135deg, var(--color-wind-light) 0%, var(--color-wind) 100%);
+  background: var(--color-wind);
   color: white;
-  padding: 0.15em 0.5em;
+  padding: 0.1em 0.4em;
   border-radius: var(--radius-sm);
   font-weight: 600;
 }
 
 .highlight-battery {
-  background: linear-gradient(135deg, var(--color-battery-light) 0%, var(--color-battery) 100%);
+  background: var(--color-battery);
   color: white;
-  padding: 0.15em 0.5em;
+  padding: 0.1em 0.4em;
   border-radius: var(--radius-sm);
   font-weight: 600;
 }
 
 .highlight-hybrid {
-  background: linear-gradient(135deg, var(--color-battery-colocated-light) 0%, var(--color-battery-colocated) 100%);
+  background: var(--color-battery-colocated);
   color: white;
-  padding: 0.15em 0.5em;
+  padding: 0.1em 0.4em;
   border-radius: var(--radius-sm);
   font-weight: 600;
 }
 
 /* ========================================
-   15. COMPARISON TABLE (Styled)
+   15. COMPARISON TABLE
    ======================================== */
 
 .comparison-table {
   border: none;
-  box-shadow: var(--shadow-md);
+  box-shadow: none;
 }
 
 .comparison-table thead {
-  background: linear-gradient(135deg, var(--color-text) 0%, var(--color-text-light) 100%);
+  background: none;
+  border-bottom: 2px solid var(--color-text);
 }
 
 .comparison-table .col-standalone {
-  background: rgba(123, 31, 162, 0.05);
+  background: rgba(123, 31, 162, 0.04);
 }
 
 .comparison-table .col-colocated {
-  background: rgba(255, 111, 0, 0.05);
+  background: rgba(230, 81, 0, 0.04);
 }
 
 .comparison-table .row-advantage {
-  background: rgba(56, 142, 60, 0.1);
+  background: rgba(15, 157, 88, 0.08);
 }
 
 .comparison-table .row-disadvantage {
-  background: rgba(211, 47, 47, 0.1);
+  background: rgba(227, 18, 11, 0.08);
 }
 
 /* ========================================
-   16. NAVIGATION IMPROVEMENTS
+   16. NAVIGATION - Economist style
    ======================================== */
 
 /*-- scss:rules --*/
 
 /* Sidebar styling */
 .sidebar-navigation {
-  font-family: 'Lato', sans-serif;
+  font-family: 'Libre Franklin', sans-serif;
 }
 
 .sidebar-title {
   font-weight: 700;
   color: var(--color-text);
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 .sidebar-item {
@@ -817,8 +846,8 @@ blockquote strong {
 }
 
 .sidebar-item.active {
-  border-left: 3px solid var(--color-accent);
-  background: rgba(0, 172, 193, 0.08);
+  border-left: 3px solid var(--color-primary);
+  background: rgba(227, 18, 11, 0.05);
 }
 
 /* TOC styling */
@@ -827,7 +856,7 @@ blockquote strong {
 }
 
 nav[role="doc-toc"] {
-  font-size: 0.9rem;
+  font-size: 0.85rem;
 }
 
 nav[role="doc-toc"] a {
@@ -836,11 +865,11 @@ nav[role="doc-toc"] a {
 }
 
 nav[role="doc-toc"] a:hover {
-  color: var(--color-accent);
+  color: var(--color-primary);
 }
 
 nav[role="doc-toc"] a.active {
-  color: var(--color-accent-dark);
+  color: var(--color-primary);
   font-weight: 600;
 }
 
@@ -849,17 +878,17 @@ nav[role="doc-toc"] a.active {
    ======================================== */
 
 .progress-bar {
-  height: 4px;
+  height: 3px;
   background: var(--color-border);
-  border-radius: 2px;
+  border-radius: 0;
   overflow: hidden;
   margin: var(--spacing-md) 0;
 }
 
 .progress-bar-fill {
   height: 100%;
-  background: linear-gradient(90deg, var(--color-accent) 0%, var(--color-battery) 100%);
-  border-radius: 2px;
+  background: var(--color-primary);
+  border-radius: 0;
   transition: width var(--transition-slow);
 }
 
@@ -868,14 +897,14 @@ nav[role="doc-toc"] a.active {
    ======================================== */
 
 figcaption {
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   color: var(--color-text-muted);
   font-style: italic;
-  text-align: center;
-  margin-top: var(--spacing-md);
-  padding: var(--spacing-sm) var(--spacing-lg);
-  background: var(--color-background-alt);
-  border-radius: var(--radius-sm);
+  text-align: left;
+  margin-top: var(--spacing-sm);
+  padding: var(--spacing-sm) 0;
+  border-top: 1px solid var(--color-border-light);
+  background: none;
 }
 
 /* ========================================
@@ -884,11 +913,16 @@ figcaption {
 
 @media (max-width: 768px) {
   h1 {
-    font-size: 2rem;
+    font-size: 1.75rem;
   }
 
   h2 {
-    font-size: 1.5rem;
+    font-size: 1.35rem;
+  }
+
+  h2::before {
+    left: -0.5rem;
+    width: 3px;
   }
 
   .chart-iframe {
@@ -896,7 +930,7 @@ figcaption {
   }
 
   .key-finding-stat {
-    font-size: 2rem;
+    font-size: 2.25rem;
   }
 
   .chart-header {
@@ -918,8 +952,20 @@ figcaption {
 
 @media print {
   body {
-    font-size: 12pt;
+    font-size: 11pt;
     color: black;
+  }
+
+  h1 {
+    border-bottom-color: black;
+  }
+
+  h2 {
+    color: black;
+  }
+
+  h2::before {
+    background: black;
   }
 
   .chart-container {
@@ -939,35 +985,5 @@ figcaption {
 
   .sidebar-navigation, nav[role="doc-toc"] {
     display: none;
-  }
-}
-
-/* ========================================
-   21. DARK MODE SUPPORT (Optional)
-   ======================================== */
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-text: #E8E8E8;
-    --color-text-light: #B0B0B0;
-    --color-text-muted: #808080;
-    --color-background: #1A1A2E;
-    --color-background-alt: #16213E;
-    --color-background-dark: #0F0F23;
-    --color-border: #333355;
-    --color-border-light: #252545;
-  }
-
-  /* Dark mode adjustments */
-  .chart-container, .callout, .key-finding, .analysis-box {
-    background: var(--color-background-alt);
-  }
-
-  table {
-    background: var(--color-background-alt);
-  }
-
-  code {
-    background: var(--color-background-dark);
   }
 }

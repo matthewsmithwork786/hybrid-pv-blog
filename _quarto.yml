@@ -58,9 +58,9 @@ format:
       - cosmo
       - assets/styles/custom.css
 
-    # Typography
-    mainfont: "Lato"
-    monofont: "Source Code Pro"
+    # Typography - Economist Style
+    mainfont: "Libre Franklin"
+    monofont: "IBM Plex Mono"
 
     # Layout
     toc: true
